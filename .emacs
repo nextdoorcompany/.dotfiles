@@ -92,5 +92,5 @@
      (progn (forward-visible-line 0) (point))
      (progn (forward-visible-line 1) (point)))))
 
-(global-set-key (kbd "C-c C-d") 'delete-current-line)
+(global-set-key (kbd "C-c <deletechar>") 'delete-current-line)
 
