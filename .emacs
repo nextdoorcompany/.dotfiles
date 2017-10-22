@@ -35,6 +35,10 @@
      (lambda ()
        (linum-mode 1)))
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+
 (defun wsl-copy ()
   (interactive)
   (let ((default-directory "/mnt/c/"))
@@ -93,4 +97,3 @@
      (progn (forward-visible-line 1) (point)))))
 
 (global-set-key (kbd "C-c <deletechar>") 'delete-current-line)
-
