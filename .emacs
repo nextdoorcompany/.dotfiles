@@ -98,7 +98,7 @@
 
 (global-set-key (kbd "C-c <deletechar>") 'delete-current-line)
 
-(setq org-agenda-files (quote ("~/ephemera.org" "~/kanban.org")))
+(setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org")))
 
 (setq org-cycle-separator-lines 1)
 
@@ -109,6 +109,6 @@
          :exclude "org"
          :include ("keyboard.org")
          :publishing-function org-html-publish-to-html
-         :publishing-directory "~/Documents")))
+         :publishing-directory "~/org/html")))
 
 
