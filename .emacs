@@ -97,3 +97,18 @@
      (progn (forward-visible-line 1) (point)))))
 
 (global-set-key (kbd "C-c <deletechar>") 'delete-current-line)
+
+(setq org-agenda-files (quote ("~/ephemera.org" "~/kanban.org")))
+
+(setq org-cycle-separator-lines 1)
+
+
+(setq org-publish-project-alist
+      '(("keyboard"
+         :base-directory "~/notes/"
+         :exclude "org"
+         :include ("keyboard.org")
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/Documents")))
+
+
