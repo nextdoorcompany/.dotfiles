@@ -7,6 +7,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+(load-theme 'manoj-dark)
+
 (setq inhibit-startup-screen t)
 
 (setq initial-scratch-message nil)
@@ -110,5 +112,3 @@
          :include ("keyboard.org")
          :publishing-function org-html-publish-to-html
          :publishing-directory "~/org/html")))
-
-
