@@ -1,6 +1,6 @@
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
@@ -23,9 +23,9 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (when window-system
-  (scroll-bar-mode -1))
-(when window-system
-  (global-hl-line-mode 1))
+  (scroll-bar-mode -1)
+  (global-hl-line-mode 1)
+  (set-face-attribute 'default nil :height 240))
 
 (delete-selection-mode t)
 (setq require-final-newline t)
