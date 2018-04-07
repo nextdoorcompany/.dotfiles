@@ -30,6 +30,7 @@
 (delete-selection-mode t)
 (setq require-final-newline t)
 (setq-default indent-tabs-mode nil)
+(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 
 (setq linum-format "%d ")
 
