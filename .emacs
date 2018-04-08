@@ -42,6 +42,10 @@
           (lambda ()
             (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (dired-hide-details-mode 1)))
+
 (defun wsl-copy ()
   (interactive)
   (let ((default-directory "/mnt/c/"))
