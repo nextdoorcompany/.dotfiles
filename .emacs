@@ -34,6 +34,9 @@
 
 (setq linum-format "%d ")
 
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 (add-hook 'python-mode-hook
      (lambda ()
        (linum-mode 1)))
@@ -117,3 +120,4 @@
          :include ("keyboard.org")
          :publishing-function org-html-publish-to-html
          :publishing-directory "~/org/html")))
+
