@@ -1,3 +1,7 @@
+(setq custom-file "custom.el")
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 (require 'package)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -28,3 +32,6 @@
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
+
+(use-package magit
+  :ensure t)
