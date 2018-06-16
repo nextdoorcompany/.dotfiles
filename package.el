@@ -1,7 +1,3 @@
-(setq custom-file "custom.el")
-(when (file-exists-p custom-file)
-  (load custom-file))
-
 (require 'package)
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -35,3 +31,8 @@
 
 (use-package magit
   :ensure t)
+
+(use-package auto-yasnippet
+  :ensure t
+  :bind (("C-c w" . aya-create)
+         ("C-c y" . aya-expand)))
