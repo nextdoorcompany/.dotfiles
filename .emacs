@@ -121,3 +121,6 @@
          :publishing-function org-html-publish-to-html
          :publishing-directory "~/org/html")))
 
+
+(when (file-exists-p "~/.init-packages.org")
+  (org-babel-load-file "~/.init-packages.org"))

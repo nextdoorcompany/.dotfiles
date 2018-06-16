@@ -1,0 +1,98 @@
+* credits
+
+[[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
+[[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
+[[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
+
+
+* package repositories
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+#+END_SRC
+
+
+* bootstrap package manager
+
+[[https://github.com/jwiegley/use-package][use-package]] [[https://melpa.org/#/use-package][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+#+END_SRC
+
+
+* hide unwanted mode information from mode line 
+
+[[https://github.com/myrjola/diminish.el][diminish]] [[https://melpa.org/#/diminish][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package diminish
+  :ensure t
+  )
+#+END_SRC
+
+
+* hints for keyboard bindings
+
+[[https://github.com/justbur/emacs-which-key][which-key]] [[https://melpa.org/#/which-key][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 2.0)
+  (which-key-mode 1))
+#+END_SRC
+
+
+* navigation within a file
+
+[[https://github.com/abo-abo/avy][avy]] [[https://melpa.org/#/avy][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package avy
+  :ensure t
+  :bind ("C-s" . avy-goto-char-timer))
+#+END_SRC
+
+
+* expand region based on context
+
+[[https://github.com/magnars/expand-region.el][expand-region]] [[https://melpa.org/#/expand-region][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region))
+#+END_SRC
+
+
+* git interface
+
+[[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t)
+#+END_SRC
+
+
+* quick snippets
+
+[[https://github.com/abo-abo/auto-yasnippet][auto-yasnippet]] [[https://melpa.org/#/auto-yasnippet][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+(use-package auto-yasnippet
+  :ensure t
+  :bind (("C-c w" . aya-create)
+         ("C-c y" . aya-expand)))
+#+END_SRC
