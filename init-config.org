@@ -1,0 +1,7 @@
+* general
+
+#+BEGIN_SRC emacs-lisp
+  (setq visible-bell t)
+  (setq confirm-kill-emacs #'y-or-n-p)
+#+END_SRC
+

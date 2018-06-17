@@ -124,3 +124,6 @@
 
 (when (file-exists-p "~/.init-packages.org")
   (org-babel-load-file (file-truename "~/.init-packages.org")))
+
+(when (file-exists-p "~/.init-config.org")
+  (org-babel-load-file (file-truename "~/.init-config.org")))

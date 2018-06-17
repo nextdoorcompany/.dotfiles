@@ -1,6 +1,7 @@
 * credits
 
 [[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
+[[https://github.com/Wilfred/.emacs.d/blob/gh-pages/init.org][Wilfred Hughes]]
 [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
 [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
 
@@ -8,10 +9,10 @@
 * package repositories
 
 #+BEGIN_SRC emacs-lisp
-(require 'package)
-(setq package-archives
-      '(("gnu" . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
+  (require 'package)
+  (setq package-archives
+        '(("gnu" . "https://elpa.gnu.org/packages/")
+          ("melpa" . "https://melpa.org/packages/")))
 #+END_SRC
 
 
@@ -20,12 +21,12 @@
 [[https://github.com/jwiegley/use-package][use-package]] [[https://melpa.org/#/use-package][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(package-initialize)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+  (package-initialize)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
-(require 'use-package)
+  (require 'use-package)
 #+END_SRC
 
 
@@ -34,9 +35,9 @@
 [[https://github.com/myrjola/diminish.el][diminish]] [[https://melpa.org/#/diminish][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package diminish
-  :ensure t
-  )
+  (use-package diminish
+    :ensure t
+    )
 #+END_SRC
 
 
@@ -45,12 +46,12 @@
 [[https://github.com/justbur/emacs-which-key][which-key]] [[https://melpa.org/#/which-key][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 2.0)
-  (which-key-mode 1))
+  (use-package which-key
+    :ensure t
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 2.0)
+    (which-key-mode 1))
 #+END_SRC
 
 
@@ -59,13 +60,10 @@
 [[https://github.com/abo-abo/avy][avy]] [[https://melpa.org/#/avy][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package avy
-  :ensure t
-  :bind ("C-c j" . avy-goto-char-timer))
+  (use-package avy
+    :ensure t
+    :bind ("C-c j" . avy-goto-char-timer))
 #+END_SRC
-
-#+RESULTS:
-: avy-goto-char-timer
 
 
 * expand region based on context
@@ -73,9 +71,9 @@
 [[https://github.com/magnars/expand-region.el][expand-region]] [[https://melpa.org/#/expand-region][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package expand-region
-  :ensure t
-  :bind ("C-=" . er/expand-region))
+  (use-package expand-region
+    :ensure t
+    :bind ("C-=" . er/expand-region))
 #+END_SRC
 
 
@@ -84,8 +82,8 @@
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package magit
-  :ensure t)
+  (use-package magit
+    :ensure t)
 #+END_SRC
 
 
@@ -94,14 +92,14 @@
 [[https://github.com/joaotavora/yasnippet][yasnippet]] [[https://melpa.org/#/yasnippet][MELPA]] [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] [[https://melpa.org/#/yasnippet-snippets][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package yasnippet
-  :ensure t
-  :diminish yas-minor-mode
-  :config
-  (yas-global-mode 1))
+  (use-package yasnippet
+    :ensure t
+    :diminish yas-minor-mode
+    :config
+    (yas-global-mode 1))
 
-(use-package yasnippet-snippets
-  :ensure t)
+  (use-package yasnippet-snippets
+    :ensure t)
 #+END_SRC
 
 
@@ -110,8 +108,20 @@
 [[https://github.com/abo-abo/auto-yasnippet][auto-yasnippet]] [[https://melpa.org/#/auto-yasnippet][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-(use-package auto-yasnippet
-  :ensure t
-  :bind (("C-c w" . aya-create)
-         ("C-c y" . aya-expand)))
+  (use-package auto-yasnippet
+    :ensure t
+    :bind (("C-c w" . aya-create)
+           ("C-c y" . aya-expand)))
+#+END_SRC
+
+
+* editing helpers
+
+[[https://github.com/bbatsov/crux][crux]] [[https://melpa.org/#/crux][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package crux
+    :ensure t
+    :bind (("C-a" . crux-move-beginning-of-line)
+           ("S-<return>" . crux-smart-open-line)))
 #+END_SRC
