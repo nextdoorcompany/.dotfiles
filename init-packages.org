@@ -1,10 +1,9 @@
 * credits
 
-[[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
-[[https://github.com/Wilfred/.emacs.d/blob/gh-pages/init.org][Wilfred Hughes]]
-[[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
-[[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
-
++ [[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
++ [[https://github.com/Wilfred/.emacs.d/blob/gh-pages/init.org][Wilfred Hughes]]
++ [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
++ [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
 
 * package repositories
 
@@ -124,4 +123,35 @@
     :ensure t
     :bind (("C-a" . crux-move-beginning-of-line)
            ("S-<return>" . crux-smart-open-line)))
+#+END_SRC
+
+* testing packages
+
+[[https://github.com/larstvei/Try][try]] [[https://melpa.org/#/try][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package try
+    :ensure t)
+#+END_SRC
+
+* nicer mode line
+
+[[https://github.com/tarsius/moody/tree/05cf642d4295e24629022447df8e422180df20e4][moody]] [[https://melpa.org/#/moody][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package moody
+    :ensure t
+    :config
+    (setq x-underline-at-descent-line t)
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-vc-mode))
+#+END_SRC
+
+* nicer help
+
+[[https://github.com/Wilfred/helpful][helpful]] [[https://melpa.org/#/helpful][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helpful
+    :ensure t)
 #+END_SRC

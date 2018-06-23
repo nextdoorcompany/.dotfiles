@@ -7,8 +7,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(load-theme 'manoj-dark)
-
 (setq inhibit-startup-screen t)
 
 (setq initial-scratch-message nil)
@@ -24,8 +22,7 @@
 (tool-bar-mode -1)
 (when window-system
   (scroll-bar-mode -1)
-  (global-hl-line-mode 1)
-  (set-face-attribute 'default nil :height 240))
+  (global-hl-line-mode 1))
 
 (delete-selection-mode t)
 (setq require-final-newline t)
