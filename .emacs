@@ -7,32 +7,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(setq inhibit-startup-screen t)
-
-(setq initial-scratch-message nil)
-
-(setq column-number-mode t)
-
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
 (add-to-list 'completion-ignored-extensions ".pyc")
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(when window-system
-  (scroll-bar-mode -1)
-  (global-hl-line-mode 1))
-
-(delete-selection-mode t)
-(setq require-final-newline t)
-(setq-default indent-tabs-mode nil)
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-
-(setq linum-format "%d ")
-
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
 
 (add-hook 'python-mode-hook
      (lambda ()
@@ -108,7 +88,6 @@
 (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org")))
 
 (setq org-cycle-separator-lines 1)
-
 
 (setq org-publish-project-alist
       '(("keyboard"

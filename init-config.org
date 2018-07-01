@@ -3,6 +3,35 @@
 #+BEGIN_SRC emacs-lisp
   (setq visible-bell t)
   (setq confirm-kill-emacs #'y-or-n-p)
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message nil)
+#+END_SRC
+
+* display
+
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (when window-system
+    (scroll-bar-mode -1)
+    (global-hl-line-mode 1))
+#+END_SRC
+
+* editing
+
++ If text is selected, typing deletes it.
++ Add newline to bottom of every file.
++ Prevent tab insertion.
++ Remove the warnings around capitalization functions.
+
+#+BEGIN_SRC emacs-lisp
+  (setq column-number-mode t)
+  (delete-selection-mode t)
+  (setq require-final-newline t)
+  (setq-default indent-tabs-mode nil)
+  (setq linum-format "%d ")
+  (put 'upcase-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
 #+END_SRC
 
 * font
