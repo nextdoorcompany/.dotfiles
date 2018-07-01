@@ -14,3 +14,22 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
     (set-face-attribute 'default nil :font "Triplicate T4c"))
   (set-face-attribute 'default nil :height 240)
 #+END_SRC
+
+* spelling
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flyspell
+    :ensure t
+    :diminish flyspell-mode
+    :init
+    (add-hook 'org-mode-hook
+            (lambda ()
+              (flyspell-mode 1)))
+  
+    :config
+    (setq ispell-program-name "aspell"
+          ispell-local-dictionary "en_US"
+          ispell-dictionary "american"
+          ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")
+          ispell-list-command "--list"))
+#+END_SRC
