@@ -25,11 +25,24 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
     (add-hook 'org-mode-hook
             (lambda ()
               (flyspell-mode 1)))
-  
+
     :config
     (setq ispell-program-name "aspell"
           ispell-local-dictionary "en_US"
           ispell-dictionary "american"
           ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")
           ispell-list-command "--list"))
+#+END_SRC
+
+
+
+
+
+* ElDoc
+
+[[https://www.emacswiki.org/emacs/ElDoc][ElDoc]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eldoc
+    :diminish eldoc-mode)
 #+END_SRC
