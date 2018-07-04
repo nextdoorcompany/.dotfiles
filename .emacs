@@ -31,13 +31,6 @@
   (let ((default-directory "/mnt/c/"))
     (shell-command-on-region (point-min) (point-max) "clip.exe")))
 
-(defun new-scratch-buffer ()
-    "Create and switch to a temporary scratch buffer with a random
-     name."
-    (interactive)
-    (switch-to-buffer (make-temp-name "scratch-"))
-    (org-mode))
-
 (defun duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
