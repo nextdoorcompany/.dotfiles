@@ -1,0 +1,411 @@
+* credits
+
++ [[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
++ [[https://github.com/Wilfred/.emacs.d/blob/gh-pages/init.org][Wilfred Hughes]]
++ [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
++ [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
+
+* package repositories
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (setq package-archives
+        '(("gnu" . "https://elpa.gnu.org/packages/")
+          ("melpa" . "https://melpa.org/packages/")))
+#+END_SRC
+
+
+* bootstrap package manager
+
+[[https://github.com/jwiegley/use-package][use-package]] [[https://melpa.org/#/use-package][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (package-initialize)
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+
+  (require 'use-package)
+#+END_SRC
+
+
+* hide unwanted mode information from mode line
+
+[[https://github.com/myrjola/diminish.el][diminish]] [[https://melpa.org/#/diminish][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package diminish
+    :ensure t
+    )
+#+END_SRC
+
+* general
+
+#+BEGIN_SRC emacs-lisp
+  (setq visible-bell t)
+  (setq confirm-kill-emacs #'y-or-n-p)
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message nil)
+#+END_SRC
+
+* display
+
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (when window-system
+    (scroll-bar-mode -1)
+    (global-hl-line-mode 1))
+#+END_SRC
+
+* editing
+
++ If text is selected, typing deletes it.
++ Add newline to bottom of every file.
++ Prevent tab insertion.
++ Remove the warnings around capitalization functions.
+
+#+BEGIN_SRC emacs-lisp
+  (setq column-number-mode t)
+  (delete-selection-mode t)
+  (setq require-final-newline t)
+  (setq-default indent-tabs-mode nil)
+  (setq linum-format "%d ")
+  (put 'upcase-region 'disabled nil)
+  (put 'downcase-region 'disabled nil)
+#+END_SRC
+
+* font
+
+Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  Also see online text [[https://practicaltypography.com/][Practical Typography]].
+
+#+BEGIN_SRC emacs-lisp
+  (when (member "Triplicate T4c" (font-family-list))
+    (set-face-attribute 'default nil :font "Triplicate T4c"))
+  (set-face-attribute 'default nil :height 240)
+#+END_SRC
+
+* spelling
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flyspell
+    :ensure t
+    :diminish flyspell-mode
+
+    :config
+    (setq ispell-program-name "aspell"
+          ispell-local-dictionary "en_US"
+          ispell-dictionary "american"
+          ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")
+          ispell-list-command "--list"))
+#+END_SRC
+
+* ElDoc
+
+[[https://www.emacswiki.org/emacs/ElDoc][ElDoc]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package eldoc
+    :diminish eldoc-mode)
+#+END_SRC
+
+* new scratch buffers
+
+Functions come from Harry Schwartz.  Most workflows start with one of these.
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/new-buffer-checked ()
+      "Create and switch to a temporary scratch org buffer with a random
+       name.  Include spell checking."
+      (interactive)
+      (switch-to-buffer (make-temp-name "scratch-"))
+      (org-mode)
+      (flyspell-mode))
+
+  (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
+
+  (defun js/new-scratch-buffer ()
+      "Create and switch to a temporary scratch org buffer with a random
+       name."
+      (interactive)
+      (switch-to-buffer (make-temp-name "scratch-"))
+      (org-mode))
+#+END_SRC
+
+* copy a date from the calendar into the kill ring
+
+[[https://emacs.stackexchange.com/questions/41978/how-to-retrieve-the-date-under-the-cursor-in-emacs-calendar-as-the-format-day-mo][Stack Overflow]]
+
+#+BEGIN_SRC emacs-lisp
+  (defcustom calendar-copy-as-kill-format "%Y-%m-%d"
+    "Format string for formatting calendar dates with `format-time-string'."
+    :type 'string
+    :group 'calendar)
+
+  (defun calendar-copy-as-kill ()
+    "Copy date at point as kill if region is not active.
+  Delegate to `kill-ring-save' otherwise."
+    (interactive)
+    (if (use-region-p)
+        (call-interactively #'kill-ring-save)
+      (let ((date (calendar-cursor-to-date)))
+        (when date
+          (setq date (encode-time 0 0 0 (nth 1 date) (nth 0 date) (nth 2 date)))
+          (kill-new (format-time-string calendar-copy-as-kill-format date))))))
+
+  (defun my-calendar-mode-hook-fun ()
+    "Let \[kill-ring-save] copy the date at point if region is not active."
+    (local-set-key [remap kill-ring-save] #'calendar-copy-as-kill))
+
+  (add-hook 'calendar-mode-hook #'my-calendar-mode-hook-fun)
+#+END_SRC
+
+* direct changes from customize into specific file
+
+#+BEGIN_SRC emacs-lisp 
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file))
+#+END_SRC
+
+* move temp files to temp directory
+
+#+BEGIN_SRC emacs-lisp 
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+#+END_SRC
+
+* ido mode
+
+#+BEGIN_SRC emacs-lisp 
+  (setq ido-enable-flex-matching t)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+  (add-to-list 'completion-ignored-extensions ".pyc")
+#+END_SRC
+
+
+* various mode hooks
+
+#+BEGIN_SRC emacs-lisp 
+  (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
+
+  (add-hook 'python-mode-hook
+       (lambda ()
+         (linum-mode 1)))
+
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (dired-hide-details-mode 1)))
+#+END_SRC
+
+* duplicate a line
+
+[[https://stackoverflow.com/a/998472][Stack Overflow]]
+
+#+BEGIN_SRC emacs-lisp 
+  (defun js/duplicate-line (arg)
+    "Duplicate current line, leaving point in lower line."
+    (interactive "*p")
+
+    ;; save the point for undo
+    (setq buffer-undo-list (cons (point) buffer-undo-list))
+
+    ;; local variables for start and end of line
+    (let ((bol (save-excursion (beginning-of-line) (point)))
+          eol)
+      (save-excursion
+
+        ;; don't use forward-line for this, because you would have
+        ;; to check whether you are at the end of the buffer
+        (end-of-line)
+        (setq eol (point))
+
+        ;; store the line and disable the recording of undo information
+        (let ((line (buffer-substring bol eol))
+              (buffer-undo-list t)
+              (count arg))
+          ;; insert the line arg times
+          (while (> count 0)
+            (newline)         ;; because there is no newline in 'line'
+            (insert line)
+            (setq count (1- count)))
+          )
+
+        ;; create the undo information
+        (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list)))
+      ) ; end-of-let
+
+    ;; put the point in the lowest line and return
+    (next-line arg))
+
+  (global-set-key (kbd "C-c C-<down>") 'js/duplicate-line)
+#+END_SRC
+
+* delete a line without killing it
+
+[[https://stackoverflow.com/a/35711240][Stack Overflow]]
+
+#+BEGIN_SRC emacs-lisp 
+  (defun js/delete-current-line ()
+    "Delete (not kill) the current line."
+    (interactive)
+    (save-excursion
+      (delete-region
+       (progn (forward-visible-line 0) (point))
+       (progn (forward-visible-line 1) (point)))))
+
+  (global-set-key (kbd "C-c <deletechar>") 'js/delete-current-line)
+#+END_SRC
+
+* copy active region to Windows clipboard
+
+[[https://www.reddit.com/r/emacs/comments/6xryqh/emacs_in_wsl_and_the_windows_clipboard/][Reddit]]
+
+#+BEGIN_SRC emacs-lisp 
+  (defun js/wsl-copy ()
+    (interactive)
+    (let ((default-directory "/mnt/c/"))
+      (shell-command-on-region (point-min) (point-max) "clip.exe")))
+#+END_SRC
+
+* org mode housekeeping
+
+#+BEGIN_SRC emacs-lisp 
+  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org")))
+
+  (setq org-cycle-separator-lines 1)
+
+  (setq org-publish-project-alist
+        '(("keyboard"
+           :base-directory "~/notes/"
+           :exclude "org"
+           :include ("keyboard.org")
+           :publishing-function org-html-publish-to-html
+           :publishing-directory "~/org/html")))
+#+END_SRC
+
+
+
+* hints for keyboard bindings
+
+[[https://github.com/justbur/emacs-which-key][which-key]] [[https://melpa.org/#/which-key][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :diminish which-key-mode
+    :config
+    (setq which-key-idle-delay 2.0)
+    (which-key-mode 1))
+#+END_SRC
+
+
+* navigation within a file
+
+[[https://github.com/abo-abo/avy][avy]] [[https://melpa.org/#/avy][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :ensure t
+    :bind ("C-c j" . avy-goto-char-timer))
+#+END_SRC
+
+
+* expand region based on context
+
+[[https://github.com/magnars/expand-region.el][expand-region]] [[https://melpa.org/#/expand-region][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package expand-region
+    :ensure t
+    :bind ("C-=" . er/expand-region))
+#+END_SRC
+
+
+* git interface
+
+[[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t)
+#+END_SRC
+
+
+* snippets
+
+[[https://github.com/joaotavora/yasnippet][yasnippet]] [[https://melpa.org/#/yasnippet][MELPA]] [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] [[https://melpa.org/#/yasnippet-snippets][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :diminish yas-minor-mode
+    :config
+    (yas-global-mode 1))
+
+  (use-package yasnippet-snippets
+    :ensure t)
+#+END_SRC
+
+
+* quick snippets
+
+[[https://github.com/abo-abo/auto-yasnippet][auto-yasnippet]] [[https://melpa.org/#/auto-yasnippet][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-yasnippet
+    :ensure t
+    :bind (("C-c w" . aya-create)
+           ("C-c y" . aya-expand)))
+#+END_SRC
+
+
+* editing helpers
+
+[[https://github.com/bbatsov/crux][crux]] [[https://melpa.org/#/crux][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package crux
+    :ensure t
+    :bind (("C-a" . crux-move-beginning-of-line)
+           ("S-<return>" . crux-smart-open-line)))
+#+END_SRC
+
+* testing packages
+
+[[https://github.com/larstvei/Try][try]] [[https://melpa.org/#/try][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package try
+    :ensure t)
+#+END_SRC
+
+* nicer mode line
+
+[[https://github.com/tarsius/moody/tree/05cf642d4295e24629022447df8e422180df20e4][moody]] [[https://melpa.org/#/moody][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package moody
+    :ensure t
+    :config
+    (setq x-underline-at-descent-line t)
+    (moody-replace-mode-line-buffer-identification)
+    (moody-replace-vc-mode))
+#+END_SRC
+
+* nicer help
+
+[[https://github.com/Wilfred/helpful][helpful]] [[https://melpa.org/#/helpful][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helpful
+    :ensure t)
+#+END_SRC
+
