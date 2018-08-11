@@ -18,6 +18,7 @@
 (setq confirm-kill-emacs #'y-or-n-p)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message nil)
+(setq visual-line-fringe-indicators t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -57,7 +58,8 @@
     (interactive)
     (switch-to-buffer (make-temp-name "scratch-"))
     (org-mode)
-    (flyspell-mode))
+    (flyspell-mode)
+    (visual-line-mode))
 
 (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
 
