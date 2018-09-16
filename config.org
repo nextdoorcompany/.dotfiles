@@ -396,3 +396,14 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
     (wrap-region-global-mode t))
 #+END_SRC
 
+* disable mouse
+
+[[https://github.com/purcell/disable-mouse/tree/541363bd6353b8b05375552bab884a6315ea545c][disable-mouse]] [[https://melpa.org/#/disable-mouse][MELPA]]
+
+#+BEGIN_SRC emacs-lisp 
+  (use-package disable-mouse
+    :ensure t
+    :diminish disable-mouse-global-mode
+    :config
+    (global-disable-mouse-mode))
+#+END_SRC

@@ -225,3 +225,9 @@ Delegate to `kill-ring-save' otherwise."
   :diminish wrap-region-mode
   :config
   (wrap-region-global-mode t))
+
+(use-package disable-mouse
+  :ensure t
+  :diminish disable-mouse-global-mode
+  :config
+  (global-disable-mouse-mode))
