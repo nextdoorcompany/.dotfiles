@@ -53,22 +53,33 @@
   :diminish eldoc-mode)
 
 (defun js/new-buffer-checked ()
-    "Create and switch to a temporary scratch org buffer with a random
-     name.  Include spell checking."
-    (interactive)
-    (switch-to-buffer (make-temp-name "scratch-"))
-    (org-mode)
-    (flyspell-mode)
-    (visual-line-mode))
+          "Create and switch to a temporary scratch org buffer with a random
+           name.  Include spell checking."
+          (interactive)
+          (switch-to-buffer (make-temp-name "scratch-"))
+          (org-mode)
+          (flyspell-mode)
+          (visual-line-mode))
 
-(global-set-key (kbd "C-c f") 'js/new-buffer-checked)
+      (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
 
-(defun js/new-scratch-buffer ()
-    "Create and switch to a temporary scratch org buffer with a random
-     name."
-    (interactive)
-    (switch-to-buffer (make-temp-name "scratch-"))
-    (org-mode))
+      (defun js/new-scratch-buffer ()
+          "Create and switch to a temporary scratch org buffer with a random
+           name."
+          (interactive)
+          (switch-to-buffer (make-temp-name "scratch-tbl-"))
+          (org-mode)
+          (insert 
+"#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
+#+OPTIONS: html-postamble:nil
+#+TITLE:BOM
+#+ATTR_HTML: :border2 :rules all :frame border
+| ITEM | 0 | 1 | SUM |
+|------+---+---+-----|
+|      |   |   |   3 |
+#+TBLFM: $4=vsum($2..$3)"
+    )
+  (goto-char 193))
 
 (defcustom calendar-copy-as-kill-format "%Y-%m-%d"
   "Format string for formatting calendar dates with `format-time-string'."
