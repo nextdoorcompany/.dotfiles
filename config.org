@@ -311,9 +311,16 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
            :include ("keyboard.org")
            :publishing-function org-html-publish-to-html
            :publishing-directory "~/org/html")))
+
+  (setq org-capture-templates
+     (quote
+      (("e" "TODO ephemera" entry
+        (file "~/org/ephemera.org")
+        "* TODO %?
+    SCHEDULED: %t"))))
+
+  (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
-
-
 
 * navigation within a file
 
