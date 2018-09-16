@@ -384,3 +384,15 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
     :ensure t)
 #+END_SRC
 
+* wrap region with punctuation
+
+[[https://github.com/rejeep/wrap-region.el/tree/fbae9b0f106187af19823f1a6260b5c68b7252e6][wrap-region]] [[https://melpa.org/#/wrap-region][MELPA]]
+
+#+BEGIN_SRC emacs-lisp 
+  (use-package wrap-region
+    :ensure t
+    :diminish wrap-region-mode
+    :config
+    (wrap-region-global-mode t))
+#+END_SRC
+

@@ -184,13 +184,6 @@ Delegate to `kill-ring-save' otherwise."
          :publishing-function org-html-publish-to-html
          :publishing-directory "~/org/html")))
 
-(use-package which-key
-  :ensure t
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 2.0)
-  (which-key-mode 1))
-
 (use-package avy
   :ensure t
   :bind ("C-c j" . avy-goto-char-timer))
@@ -224,12 +217,11 @@ Delegate to `kill-ring-save' otherwise."
 (use-package try
   :ensure t)
 
-(use-package moody
-  :ensure t
-  :config
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode))
-
 (use-package helpful
   :ensure t)
+
+(use-package wrap-region
+  :ensure t
+  :diminish wrap-region-mode
+  :config
+  (wrap-region-global-mode t))
