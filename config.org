@@ -207,6 +207,15 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
               (dired-hide-details-mode 1)))
 #+END_SRC
 
+* enable recent file tracking
+
+[[https://www.masteringemacs.org/article/find-files-faster-recent-files-package][Mastering Emacs]]
+
+#+BEGIN_SRC emacs-lisp 
+  (recentf-mode t)
+  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+#+END_SRC
+
 * duplicate a line
 
 [[https://stackoverflow.com/a/998472][Stack Overflow]]

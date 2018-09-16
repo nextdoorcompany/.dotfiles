@@ -120,6 +120,9 @@ Delegate to `kill-ring-save' otherwise."
           (lambda ()
             (dired-hide-details-mode 1)))
 
+(recentf-mode t)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
 (defun js/duplicate-line (arg)
   "Duplicate current line, leaving point in lower line."
   (interactive "*p")
