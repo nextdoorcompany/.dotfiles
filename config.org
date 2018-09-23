@@ -115,34 +115,35 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
 Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 #+BEGIN_SRC emacs-lisp
-      (defun js/new-buffer-checked ()
-          "Create and switch to a temporary scratch org buffer with a random
-           name.  Include spell checking."
-          (interactive)
-          (switch-to-buffer (make-temp-name "scratch-"))
-          (org-mode)
-          (flyspell-mode)
-          (visual-line-mode))
+        (defun js/new-buffer-checked ()
+            "Create and switch to a temporary scratch org buffer with a random
+             name.  Include spell checking."
+            (interactive)
+            (switch-to-buffer (make-temp-name "scratch-"))
+            (org-mode)
+            (flyspell-mode)
+            (visual-line-mode))
 
-      (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
+        (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
 
-      (defun js/new-scratch-buffer ()
-          "Create and switch to a temporary scratch org buffer with a random
-           name."
-          (interactive)
-          (switch-to-buffer (make-temp-name "scratch-tbl-"))
-          (org-mode)
-          (insert 
-"#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
-,#+OPTIONS: html-postamble:nil
-,#+TITLE:BOM
-,#+ATTR_HTML: :border2 :rules all :frame border
-| ITEM | 0 | 1 | SUM |
-|------+---+---+-----|
-|      |   |   |   3 |
-,#+TBLFM: $4=vsum($2..$3)"
-    )
-  (goto-char 193))
+        (defun js/new-scratch-buffer ()
+            "Create and switch to a temporary scratch org buffer with a random
+             name."
+            (interactive)
+            (switch-to-buffer (make-temp-name "scratch-tbl-"))
+            (org-mode)
+            (insert 
+  "#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
+  ,#+OPTIONS: html-postamble:nil
+  ,#+TITLE:BOM
+  ,#+ATTR_HTML: :border2 :rules all :frame border
+  | ITEM | 0 | 1 | SUM |
+  |------+---+---+-----|
+  |      |   |   |   3 |
+  ,#+TBLFM: $4=vsum($2..$3)"
+      )
+            (goto-char 193)
+            (cd "~/org"))
 #+END_SRC
 
 * copy a date from the calendar into the kill ring
