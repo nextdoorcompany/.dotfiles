@@ -47,6 +47,8 @@
   (setq inhibit-startup-screen t)
   (setq initial-scratch-message nil)
   (setq visual-line-fringe-indicators t)
+  (setq scroll-conservatively 10000)
+  (setq scroll-preserve-screen-position t)
 #+END_SRC
 
 * display
