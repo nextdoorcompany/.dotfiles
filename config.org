@@ -437,3 +437,23 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
     :config
     (global-disable-mouse-mode))
 #+END_SRC
+
+* ibuffer
+
+Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][init]] [[https://cestlaz-nikola.github.io/posts/using-emacs-34-ibuffer-emmet/#.W6evkrQpA5k][video]]
+
+#+BEGIN_SRC emacs-lisp 
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+    (setq ibuffer-saved-filter-groups
+          (quote (("default"
+                   ("dired" (mode . dired-mode))
+                   ("org" (mode . org-mode))
+                   ("python" (mode . python-mode))
+                   ("elisp" (mode . emacs-lisp-mode))
+                   ("html" (mode . mhtml-mode))))))
+    (add-hook 'ibuffer-mode-hook
+              (lambda ()
+                (ibuffer-auto-mode 1)
+                (ibuffer-switch-to-saved-filter-groups "default")))
+    (setq ibuffer-show-empty-filter-groups nil)
+#+END_SRC
