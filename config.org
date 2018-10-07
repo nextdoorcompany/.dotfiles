@@ -325,7 +325,7 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
         "* TODO %?\nSCHEDULED: %t")
        ("b" "bookmark clipped link" entry
         (file "~/org/notes.org")
-        "* %x %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"
+        "* [[%x]] %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"
         :empty-lines 1)
        )))
 
