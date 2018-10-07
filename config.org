@@ -302,8 +302,11 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * org mode housekeeping
 
+Inspired by Karl Voit's [[https://karl-voit.at/2014/08/10/bookmarks-with-orgmode/][post]], started using org mode for storing bookmarks.  Abrams also
+discusses capture templates extensively.  His gentle introduction is  [[http://howardism.org/Technical/Emacs/capturing-intro.html][here]].
+
 #+BEGIN_SRC emacs-lisp 
-  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org")))
+  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
 
   (setq org-cycle-separator-lines 1)
 
@@ -319,8 +322,12 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
      (quote
       (("e" "TODO ephemera" entry
         (file "~/org/ephemera.org")
-        "* TODO %?
-    SCHEDULED: %t"))))
+        "* TODO %?\nSCHEDULED: %t")
+       ("b" "bookmark clipped link" entry
+        (file "~/org/notes.org")
+        "* %x %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"
+        :empty-lines 1)
+       )))
 
   (global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
