@@ -144,7 +144,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   |      |   |   |   3 |
   ,#+TBLFM: $4=vsum($2..$3)"
       )
-            (goto-char 193)
+            (goto-char 194)
             (cd "~/org"))
 #+END_SRC
 
