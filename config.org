@@ -134,7 +134,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
             (interactive)
             (switch-to-buffer (make-temp-name "scratch-tbl-"))
             (org-mode)
-            (insert 
+            (insert
   "#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
   ,#+OPTIONS: html-postamble:nil
   ,#+TITLE:BOM
@@ -178,7 +178,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * direct changes from customize into specific file
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (when (file-exists-p custom-file)
     (load custom-file))
@@ -186,7 +186,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * move temp files to temp directory
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist
         `((".*" . ,temporary-file-directory)))
   (setq auto-save-file-name-transforms
@@ -195,7 +195,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * ido mode
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
   (ido-mode 1)
@@ -205,7 +205,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * various mode hooks
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 
   (add-hook 'python-mode-hook
@@ -225,7 +225,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 [[https://www.masteringemacs.org/article/find-files-faster-recent-files-package][Mastering Emacs]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (recentf-mode t)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 #+END_SRC
@@ -234,7 +234,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 [[https://stackoverflow.com/a/998472][Stack Overflow]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (defun js/duplicate-line (arg)
     "Duplicate current line, leaving point in lower line."
     (interactive "*p")
@@ -277,7 +277,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 [[https://stackoverflow.com/a/35711240][Stack Overflow]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (defun js/delete-current-line ()
     "Delete (not kill) the current line."
     (interactive)
@@ -293,7 +293,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 [[https://www.reddit.com/r/emacs/comments/6xryqh/emacs_in_wsl_and_the_windows_clipboard/][Reddit]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (defun js/wsl-copy ()
     (interactive)
     (let ((default-directory "/mnt/c/"))
@@ -305,7 +305,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 Inspired by Karl Voit's [[https://karl-voit.at/2014/08/10/bookmarks-with-orgmode/][post]], started using org mode for storing bookmarks.  Abrams also
 discusses capture templates extensively.  His gentle introduction is  [[http://howardism.org/Technical/Emacs/capturing-intro.html][here]].
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
 
   (setq org-cycle-separator-lines 1)
@@ -421,23 +421,11 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
     :ensure t)
 #+END_SRC
 
-* wrap region with punctuation
-
-[[https://github.com/rejeep/wrap-region.el/tree/fbae9b0f106187af19823f1a6260b5c68b7252e6][wrap-region]] [[https://melpa.org/#/wrap-region][MELPA]]
-
-#+BEGIN_SRC emacs-lisp 
-  (use-package wrap-region
-    :ensure t
-    :diminish wrap-region-mode
-    :config
-    (wrap-region-global-mode t))
-#+END_SRC
-
 * disable mouse
 
 [[https://github.com/purcell/disable-mouse/tree/541363bd6353b8b05375552bab884a6315ea545c][disable-mouse]] [[https://melpa.org/#/disable-mouse][MELPA]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (use-package disable-mouse
     :ensure t
     :diminish disable-mouse-global-mode
@@ -449,7 +437,7 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 
 Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][init]] [[https://cestlaz-nikola.github.io/posts/using-emacs-34-ibuffer-emmet/#.W6evkrQpA5k][video]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-b") 'ibuffer)
     (setq ibuffer-saved-filter-groups
           (quote (("default"
@@ -463,4 +451,22 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                 (ibuffer-auto-mode 1)
                 (ibuffer-switch-to-saved-filter-groups "default")))
     (setq ibuffer-show-empty-filter-groups nil)
+#+END_SRC
+
+* smartparens
+
+[[https://github.com/Fuco1/smartparens][smartparens]] [[http://melpa.org/#/smartparens][MELPA]]
+
+Helpful blog post [[https://ebzzry.io/en/emacs-pairs/][here]].
+
+Instructions on disabling feet and inch marks in org mode are [[https://github.com/Fuco1/smartparens/wiki/Permissions][here]].
+
+#+BEGIN_SRC emacs-lisp
+    (use-package smartparens-config
+      :ensure smartparens
+      :diminish smartparens-mode
+      :config
+      (smartparens-global-mode t)
+      (show-smartparens-global-mode t)
+      (sp-local-pair 'org-mode "\"" nil :actions nil))
 #+END_SRC
