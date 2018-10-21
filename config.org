@@ -486,6 +486,7 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
     :diminish ivy-mode
     :config
     (ivy-mode 1)
+    (counsel-mode 1)
     (setq ivy-use-virtual-buffers t)
     (setq ivy-display-style 'fancy))
 
