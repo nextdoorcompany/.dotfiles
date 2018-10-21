@@ -195,7 +195,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 * ido mode
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
   (ido-mode 1)
@@ -469,4 +469,28 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
       (smartparens-global-mode t)
       (show-smartparens-global-mode t)
       (sp-local-pair 'org-mode "\"" nil :actions nil))
+#+END_SRC
+
+* ivy
+
+[[https://github.com/abo-abo/swiper][Ivy]] [[https://melpa.org/#/counsel][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel
+    :ensure t
+    :bind
+    ("M-y" . counsel-yank-pop))
+
+  (use-package ivy
+    :ensure t
+    :diminish ivy-mode
+    :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy))
+
+  (use-package swiper
+    :ensure t
+    :bind
+    ("C-s" . swiper))
 #+END_SRC
