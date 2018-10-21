@@ -478,6 +478,7 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
     :ensure t
+    :diminish counsel-mode
     :bind
     ("M-y" . counsel-yank-pop))
 
