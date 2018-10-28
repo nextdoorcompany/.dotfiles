@@ -451,7 +451,7 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
 
 Helpful blog post [[https://ebzzry.io/en/emacs-pairs/][here]].
 
-Instructions on disabling feet and inch marks in org mode are [[https://github.com/Fuco1/smartparens/wiki/Permissions][here]].
+Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/smartparens/wiki/Permissions][here]].
 
 #+BEGIN_SRC emacs-lisp
   (use-package smartparens-config
@@ -460,7 +460,7 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
     :config
     (smartparens-global-mode t)
     (show-smartparens-global-mode t)
-    (sp-local-pair 'org-mode "\"" nil :actions nil))
+    (sp-local-pair 'org-mode "\"" "\"" :actions nil))
 #+END_SRC
 
 * ivy
