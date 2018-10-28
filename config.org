@@ -489,3 +489,24 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
     :bind
     ("C-s" . swiper))
 #+END_SRC
+
+* org bullets
+
+[[https://youtu.be/Y9BM_mIRHJk][Aritra Bhattacharjee's video]] showed org bullets with the exotica theme.  Looks great.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :init
+    (add-hook 'org-mode-hook org-bullets-mode))
+#+END_SRC
+
+* exotica theme
+
+Again, from  [[https://youtu.be/Y9BM_mIRHJk][Aritra Bhattacharjee's video]].
+
+#+BEGIN_SRC emacs-lisp
+  (use-package exotica-theme
+    :ensure t)
+  (load-theme 'exotica t)
+#+END_SRC
