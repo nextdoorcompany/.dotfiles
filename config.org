@@ -510,3 +510,13 @@ Again, from  [[https://youtu.be/Y9BM_mIRHJk][Aritra Bhattacharjee's video]].
     :ensure t)
   (load-theme 'exotica t)
 #+END_SRC
+
+* upcase table
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/upcase-table ()
+    "Makes all text in an org table upper case."
+    (interactive)
+    (when (org-at-table-p)
+      (upcase-region (org-table-begin) (org-table-end))))
+#+END_SRC
