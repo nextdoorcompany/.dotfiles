@@ -305,11 +305,13 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 Inspired by Karl Voit's [[https://karl-voit.at/2014/08/10/bookmarks-with-orgmode/][post]], started using org mode for storing bookmarks.  Abrams also
 discusses capture templates extensively.  His gentle introduction is  [[http://howardism.org/Technical/Emacs/capturing-intro.html][here]].
 
+I don't want to confirm every time babel evaluates.
+
 #+BEGIN_SRC emacs-lisp
   (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
 
   (setq org-cycle-separator-lines 1)
-
+  (setq org-confirm-babel-evaluate nil)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
@@ -330,6 +332,7 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
        )))
 
   (global-set-key (kbd "C-c c") 'org-capture)
+
 #+END_SRC
 
 * navigation within a file
