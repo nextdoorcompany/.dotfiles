@@ -193,16 +193,6 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
         `((".*" ,temporary-file-directory t)))
 #+END_SRC
 
-* ido mode
-
-#+BEGIN_SRC emacs-lisp :tangle no
-  (setq ido-enable-flex-matching t)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-  (add-to-list 'completion-ignored-extensions ".pyc")
-#+END_SRC
-
-
 * various mode hooks
 
 #+BEGIN_SRC emacs-lisp
