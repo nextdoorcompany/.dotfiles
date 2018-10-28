@@ -73,7 +73,6 @@
   (delete-selection-mode t)
   (setq require-final-newline t)
   (setq-default indent-tabs-mode nil)
-  (setq linum-format "%d ")
   (put 'upcase-region 'disabled nil)
   (put 'downcase-region 'disabled nil)
 #+END_SRC
@@ -200,7 +199,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
   (add-hook 'python-mode-hook
        (lambda ()
-         (linum-mode 1)))
+         (display-line-numbers-mode 1)))
 
   (add-hook 'python-mode-hook
             (lambda ()
