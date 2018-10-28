@@ -363,13 +363,13 @@ I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
   (use-package yasnippet
-    :ensure t
-    :diminish yas-minor-mode
-    :config
-    (yas-global-mode 1))
+      :ensure t
+      :diminish yas-minor-mode
+      :config
+      (yas-global-mode 1))
 
-  (use-package yasnippet-snippets
-    :ensure t)
+    (use-package yasnippet-snippets
+      :ensure t)
 #+END_SRC
 
 
@@ -455,13 +455,13 @@ Helpful blog post [[https://ebzzry.io/en/emacs-pairs/][here]].
 Instructions on disabling feet and inch marks in org mode are [[https://github.com/Fuco1/smartparens/wiki/Permissions][here]].
 
 #+BEGIN_SRC emacs-lisp
-    (use-package smartparens-config
-      :ensure smartparens
-      :diminish smartparens-mode
-      :config
-      (smartparens-global-mode t)
-      (show-smartparens-global-mode t)
-      (sp-local-pair 'org-mode "\"" nil :actions nil))
+  (use-package smartparens-config
+    :ensure smartparens
+    :diminish smartparens-mode
+    :config
+    (smartparens-global-mode t)
+    (show-smartparens-global-mode t)
+    (sp-local-pair 'org-mode "\"" nil :actions nil))
 #+END_SRC
 
 * ivy
@@ -488,27 +488,6 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
     :ensure t
     :bind
     ("C-s" . swiper))
-#+END_SRC
-
-* org bullets
-
-[[https://youtu.be/Y9BM_mIRHJk][Aritra Bhattacharjee's video]] showed org bullets with the exotica theme.  Looks great.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package org-bullets
-    :ensure t
-    :init
-    (add-hook 'org-mode-hook 'org-bullets-mode))
-#+END_SRC
-
-* exotica theme
-
-Again, from  [[https://youtu.be/Y9BM_mIRHJk][Aritra Bhattacharjee's video]].
-
-#+BEGIN_SRC emacs-lisp
-  (use-package exotica-theme
-    :ensure t)
-  (load-theme 'exotica t)
 #+END_SRC
 
 * upcase table
