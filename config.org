@@ -498,7 +498,7 @@ Instructions on disabling feet and inch marks in org mode are [[https://github.c
   (use-package org-bullets
     :ensure t
     :init
-    (add-hook 'org-mode-hook org-bullets-mode))
+    (add-hook 'org-mode-hook 'org-bullets-mode))
 #+END_SRC
 
 * exotica theme
