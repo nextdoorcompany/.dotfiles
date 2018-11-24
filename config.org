@@ -465,7 +465,8 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     :config
     (smartparens-global-mode t)
     (show-smartparens-global-mode t)
-    (sp-local-pair 'org-mode "\"" "\"" :actions nil))
+    (sp-local-pair 'org-mode "\"" "\"" :actions nil)
+    (sp-local-pair 'message-mode "\"" "\"" :actions nil))
 #+END_SRC
 
 * ivy
@@ -502,4 +503,27 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     (interactive)
     (when (org-at-table-p)
       (upcase-region (org-table-begin) (org-table-end))))
+#+END_SRC
+
+* mail
+
+#+BEGIN_SRC emacs-lisp 
+  (setq mailclient-place-body-on-clipboard-flag nil)
+  (setq message-kill-buffer-query nil)
+  (setq send-mail-function (quote mailclient-send-it))
+  (setq message-required-headers (quote ((optional . References))))
+
+  (defun js/mail-send-and-kill ()
+    (interactive)
+    (set-visited-file-name nil t)
+    (mail-send)
+    (message-kill-buffer))
+
+  (add-hook 'message-mode-hook 'turn-on-orgtbl)
+  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+  (add-hook 'message-mode-hook 'turn-off-auto-fill)
+  (add-hook 'message-mode-hook 'turn-on-flyspell)
+  (add-hook 'message-mode-hook (lambda ()
+                                 (define-key message-mode-map (kbd "C-c s")
+                                   'js/mail-send-and-kill)))
 #+END_SRC
