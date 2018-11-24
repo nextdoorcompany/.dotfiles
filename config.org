@@ -320,6 +320,9 @@ I don't want to confirm every time babel evaluates.
         (file "~/org/notes.org")
         "* [[%x]] %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"
         :empty-lines 1)
+       ("f" "blood pressure" table-line
+        (file "~/org/bp.org")
+        "| %^{date}U | %^{sys} | %^{dia} | %^{pulse}")
        )))
 
   (global-set-key (kbd "C-c c") 'org-capture)
