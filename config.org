@@ -1,9 +1,11 @@
 * credits
 
++ [[https://www.gnu.org/software/emacs/manual/][The Manual]]
 + [[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
 + [[https://github.com/Wilfred/.emacs.d/blob/gh-pages/init.org][Wilfred Hughes]]
 + [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
 + [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
++ [[https://www.masteringemacs.org/][Mickey Petersen]]
 
 * package repositories
 
