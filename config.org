@@ -505,6 +505,8 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
 
 #+BEGIN_SRC emacs-lisp 
   (use-package sendmail
+    :commands
+    (mail-send)
     :init
     (setq mailclient-place-body-on-clipboard-flag nil)
     (setq message-kill-buffer-query nil)
