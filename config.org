@@ -373,7 +373,6 @@ I don't want to confirm every time babel evaluates.
       (yas-global-mode 1))
 #+END_SRC
 
-
 * quick snippets
 
 [[https://github.com/abo-abo/auto-yasnippet][auto-yasnippet]] [[https://melpa.org/#/auto-yasnippet][MELPA]]
@@ -505,22 +504,25 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
 * mail
 
 #+BEGIN_SRC emacs-lisp 
-  (setq mailclient-place-body-on-clipboard-flag nil)
-  (setq message-kill-buffer-query nil)
-  (setq send-mail-function (quote mailclient-send-it))
-  (setq message-required-headers (quote ((optional . References))))
-
-  (defun js/mail-send-and-kill ()
-    (interactive)
-    (set-visited-file-name nil t)
-    (mail-send)
-    (message-kill-buffer))
-
-  (add-hook 'message-mode-hook 'turn-on-orgtbl)
-  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
-  (add-hook 'message-mode-hook 'turn-off-auto-fill)
-  (add-hook 'message-mode-hook 'turn-on-flyspell)
-  (add-hook 'message-mode-hook (lambda ()
-                                 (define-key message-mode-map (kbd "C-c s")
-                                   'js/mail-send-and-kill)))
+  (use-package sendmail
+    :init
+    (setq mailclient-place-body-on-clipboard-flag nil)
+    (setq message-kill-buffer-query nil)
+    (setq send-mail-function (quote mailclient-send-it))
+    (setq message-required-headers (quote ((optional . References))))
+    :config
+    (defun js/mail-send-and-kill ()
+      (interactive)
+      (set-visited-file-name nil t)
+      (mail-send)
+      (message-kill-buffer))
+    :bind
+    (:map message-mode-map
+          ("C-c s" . js/mail-send-and-kill))
+    :hook
+    ((message-mode . turn-on-orgtbl)
+     (message-mode . turn-on-orgstruct++)
+     (message-mode . turn-off-auto-fill)
+     (message-mode . turn-on-flyspell))
+  )
 #+END_SRC
