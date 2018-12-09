@@ -441,7 +441,8 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                  ("elisp" (mode . emacs-lisp-mode))
                  ("html" (mode . mhtml-mode))
                  ("javascript" (mode . js-mode))
-                 ("exwm" (mode . exwm-mode))))))
+                 ("exwm" (mode . exwm-mode))
+                 ("magit" (mode . magit-status-mode))))))
   (add-hook 'ibuffer-mode-hook
             (lambda ()
               (ibuffer-auto-mode 1)
@@ -506,7 +507,7 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
 
 * mail
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (use-package sendmail
     :commands
     (mail-send)
