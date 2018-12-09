@@ -513,15 +513,15 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     (setq message-kill-buffer-query nil)
     (setq send-mail-function (quote mailclient-send-it))
     (setq message-required-headers (quote ((optional . References))))
-    :config
     (defun js/mail-send-and-kill ()
       (interactive)
       (set-visited-file-name nil t)
       (mail-send)
       (message-kill-buffer))
-    :bind
-    (:map message-mode-map
-          ("C-c s" . js/mail-send-and-kill))
+    (add-hook 'message-mode-hook
+              (lambda ()
+                (define-key message-mode-map (kbd "C-c s")
+                  'js/mail-send-and-kill)))
     :hook
     ((message-mode . turn-on-orgtbl)
      (message-mode . turn-on-orgstruct++)
