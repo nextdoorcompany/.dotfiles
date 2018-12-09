@@ -69,6 +69,7 @@
 + Add newline to bottom of every file.
 + Prevent tab insertion.
 + Remove the warnings around capitalization functions.
++ Remove warning for using "a" in dired to find file and close dired buffer.
 
 #+BEGIN_SRC emacs-lisp
   (setq column-number-mode t)
@@ -77,6 +78,7 @@
   (setq-default indent-tabs-mode nil)
   (put 'upcase-region 'disabled nil)
   (put 'downcase-region 'disabled nil)
+  (put 'dired-find-alternate-file 'disabled nil)
 #+END_SRC
 
 * font
