@@ -2,11 +2,18 @@
 
 [[https://github.com/ch11ng/exwm][Source]]
 
+Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp/init-exwm.el][init]] and explanation on [[https://www.reddit.com/r/emacs/comments/6huok9/exwm_configs/][Reddit]] have been very helpful.  
+
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package exwm
     :ensure t)
   (use-package exwm-config
-    :config  (exwm-config-default))
+    :config  
+    (exwm-config-default)
+    (defun js/exwm-lock ()
+      (interactive)
+      (start-process "slock" nil "slock"))
+    (exwm-input-set-key (kbd "s-l") #'js/exwm-lock))
 #+END_SRC
 
 * font
