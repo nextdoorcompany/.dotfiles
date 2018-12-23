@@ -2,13 +2,13 @@
 
 [[https://github.com/ch11ng/exwm][Source]]
 
-Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp/init-exwm.el][init]] and explanation on [[https://www.reddit.com/r/emacs/comments/6huok9/exwm_configs/][Reddit]] have been very helpful.  
+Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp/init-exwm.el][init]] and explanation on [[https://www.reddit.com/r/emacs/comments/6huok9/exwm_configs/][Reddit]] have been very helpful.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package exwm
     :ensure t)
   (use-package exwm-config
-    :config  
+    :config
     (exwm-config-default)
     (defun js/exwm-lock ()
       (interactive)
@@ -24,16 +24,23 @@ Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp
   (set-face-attribute 'default nil :height 166)
 #+END_SRC
 
-* theme
+* themes
 
-Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on the theme.
-[[https://melpa.org/#/exotica-theme][MELPA]] [[https://github.com/jbharat/exotica-theme/tree/ff3ef4f6fa38c93b99becad977c7810c990a4d2f][Source]]
+Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on exotica-theme.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package exotica-theme
+    :ensure t)
+
+  (use-package solarized-theme
     :ensure t
     :config
-    (load-theme 'exotica))
+    (setq solarized-high-contrast-mode-line t))
+
+  (use-package tao-theme
+    :ensure t)
+
+  (load-theme 'deeper-blue)
 #+END_SRC
 
 
