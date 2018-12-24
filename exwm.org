@@ -43,6 +43,15 @@ Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on exotica-theme
   (load-theme 'deeper-blue)
 #+END_SRC
 
+* default browser
+
+Thank you [[https://github.com/daedreth/UncleDavesEmacs][Uncle Dave]] for this.  Also great videos [[https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g][here]].
+[[https://stackoverflow.com/questions/4506249/how-to-make-emacs-org-mode-open-links-to-sites-in-google-chrome][Stack Overflow]] on the topic.
+
+#+BEGIN_SRC emacs-lisp
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "qutebrowser")
+#+END_SRC
 
 * git interface
 
