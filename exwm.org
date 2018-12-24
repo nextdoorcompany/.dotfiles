@@ -26,7 +26,7 @@ Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp
 
 * themes
 
-Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on exotica-theme.
+Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on exotica-theme
 
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package exotica-theme

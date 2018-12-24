@@ -362,8 +362,8 @@ I don't want to confirm every time babel evaluates.
   (use-package yasnippet
       :ensure t
       :diminish yas-minor-mode
-      :config
-      (yas-global-mode 1))
+      :hook
+      (prog-mode . yas-minor-mode))
 #+END_SRC
 
 * quick snippets
