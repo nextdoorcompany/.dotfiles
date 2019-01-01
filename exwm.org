@@ -63,6 +63,6 @@ Thank you [[https://github.com/daedreth/UncleDavesEmacs][Uncle Dave]] for this. 
 #+END_SRC
 
 * display time in mode line
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
   (display-time-mode 1)
 #+END_SRC
