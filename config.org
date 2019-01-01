@@ -227,6 +227,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 * duplicate a line
 
 [[https://stackoverflow.com/a/998472][Stack Overflow]]
+Using the [[https://github.com/bbatsov/crux][crux]] implementation.  See section below.
 
 #+BEGIN_SRC emacs-lisp
   (defun js/duplicate-line (arg)
@@ -263,8 +264,6 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
     ;; put the point in the lowest line and return
     (next-line arg))
-
-  (global-set-key (kbd "C-c C-<down>") 'js/duplicate-line)
 #+END_SRC
 
 * delete a line without killing it
@@ -389,7 +388,11 @@ I don't want to confirm every time babel evaluates.
   (use-package crux
     :ensure t
     :bind (("C-a" . crux-move-beginning-of-line)
-           ("S-<return>" . crux-smart-open-line)))
+           ("S-<return>" . crux-smart-open-line)
+           ("C-c d" . crux-duplicate-current-line-or-region)
+           ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
+           ("C-x 4 t" . crux-transpose-windows)
+           ("C-c t" . crux-visit-term-buffer)))
 #+END_SRC
 
 * testing packages
