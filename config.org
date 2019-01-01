@@ -1,3 +1,11 @@
+* version
+#+BEGIN_SRC emacs-lisp
+  (defun js/version ()
+    "Provides the version number of the init file."
+    (interactive)
+    (message "init version 1"))
+#+END_SRC
+
 * credits
 
 + [[https://www.gnu.org/software/emacs/manual/][The Manual]]
