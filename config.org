@@ -228,7 +228,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 #+BEGIN_SRC emacs-lisp
   (recentf-mode t)
-  (setq recentf-max-saved-items 50)
+  (setq recentf-max-saved-items 150)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 #+END_SRC
 
@@ -486,12 +486,13 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     :bind
     ("M-y" . counsel-yank-pop)
     ("M-x" . counsel-M-x)
-    ("C-x C-f" . counsel-find-file)
-    ("C-x b" . counsel-ibuffer))
+    ("C-x C-f" . counsel-find-file))
 
   (use-package ivy
     :ensure t
     :diminish ivy-mode
+    :bind
+    ("C-x b" . ivy-switch-buffer)
     :config
     (ivy-mode 1)
     (counsel-mode 1)
@@ -540,4 +541,15 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
      (message-mode . turn-off-auto-fill)
      (message-mode . turn-on-flyspell))
   )
+#+END_SRC
+
+* recentf-ext
+
+This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alvaro Ramirez came right when I was thinking about how to quickly get to directories without using bookmarks.
+
+[[https://github.com/rubikitch/recentf-ext/tree/450de5f8544ed6414e88d4924d7daa5caa55b7fe][recentf-ext]] [[https://melpa.org/#/recentf-ext][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package recentf-ext
+    :ensure t)
 #+END_SRC
