@@ -553,3 +553,13 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
   (use-package recentf-ext
     :ensure t)
 #+END_SRC
+
+* store job numbers in registers
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/set-job-register (job)
+    (interactive "sJob: ")
+    (let ((job (upcase job)))
+      (set-register ?j job)
+      (set-register ?J (concat job " SPECIAL PARTS"))))
+#+END_SRC
