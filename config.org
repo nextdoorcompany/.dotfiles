@@ -561,7 +561,7 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
     (interactive "sJob: ")
     (let ((job (upcase job)))
       (set-register ?j job)
-      (set-register ?J (concat job " SPECIAL PARTS"))))
+      (set-register ?J (concat job " SPECIAL PARTS.pdf"))))
 #+END_SRC
 
 * make comma separated lists of tags
