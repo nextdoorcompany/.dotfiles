@@ -563,3 +563,26 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
       (set-register ?j job)
       (set-register ?J (concat job " SPECIAL PARTS"))))
 #+END_SRC
+
+* make comma separated lists of tags
+
+[[https://stackoverflow.com/questions/17922208/emacs-convert-items-on-separate-lines-to-a-comma-separated-list][Stack Overflow]]
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/sort-comma (reverse beg end)
+    "Take a list of tags one per line, capitalize them, sort them,
+     then replace the line breaks with commas."
+    (interactive "P\nr")
+    (upcase-region beg end)
+    (sort-lines reverse beg end)
+    (save-excursion
+      (save-restriction
+        (narrow-to-region beg end)
+        (end-of-buffer)
+        (beginning-of-line)
+        (insert "and ")
+        (beginning-of-buffer)
+        (while (search-forward "\n" nil t)
+          (replace-match ", "))
+        )))
+#+END_SRC
