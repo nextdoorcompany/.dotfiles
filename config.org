@@ -602,10 +602,10 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
 #+BEGIN_SRC emacs-lisp
   (use-package ace-window
     :ensure t
-    :init
+    :config
     (setq aw-keys '(?a ?s ?d ?f ?k ?l ?\;))
     (setq aw-char-position (quote left))
     (custom-set-faces
-     '(aw-leading-char-face ((t (:foreground "red" :height 2.0)))))
+     '(aw-leading-char-face ((t (:foreground "red" :height 3.0)))))
     :bind ("<XF86Launch7>" . ace-window))
 #+END_SRC
