@@ -13,7 +13,9 @@ Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp
     (defun js/exwm-lock ()
       (interactive)
       (start-process "slock" nil "slock"))
-    (exwm-input-set-key (kbd "s-l") #'js/exwm-lock))
+    (exwm-input-set-key (kbd "s-l") #'js/exwm-lock)
+    (exwm-input-set-key (kbd "<XF86Launch7>") #'ace-window)
+    (ace-window-display-mode 1))
 #+END_SRC
 
 * font

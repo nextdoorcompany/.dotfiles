@@ -591,3 +591,21 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
           (replace-match ", "))
         )))
 #+END_SRC
+
+* ace-window
+
+[[https://github.com/abo-abo/ace-window][ace-window]] [[https://melpa.org/#/ace-window][MELPA]]
+
+[[https://youtu.be/D6OUMVbPKSA][Mike Zamansky video]]
+[[https://youtu.be/nKCKuRuvAOw][Sacha Chua video]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :init
+    (setq aw-keys '(?a ?s ?d ?f ?k ?l ?\;))
+    (setq aw-char-position (quote left))
+    (custom-set-faces
+     '(aw-leading-char-face ((t (:foreground "red" :height 2.0)))))
+    :bind ("<XF86Launch7>" . ace-window))
+#+END_SRC
