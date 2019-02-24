@@ -225,6 +225,10 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
             (lambda ()
               (abbrev-mode 1)
               (display-line-numbers-mode 1)))
+
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (visual-line-mode 1)))
 #+END_SRC
 
 * enable recent file tracking
@@ -315,7 +319,7 @@ I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
   (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
-
+  (setq org-export-with-toc nil)
   (setq org-cycle-separator-lines 1)
   (setq org-confirm-babel-evaluate nil)
   (setq org-publish-project-alist
