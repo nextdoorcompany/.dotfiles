@@ -78,6 +78,7 @@
 + Prevent tab insertion.
 + Remove the warnings around capitalization functions.
 + Remove warning for using "a" in dired to find file and close dired buffer.
++ Remove warning for narrow to region.
 
 #+BEGIN_SRC emacs-lisp
   (setq column-number-mode t)
@@ -87,6 +88,7 @@
   (put 'upcase-region 'disabled nil)
   (put 'downcase-region 'disabled nil)
   (put 'dired-find-alternate-file 'disabled nil)
+  (put 'narrow-to-region 'disabled nil)
 #+END_SRC
 
 * font
