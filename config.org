@@ -318,12 +318,15 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 
 I don't want to confirm every time babel evaluates.
 
+TAB should cycle the visibility everywhere except at the beginning of a line.
+
 #+BEGIN_SRC emacs-lisp
   (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 1)
   (setq org-confirm-babel-evaluate nil)
+  (setq org-cycle-emulate-tab 'whitestart)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
