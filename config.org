@@ -615,3 +615,29 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
      '(aw-leading-char-face ((t (:foreground "red" :height 3.0)))))
     :bind ("<f16>" . ace-window))
 #+END_SRC
+
+* stripe region or table
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/stripe-region (start end)
+    "Stripe alternate lines of region."
+    (interactive "r")
+    (save-excursion
+      (goto-char start)
+      (while (< (point) end)
+        (let ((o (make-overlay (line-beginning-position) (line-end-position))))
+          (overlay-put o 'js t)
+          (overlay-put o 'face '((t (:foreground "green1")))))
+        (forward-line 2))))
+
+  (defun js/stripe-table ()
+    "Stripe alternate lines of org-table"
+    (interactive)
+    (when (org-at-table-p)
+      (js/stripe-region (org-table-begin) (org-table-end))))
+
+  (defun js/stripe-remove ()
+    "Remove stripes."
+    (interactive)
+    (remove-overlays nil nil 'js t))
+#+END_SRC
