@@ -141,11 +141,10 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
         (global-set-key (kbd "C-c f") 'js/new-buffer-checked)
 
-        (defun js/new-scratch-buffer ()
-            "Create and switch to a temporary scratch org buffer with a random
-             name."
+        (defun js/new-bom ()
+            "Create and switch bom scratch buffer"
             (interactive)
-            (switch-to-buffer (make-temp-name "scratch-tbl-"))
+            (switch-to-buffer (make-temp-name "bom-"))
             (org-mode)
             (insert
   "#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
