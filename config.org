@@ -619,6 +619,8 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
 * stripe region or table
 
 #+BEGIN_SRC emacs-lisp
+  (defvar js-hi '(:background "gainsboro"))
+
   (defun js/stripe-region (start end)
     "Stripe alternate lines of region."
     (interactive "r")
@@ -627,7 +629,7 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
       (while (< (point) end)
         (let ((o (make-overlay (line-beginning-position) (line-end-position))))
           (overlay-put o 'js t)
-          (overlay-put o 'face '((t (:foreground "green1")))))
+          (overlay-put o 'face js-hi))
         (forward-line 2))))
 
   (defun js/stripe-table ()
