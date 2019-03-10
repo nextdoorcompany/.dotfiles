@@ -457,8 +457,10 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                  ("python" (mode . python-mode))
                  ("elisp" (mode . emacs-lisp-mode))
                  ("html" (mode . mhtml-mode))
+                 ("css" (mode . css-mode))
                  ("javascript" (mode . js-mode))
                  ("exwm" (mode . exwm-mode))
+                 ("eshell" (mode . eshell-mode))
                  ("magit" (mode . magit-status-mode))))))
   (add-hook 'ibuffer-mode-hook
             (lambda ()
