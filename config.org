@@ -641,3 +641,18 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
     (interactive)
     (remove-overlays nil nil 'js t))
 #+END_SRC
+
+* pinned buffer minor mode
+
+Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/carrete/.emacs.d/blob/master/lisp/setup-pinned-buffer-mode.el][here]].  Still working on window management in emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (define-minor-mode pinned-buffer-mode
+    "Pin the current buffer to the selected window."
+    nil " P" nil
+    (set-window-dedicated-p (selected-window) pinned-buffer-mode))
+
+  (global-set-key (kbd "C-c p") 'pinned-buffer-mode)
+
+  (provide 'setup-pinned-buffer-mode)
+#+END_SRC
