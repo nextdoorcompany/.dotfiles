@@ -660,3 +660,16 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
 
   (provide 'setup-pinned-buffer-mode)
 #+END_SRC
+
+* split window functions
+#+BEGIN_SRC emacs-lisp
+  (defun js/split-right-34 ()
+    "Splits window right using three quarters of the available space."
+    (interactive)
+    (split-window-right (floor (* .75 (window-total-width)))))
+
+  (defun js/split-below-34 ()
+    "Splits window below using three quarters of the available space."
+    (interactive)
+    (split-window-below (floor (* .75 (window-total-height)))))
+#+END_SRC
