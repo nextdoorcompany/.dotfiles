@@ -339,7 +339,7 @@ I don't want to confirm every time babel evaluates.
         "* TODO %?\nSCHEDULED: %t")
        ("b" "bookmark clipped link" entry
         (file "~/org/notes.org")
-        "* [[%x]] %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n"
+        "* [[%?]] \n:PROPERTIES:\n:CREATED: %U\n:END:\n"
         :empty-lines 1)
        ("f" "blood pressure" table-line
         (file "~/org/bp.org")
