@@ -677,3 +677,20 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
     (interactive)
     (split-window-below (floor (* .75 (window-total-height)))))
 #+END_SRC
+
+* reformatter
+
+[[https://github.com/purcell/reformatter.el][reformatter]] [[http://stable.melpa.org/#/reformatter][MELPA]]
+
+Add a directory local to assign a value to black-command.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package reformatter
+    :ensure t
+    :config
+    (defcustom black-command nil
+    "Path to black executable")
+    (reformatter-define black
+      :program black-command
+      :args '("-")))
+#+END_SRC
