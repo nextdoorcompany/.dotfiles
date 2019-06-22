@@ -61,7 +61,8 @@ c.url.incdec_segments = ['path', 'query']
 # `:open google qutebrowser`.
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'az': 'https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords={}',
-                       'aw': 'https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}', 'gh': 'https://github.com/search?q={}'}
+                       'aw': 'https://wiki.archlinux.org/index.php?title=Special%3ASearch&search={}', 'gh': 'https://github.com/search?q={}',
+                       'yt': 'https://www.youtube.com/results?search_query={}'}
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
