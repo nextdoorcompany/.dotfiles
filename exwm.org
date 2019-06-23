@@ -42,7 +42,6 @@ Aritra Bhattacharjee's [[https://youtu.be/Y9BM_mIRHJk][video]] on exotica-theme
   (use-package tao-theme
     :ensure t)
 
-;;  (load-theme 'deeper-blue)
   (load-theme 'manoj-dark)
 #+END_SRC
 
