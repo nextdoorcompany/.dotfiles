@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 9"))
+    (message "init version 10"))
 #+END_SRC
 
 * credits
@@ -665,7 +665,9 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
   (provide 'setup-pinned-buffer-mode)
 #+END_SRC
 
-* split window functions
+* window management
+This reddit [[https://www.reddit.com/r/emacs/comments/24zu2a/how_do_i_stop_emacs_from_taking_over_my_split/][thread]] was helpful.  Elisp [[https://www.gnu.org/software/emacs/manual/html_node/elisp/The-Zen-of-Buffer-Display.html#The-Zen-of-Buffer-Display][manual]] has details.
+
 #+BEGIN_SRC emacs-lisp
   (defun js/split-right-34 ()
     "Splits window right using three quarters of the available space."
@@ -676,6 +678,22 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
     "Splits window below using three quarters of the available space."
     (interactive)
     (split-window-below (floor (* .75 (window-total-height)))))
+
+  (defun js/triple ()
+    "Splits window into three panes with the middle taking 50%."
+    (interactive)
+    (delete-other-windows)
+    (let ((width (floor (* .25 (frame-width)))))
+      (split-window nil width "left" nil)
+      (other-window 1)
+      (split-window nil (* -1 width) "right" nil)))
+
+  (setq display-buffer-alist
+        '(("\*Help\*" . (display-buffer-same-window . nil))
+          ("\*Apropos\*" . (display-buffer-same-window . nil))
+          ("\*helpful.*" . (display-buffer-same-window . nil))))
+
+  (setq display-buffer-alist nil)
 #+END_SRC
 
 * reformatter
