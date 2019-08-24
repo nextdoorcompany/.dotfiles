@@ -418,6 +418,10 @@ I don't want to confirm every time babel evaluates.
            ("C-c t" . crux-visit-term-buffer)))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-z") 'zap-up-to-char)
+#+END_SRC
+
 * testing packages
 
 [[https://github.com/larstvei/Try][try]] [[https://melpa.org/#/try][MELPA]]
@@ -489,12 +493,17 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     (smartparens-global-mode t)
     (show-smartparens-global-mode t)
     (sp-local-pair 'org-mode "\"" "\"" :actions nil)
-    (sp-local-pair 'message-mode "\"" "\"" :actions nil))
+    (sp-local-pair 'message-mode "\"" "\"" :actions nil)
+    :bind
+    ("C-<left>" . sp-backward-slurp-sexp)
+    ("C-<right>" . sp-forward-slurp-sexp))
 #+END_SRC
 
 * ivy
 
 [[https://github.com/abo-abo/swiper][Ivy]] [[https://melpa.org/#/counsel][MELPA]]
+
+I had been using a combination of C-r for isearch and C-s for swiper.  Watching [[https://youtu.be/y6_bmcd3nis][this]] video by Protesilaos Stavrou motivated me to fix this.  His videos are helpful along with his [[https://protesilaos.com/dotemacs/][dotfiles]].
 
 #+BEGIN_SRC emacs-lisp
   (use-package counsel
@@ -519,7 +528,7 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
   (use-package swiper
     :ensure t
     :bind
-    ("C-s" . swiper))
+    ("C-z" . swiper))
 #+END_SRC
 
 * upcase table
@@ -667,7 +676,7 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
 
 * window management
 This reddit [[https://www.reddit.com/r/emacs/comments/24zu2a/how_do_i_stop_emacs_from_taking_over_my_split/][thread]] was helpful.  Elisp [[https://www.gnu.org/software/emacs/manual/html_node/elisp/The-Zen-of-Buffer-Display.html#The-Zen-of-Buffer-Display][manual]] has details.
-Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_additional_docstutorials_on_displaybuffer_and/][thread]].  
+Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_additional_docstutorials_on_displaybuffer_and/][thread]].
 
 #+BEGIN_SRC emacs-lisp
   (defun js/split-right-34 ()
