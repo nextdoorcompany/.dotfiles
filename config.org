@@ -720,3 +720,16 @@ Add a directory local to assign a value to black-command.
       :program black-command
       :args '("-")))
 #+END_SRC
+
+* compilation
+
+Found [[https://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-close][this]] Stack Overflow post regarding compilation-finish-functions.  Mickey Peterson has more information about compilation [[https://masteringemacs.org/article/compiling-running-scripts-emacs][here]].
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/focus-compile-window (buffer msg)
+    (select-window (get-buffer-window buffer)))
+
+  (add-hook 'compilation-finish-functions 'js/focus-compile-window)
+
+  (global-set-key (kbd "C-c r") 'recompile)
+#+END_SRC
