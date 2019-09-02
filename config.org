@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 12"))
+    (message "init version 13"))
 #+END_SRC
 
 * credits
@@ -493,10 +493,10 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
     (smartparens-global-mode t)
     (show-smartparens-global-mode t)
     (sp-local-pair 'org-mode "\"" "\"" :actions nil)
-    (sp-local-pair 'message-mode "\"" "\"" :actions nil)
-    :bind
-    ("C-<left>" . sp-backward-slurp-sexp)
-    ("C-<right>" . sp-forward-slurp-sexp))
+    (sp-local-pair 'message-mode "\"" "\"" :actions nil))
+
+  (global-set-key (kbd "C-<left>") 'sp-backward-slurp-sexp)
+  (global-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
 #+END_SRC
 
 * ivy
