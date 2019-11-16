@@ -733,3 +733,23 @@ Found [[https://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-c
 
   (global-set-key (kbd "C-c r") 'recompile)
 #+END_SRC
+
+* calc
+
+m m and Z P will clobber this with calc.el (like custom.el).
+
+#+BEGIN_SRC emacs-lisp
+  (setq calc-display-trail nil)
+  (setq calc-frac-format '("+/" nil))
+
+  (put 'calc-define 'calc-myround '(progn
+   (defun calc-myround nil (interactive) (calc-wrapper (calc-enter-result 1 "sec" (cons (quote calcFunc-sec) (calc-top-list-n 1)))))
+   (put 'calc-myround 'calc-user-defn 't)
+   (defun calcFunc-sec (x) (math-check-const x t) (math-normalize (list
+    (quote /) (list (quote calcFunc-round) (list (quote *) 64 x)) 64)))
+   (put 'calcFunc-sec 'calc-user-defn '(/ (calcFunc-round (* 64 (var x
+    var-x))) 64))
+   (define-key calc-mode-map "ze" 'calc-myround)
+  ))
+
+#+END_SRC
