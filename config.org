@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 14"))
+    (message "init version 15"))
 #+END_SRC
 
 * credits
@@ -148,15 +148,18 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
             (org-mode)
             (insert
   "#+HTML_HEAD: <style>body {font-size: xx-large;}</style>
-  ,#+OPTIONS: html-postamble:nil
+  ,#+OPTIONS: html-postamble:nil date:nil
   ,#+TITLE:BOM
   ,#+ATTR_HTML: :border2 :rules all :frame border
+  ,#+LaTeX_HEADER: \\usepackage{extsizes}
+  ,#+latex_class_options: [17pt]
+  | /    | <>|<> |<>   |
   | ITEM | 0 | 1 | SUM |
   |------+---+---+-----|
   |      |   |   |   3 |
   ,#+TBLFM: $4=vsum($2..$3)"
       )
-            (goto-char 194)
+            (goto-char 294)
             (cd "~/org"))
 #+END_SRC
 
