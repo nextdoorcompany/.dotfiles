@@ -26,34 +26,6 @@ Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp
   (set-face-attribute 'default nil :height 166)
 #+END_SRC
 
-* themes
-
-Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilaos/modus-themes][themes]] on MELPA.  They are on display in his Emacs [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-  (use-package modus-operandi-theme
-    :ensure t)
-
-  (use-package modus-vivendi-theme
-    :ensure t)
-
-  (load-theme 'modus-vivendi)
-
-  (defun prot/modus-themes-toggle ()
-      "Simplistic toggle for my Modus Themes.  All it does is check
-  if `modus-operandi' (light version) is active and if so switch to
-  `modus-vivendi' (dark version).  Else it switches to the light
-  theme."
-      (interactive)
-      (if (eq (car custom-enabled-themes) 'modus-operandi)
-          (load-theme 'modus-vivendi t)
-        (load-theme 'modus-operandi t)))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle no
-  (load-theme 'manoj-dark)
-#+END_SRC
-
 * default browser
 
 Thank you [[https://github.com/daedreth/UncleDavesEmacs][Uncle Dave]] for this.  Also great videos [[https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g][here]].
