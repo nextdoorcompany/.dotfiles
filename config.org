@@ -744,6 +744,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
 #+BEGIN_SRC emacs-lisp
   (setq calc-display-trail nil)
   (setq calc-frac-format '("+/" nil))
+  (setq calc-algebraic-mode t)
 
   (put 'calc-define 'calc-myround '(progn
    (defun calc-myround nil (interactive) (calc-wrapper (calc-enter-result 1 "sec" (cons (quote calcFunc-sec) (calc-top-list-n 1)))))
@@ -755,6 +756,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
    (define-key calc-mode-map "ze" 'calc-myround)
   ))
 
+  (run-hooks 'calc-check-defines)
 #+END_SRC
 
 * theme
