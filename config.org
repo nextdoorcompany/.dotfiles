@@ -755,8 +755,6 @@ m m and Z P will clobber this with calc.el (like custom.el).
     var-x))) 64))
    (define-key calc-mode-map "ze" 'calc-myround)
   ))
-
-  (run-hooks 'calc-check-defines)
 #+END_SRC
 
 * theme
