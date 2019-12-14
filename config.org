@@ -637,7 +637,7 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
 * stripe region or table
 
 #+BEGIN_SRC emacs-lisp
-  (defvar js-hi '(:background "gainsboro"))
+  (defvar js-hi '(:background "dim grey"))
 
   (defun js/stripe-region (start end)
     "Stripe alternate lines of region."
