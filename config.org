@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 17"))
+    (message "init version 18"))
 #+END_SRC
 
 * credits
@@ -779,4 +779,23 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
       (if (eq (car custom-enabled-themes) 'modus-operandi)
           (load-theme 'modus-vivendi t)
         (load-theme 'modus-operandi t)))
+#+END_SRC
+
+* elfeed
+
+[[https://github.com/skeeto/elfeed][elfeed]] [[https://melpa.org/#/elfeed][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package elfeed
+    :ensure t)
+#+END_SRC
+
+[[https://github.com/remyhonig/elfeed-org][elfeed-org]] [[https://melpa.org/#/elfeed-org][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package elfeed-org
+    :ensure t
+    :config
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 #+END_SRC
