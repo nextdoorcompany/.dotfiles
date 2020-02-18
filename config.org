@@ -358,6 +358,8 @@ I don't want to confirm every time babel evaluates.
    'org-babel-load-languages
    '((emacs-lisp . t)
      (python . t)))
+
+  (put 'org-archive-subtree 'disabled t)
 #+END_SRC
 
 * navigation within a file
