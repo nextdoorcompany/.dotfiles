@@ -373,6 +373,11 @@ I don't want to confirm every time babel evaluates.
      (python . t)))
 
   (put 'org-archive-subtree 'disabled t)
+
+  (defun js/org-export-ascii-to-kill ()
+    "Exports current org buffer as ascii to kill ring."
+    (interactive)
+    (kill-new (org-export-as 'ascii)))
 #+END_SRC
 
 * navigation within a file
