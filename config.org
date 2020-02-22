@@ -720,8 +720,7 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
         '(("\\*Help" (display-buffer-same-window))
           ("\\*Apropos" (display-buffer-same-window))
           ("\\*helpful" (display-buffer-same-window))
-          ("\\*info" (display-buffer-same-window display-buffer-use-some-window))
-          ("\\*Org ASCII" (display-buffer-use-some-window))))
+          ("\\*info" (display-buffer-same-window display-buffer-use-some-window))))
 #+END_SRC
 
 * reformatter
