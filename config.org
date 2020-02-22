@@ -160,7 +160,9 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   ,#+TBLFM: $4=vsum($2..$3)"
       )
             (goto-char 294)
-            (cd "~/org"))
+            (if (file-exists-p "c:/Users/justin/Dropbox/Documents/job files")
+                (cd "c:/Users/justin/Dropbox/Documents/job files")
+              (cd "~/org")))
 #+END_SRC
 
 * copy a date from the calendar into the kill ring
