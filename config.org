@@ -96,9 +96,20 @@
 Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  Also see online text [[https://practicaltypography.com/][Practical Typography]].
 
 #+BEGIN_SRC emacs-lisp
+  (setq js/default-font-height 240)
+  (setq frame-inhibit-implied-resize t)
+
   (when (member "Triplicate T4c" (font-family-list))
     (set-face-attribute 'default nil :font "Triplicate T4c"))
-  (set-face-attribute 'default nil :height 240)
+  (set-face-attribute 'default nil :height js/default-font-height)
+
+  (defun js/change-face-height (height)
+    "Changes height for default face."
+    (interactive
+     (list (read-from-minibuffer (format "Enter new height (current is %s) or press <RET> for default (%s): "
+                                         (face-attribute 'default :height) js/default-font-height)
+                                 nil nil t nil (number-to-string js/default-font-height))))
+    (set-face-attribute 'default nil :height height))
 #+END_SRC
 
 * spelling
