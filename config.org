@@ -216,9 +216,13 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 #+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist
-        `((".*" . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms
-        `((".*" ,temporary-file-directory t)))
+        '(("." . "~/emacs_backups")))
+  (setq version-control t)
+  (setq vc-make-backup-files t)
+  (setq delete-old-versions t)
+  (setq kept-old-versions 5)
+  (setq kept-new-versions 5)
+  (setq backup-by-copying t)
 #+END_SRC
 
 * various mode hooks
