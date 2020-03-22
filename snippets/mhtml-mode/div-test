@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: div-test
+# key: div-
+# --
+${1:$$(yas-choose-value '("a" "b" "c"))}
+${2:$$(upcase yas-text)}

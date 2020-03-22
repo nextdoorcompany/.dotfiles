@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: forif-jinja
+# key: forif
+# --
+{% for $1 in $2 if not $3 %}
+$0
+{% endfor %}
