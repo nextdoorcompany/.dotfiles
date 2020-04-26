@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 20"))
+    (message "init version 21"))
 #+END_SRC
 
 * credits
@@ -99,8 +99,13 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
   (setq js/default-font-height 240)
   (setq frame-inhibit-implied-resize t)
 
-  (when (member "Triplicate T4c" (font-family-list))
-    (set-face-attribute 'default nil :font "Triplicate T4c"))
+  (cond ((member "xos4 Terminus" (font-family-list))
+         (set-face-attribute 'default nil :font "xos4 Terminus"))
+        ((member "Ubuntu Mono" (font-family-list))
+         (set-face-attribute 'default nil :font "Ubuntu Mono"))
+        ((member "Triplicate T4c" (font-family-list))
+         (set-face-attribute 'default nil :font "Triplicate T4c")))
+
   (set-face-attribute 'default nil :height js/default-font-height)
 
   (defun js/change-face-height (height)
