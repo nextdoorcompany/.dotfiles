@@ -3,7 +3,7 @@
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 21"))
+    (message "init version 22"))
 #+END_SRC
 
 * credits
@@ -830,4 +830,15 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     :config
     (elfeed-org)
     (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+#+END_SRC
+
+* stop emacs from exiting with a clock running
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'kill-emacs-query-functions
+            (lambda ()
+              (if (and (fboundp 'org-clocking-p)
+                       (org-clocking-p))
+                  (progn (message "clocked-in")
+                         nil)
+                t)))
 #+END_SRC
