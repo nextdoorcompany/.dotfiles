@@ -842,3 +842,19 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
                          nil)
                 t)))
 #+END_SRC
+
+* build a SQL IN clause from lines of text
+#+BEGIN_SRC emacs-lisp
+  (defun js/in-clause-builder ()
+    "Creates a SQL IN clause from each line in a buffer and adds to kill ring."
+    (interactive)
+    (beginning-of-buffer)
+    (while (re-search-forward "^\\(.+\\)$" nil t)
+      (replace-match "'\\1'," nil nil))
+    (delete-backward-char 1)
+    (insert ")")
+    (beginning-of-buffer)
+    (insert "IN\n(")
+    (end-of-buffer)
+    (copy-region-as-kill (point-min) (point-max)))
+#+END_SRC
