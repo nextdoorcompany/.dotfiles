@@ -1,0 +1,7 @@
+#+BEGIN_SRC source
+git clone https://github.com/nextdoorcompany/.dotfiles.git
+ln -s ~/.dotfiles/.emacs ~/.emacs
+ln -s ~/.dotfiles/config.org ~/.config.org
+ln -s ~/.dotfiles/snippets ~/.emacs.d/snippets
+ln -s ~/.dotfiles/qute/config/config.py ~/.config/qutebrowser/config.py
+#+END_SRC
