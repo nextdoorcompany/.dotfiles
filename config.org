@@ -585,8 +585,18 @@ I had been using a combination of C-r for isearch and C-s for swiper.  Watching 
     (setq message-kill-buffer-query nil)
     (setq send-mail-function (quote mailclient-send-it))
     (setq message-required-headers (quote ((optional . References))))
-    (defun js/mail-send-and-kill ()
-      (interactive)
+    (defun js/message-upcase-subject ()
+    "Capitalize the subject of a mail message."
+    (interactive)
+    (save-excursion 
+      (beginning-of-buffer)
+      (if (re-search-forward "^Subject:\\(.+\\)$" nil t 1)
+          (upcase-region (match-beginning 1) (match-end 1)))))
+    (defun js/mail-send-and-kill (arg)
+      "Send a message and dispose of the buffer."
+      (interactive "P")
+      (when arg
+          (js/message-upcase-subject))
       (set-visited-file-name nil t)
       (mail-send)
       (message-kill-buffer))
