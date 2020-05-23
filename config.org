@@ -762,7 +762,9 @@ Add a directory local to assign a value to black-command.
     (defcustom black-command nil
     "Path to black executable")
     (reformatter-define black
-      :program black-command
+      :program (if black-command
+                   black-command
+                 (concat default-directory "env/bin/black"))
       :args '("-")))
 #+END_SRC
 
