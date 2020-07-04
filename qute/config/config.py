@@ -95,7 +95,8 @@ c.fonts.statusbar = '16pt monospace'
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs = '16pt monospace'
+c.fonts.tabs.selected = '16pt monospace'
+c.fonts.tabs.unselected = '16pt monospace'
 
 # Type: Dict
 c.bindings.key_mappings['<Escape>'] = '<Ctrl-g>'
