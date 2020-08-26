@@ -373,9 +373,6 @@ I don't want to confirm every time babel evaluates.
 
   (global-set-key (kbd "C-c c") 'org-capture)
 
-  (add-to-list 'org-structure-template-alist
-               '("E" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
-
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
