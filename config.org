@@ -867,3 +867,8 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     (end-of-buffer)
     (copy-region-as-kill (point-min) (point-max)))
 #+END_SRC
+
+* winner mode
+#+BEGIN_SRC emacs-lisp
+(winner-mode)
+#+END_SRC
