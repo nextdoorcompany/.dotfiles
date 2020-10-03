@@ -757,12 +757,19 @@ Add a directory local to assign a value to black-command.
     :ensure t
     :config
     (defcustom black-command nil
-    "Path to black executable")
+      "Path to black executable")
     (reformatter-define black
       :program (if black-command
                    black-command
                  (concat default-directory "env/bin/black"))
-      :args '("-")))
+      :args '("-"))
+    (defcustom sqlformat-command nil
+      "Path to sqlformat executable")
+    (reformatter-define sqlformat
+      :program (if sqlformat-command
+                   sqlformat-command
+                 (concat default-directory "env/bin/sqlformat"))
+      :args '("-r" "-k" "upper" "-")))
 #+END_SRC
 
 * compilation
