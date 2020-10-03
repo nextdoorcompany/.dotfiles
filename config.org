@@ -881,6 +881,10 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
 #+END_SRC
 
 * GPG
+
+EPG tells gpg agent pinentry is loopback, gpg-agent returns responsibility
+for passphrase back to EPG.  EPG prompts at the minibuffer.  
+
 #+BEGIN_SRC emacs-lisp
 (setq epg-pinentry-mode 'loopback)
 #+END_SRC
