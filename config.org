@@ -217,7 +217,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
     (load custom-file))
 #+END_SRC
 
-* move temp files to temp directory
+* file backups
 
 #+BEGIN_SRC emacs-lisp
   (setq backup-directory-alist
@@ -225,7 +225,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   (setq version-control t)
   (setq vc-make-backup-files t)
   (setq delete-old-versions t)
-  (setq kept-old-versions 5)
+  (setq kept-old-versions 1)
   (setq kept-new-versions 5)
   (setq backup-by-copying t)
 #+END_SRC
