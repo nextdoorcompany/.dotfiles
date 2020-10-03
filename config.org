@@ -750,7 +750,7 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
 
 [[https://github.com/purcell/reformatter.el][reformatter]] [[http://stable.melpa.org/#/reformatter][MELPA]]
 
-Add a directory local to assign a value to black-command.
+Add a directory local to assign a value to commands.
 
 #+BEGIN_SRC emacs-lisp
   (use-package reformatter
@@ -769,7 +769,7 @@ Add a directory local to assign a value to black-command.
       :program (if sqlformat-command
                    sqlformat-command
                  (concat default-directory "env/bin/sqlformat"))
-      :args '("-r" "-k" "upper" "-")))
+      :args '("-r" "-k" "upper" "--wrap_after" "80" "-")))
 #+END_SRC
 
 * compilation
