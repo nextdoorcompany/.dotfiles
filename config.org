@@ -879,3 +879,8 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
 #+BEGIN_SRC emacs-lisp
 (winner-mode)
 #+END_SRC
+
+* GPG
+#+BEGIN_SRC emacs-lisp
+(setq epg-pinentry-mode 'loopback)
+#+END_SRC
