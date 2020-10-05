@@ -417,10 +417,10 @@ I don't want to confirm every time babel evaluates.
       :ensure t
       :diminish yas-minor-mode
       :config
-      (yas-global-mode 1)
       (when (file-exists-p "~/.emacs.d/local_snippets")
-        ((setq yas-snippet-dirs (append yas-snippet-dirs
-                                        '("~/.emacs.d/local_snippets"))))))
+        (setq yas-snippet-dirs (append yas-snippet-dirs
+                                       '("~/.emacs.d/local_snippets"))))
+      (yas-global-mode 1))
 #+END_SRC
 
 * quick snippets
