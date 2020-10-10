@@ -517,7 +517,7 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
   (setq ibuffer-formats '((mark modified read-only locked " "
                                 (name 16 -1))
                           (mark modified read-only locked " "
-                                (name 36 36 :left :elide)
+                                (name 18 18 :left :elide)
                                 " "
                                 (size 9 -1 :right)
                                 " "
