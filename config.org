@@ -514,6 +514,16 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
               (ibuffer-auto-mode 1)
               (ibuffer-switch-to-saved-filter-groups "default")))
   (setq ibuffer-show-empty-filter-groups nil)
+  (setq ibuffer-formats '((mark modified read-only locked " "
+                                (name 16 -1))
+                          (mark modified read-only locked " "
+                                (name 36 36 :left :elide)
+                                " "
+                                (size 9 -1 :right)
+                                " "
+                                (mode 16 16 :left :elide)
+                                " " filename-and-process)))
+
 #+END_SRC
 
 * smartparens
