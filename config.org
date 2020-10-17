@@ -59,6 +59,7 @@
   (setq visual-line-fringe-indicators t)
   (setq scroll-conservatively 10000)
   (setq scroll-preserve-screen-position t)
+  (setq next-screen-context-lines 10)
 #+END_SRC
 
 * display
@@ -764,7 +765,8 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
           ("\\*Apropos" (display-buffer-same-window))
           ("\\*helpful" (display-buffer-same-window))
           ("\\*ivy-occur" (display-buffer-same-window))
-          ("\\*info" (display-buffer-same-window display-buffer-use-some-window))))
+          ("\\*info" (display-buffer-same-window display-buffer-use-some-window))
+          ("\\*Python" (display-buffer-use-some-window))))
 #+END_SRC
 
 * reformatter
@@ -904,7 +906,7 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
 * GPG
 
 EPG tells gpg agent pinentry is loopback, gpg-agent returns responsibility
-for passphrase back to EPG.  EPG prompts at the minibuffer.  
+for passphrase back to EPG.  EPG prompts at the minibuffer.
 
 #+BEGIN_SRC emacs-lisp
 (setq epg-pinentry-mode 'loopback)
