@@ -509,7 +509,8 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                                 (mode . magit-diff-mode)))
                    ("help" (or (mode . helpful-mode)
                                (mode . Info-mode)
-                               (mode . help-mode)))))))
+                               (mode . help-mode)))
+                   ("message" (mode . message-mode))))))
     (add-hook 'ibuffer-mode-hook
               (lambda ()
                 (ibuffer-auto-mode 1)
