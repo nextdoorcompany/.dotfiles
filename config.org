@@ -927,3 +927,26 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
     :diminish company-mode)
   (add-hook 'after-init-hook 'global-company-mode)
 #+END_SRC
+
+* slime
+
+[[https://github.com/slime/slime][web]] [[https://melpa.org/#/slime][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package slime
+    :ensure t
+    :config
+    (setq inferior-lisp-program "sbcl"))
+#+END_SRC
+
+[[https://github.com/anwyn/slime-company][web]] [[https://melpa.org/#/slime-company][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package slime-company
+    :ensure t
+    :after (slime company)
+    :config
+    (setq slime-company-completion 'fuzzy
+          slime-company-after-completion 'slime-company-just-one-space)
+    (add-to-list 'company-backends 'company-slime))
+#+END_SRC
