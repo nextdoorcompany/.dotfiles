@@ -925,7 +925,6 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
   (use-package company
     :ensure t
     :diminish company-mode)
-  (add-hook 'after-init-hook 'global-company-mode)
 #+END_SRC
 
 * slime
