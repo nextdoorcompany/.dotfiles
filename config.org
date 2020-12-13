@@ -350,6 +350,7 @@ I don't want to confirm every time babel evaluates.
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 1)
   (setq org-confirm-babel-evaluate nil)
+  (setq org-agenda-span 'day)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
