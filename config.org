@@ -928,6 +928,9 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
   (use-package company
     :ensure t
     :diminish company-mode)
+    :config
+    (add-hook 'lisp-mode-hook #'company-mode)
+    (add-hook 'emacs-lisp-mode-hook #'company-mode)
 #+END_SRC
 
 * slime
