@@ -925,12 +925,17 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
 [[https://youtu.be/96jn5A73-oQ][video]] convinced me to try company.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package company
-    :ensure t
-    :diminish company-mode)
-    :config
-    (add-hook 'lisp-mode-hook #'company-mode)
-    (add-hook 'emacs-lisp-mode-hook #'company-mode)
+    (use-package company
+      :ensure t
+      :diminish company-mode
+      :config
+      (setq company-show-numbers t)
+      (define-key company-active-map (kbd "C-n") #'company-select-next)
+      (define-key company-active-map (kbd "C-p") #'company-select-previous)
+      (add-hook 'emacs-lisp-mode-hook
+                (lambda ()
+                  (set (make-local-variable 'company-backends) '(company-capf company-dabbrev-code company-files))
+                  (company-mode))))
 #+END_SRC
 
 * slime
@@ -953,5 +958,9 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
     :config
     (setq slime-company-completion 'fuzzy
           slime-company-after-completion 'slime-company-just-one-space)
-    (add-to-list 'company-backends 'company-slime))
+    (add-hook 'lisp-mode-hook
+              (lambda ()
+                (set (make-local-variable 'company-backends) '(company-slime company-capf company-dabbrev-code company-files))
+                (company-mode))))
+
 #+END_SRC
