@@ -62,6 +62,20 @@
   (setq next-screen-context-lines 10)
 #+END_SRC
 
+* paths
+
+Ensure certain directories are always available.  Taken directly from Howard Abrams.
+
+#+BEGIN_SRC emacs-lisp
+  (let* ((subdirs '("local_elisp" "local_snippets"))
+         (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
+    (dolist (dir fulldirs)
+      (when (not (file-exists-p dir))
+        (message "Make directory: %s" dir)
+        (make-directory dir))))
+  (add-to-list 'load-path "~/.emacs.d/local_elisp")
+#+END_SRC
+
 * display
 
 #+BEGIN_SRC emacs-lisp
@@ -421,9 +435,8 @@ I don't want to confirm every time babel evaluates.
       :init
       (yas-global-mode 1)
       :config
-      (when (file-exists-p "~/.emacs.d/local_snippets")
-        (setq yas-snippet-dirs (append yas-snippet-dirs
-                                       '("~/.emacs.d/local_snippets"))))
+      (setq yas-snippet-dirs (append yas-snippet-dirs
+                                       '("~/.emacs.d/local_snippets")))
       (yas-reload-all)
       :bind ("C-<" . yas-insert-snippet))
 #+END_SRC
