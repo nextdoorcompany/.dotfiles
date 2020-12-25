@@ -68,11 +68,11 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
 
 #+BEGIN_SRC emacs-lisp
   (let* ((subdirs '("local_elisp" "local_snippets"))
-         (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
+	 (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
     (dolist (dir fulldirs)
       (when (not (file-exists-p dir))
-        (message "Make directory: %s" dir)
-        (make-directory dir))))
+	(message "Make directory: %s" dir)
+	(make-directory dir))))
   (add-to-list 'load-path "~/.emacs.d/local_elisp")
 #+END_SRC
 
@@ -983,7 +983,7 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
 
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp 
   (use-package magit
     :ensure t)
 #+END_SRC
