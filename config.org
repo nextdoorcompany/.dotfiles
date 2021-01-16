@@ -979,6 +979,23 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
 
 #+END_SRC
 
+* optional local packages
+
+Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el][Steve Purcell]] for maybe-require function.
+
+#+BEGIN_SRC emacs-lisp
+  (defun maybe-require (feature)
+    "Try to install PACKAGE, and return non-nil if successful.
+  In the event of failure, return nil and print a warning message."
+    (condition-case err
+        (require feature)
+      (error
+       (message "Couldn't install optional feature `%s': %S" feature err)
+       nil)))
+
+  (maybe-require 'minicad)
+#+END_SRC
+
 * git interface
 
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
@@ -987,4 +1004,5 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
   (use-package magit
     :ensure t)
 #+END_SRC
+
 
