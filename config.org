@@ -1008,7 +1008,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
   (defvar js/query-history ()
     "Current list of queries.")
-  
+
   (defun js/query-write()
     "Write history list to disk.  Will create file if it doesn't exist."
     (with-temp-buffer
@@ -1042,13 +1042,21 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
   (global-set-key (kbd "C-c q") 'js/web-search)
 #+END_SRC
 
+* dumb-jump
+[[https://github.com/jacktasia/dumb-jump][web]] [[https://melpa.org/#/dumb-jump][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package dumb-jump
+    :ensure t
+    :config
+    (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+#+END_SRC
+
 * git interface
 
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
 
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (use-package magit
     :ensure t)
 #+END_SRC
-
-
