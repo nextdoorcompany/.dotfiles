@@ -1034,7 +1034,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
     (interactive "P")
     (let* ((query (completing-read "Query> " js/query-history))
            (url (url-encode-url (format "https://duckduckgo.com/?q=%s" query))))
-      (add-to-list 'js/query-history query)
+      (add-to-list 'js/query-history (downcase query))
       (if arg
           (browse-url url)
         (eww-browse-url url))))
