@@ -15,6 +15,11 @@
 + [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
 + [[https://www.masteringemacs.org/][Mickey Petersen]]
 
+* external dependencies
++ aspell, aspell-en
++ ripgrep
++ ghostscript
+
 * package repositories
 
 #+BEGIN_SRC emacs-lisp
