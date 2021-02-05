@@ -135,6 +135,19 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
                                          (face-attribute 'default :height) js/default-font-height)
                                  nil nil t nil (number-to-string js/default-font-height))))
     (set-face-attribute 'default nil :height height))
+
+  (defun js/change_face ()
+    (interactive)
+    (let ((font (js/counsel-fonts-no-insert)))
+      (set-face-attribute 'default nil :font font)))
+
+  (defun js/counsel-fonts-no-insert ()
+    (let ((current-font
+           (symbol-name (font-get (face-attribute 'default :font) :family))))
+      (ivy-read "Font: " (delete-dups (font-family-list))
+                :preselect current-font
+                :require-match t
+                :caller 'counsel-fonts)))
 #+END_SRC
 
 * spelling
