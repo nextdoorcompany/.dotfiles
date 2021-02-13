@@ -852,6 +852,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
   (setq calc-display-trail nil)
   (setq calc-frac-format '("+/" nil))
   (setq calc-algebraic-mode t)
+  (global-set-key (kbd "C-c k") 'quick-calc)
 
   (add-hook 'calc-mode-hook
             (lambda ()
