@@ -921,18 +921,29 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
 
 * build a SQL IN clause from lines of text
 #+BEGIN_SRC emacs-lisp
-  (defun js/in-clause-builder ()
-    "Creates a SQL IN clause from each line in a buffer and adds to kill ring."
-    (interactive)
-    (beginning-of-buffer)
-    (while (re-search-forward "^\\(.+\\)$" nil t)
-      (replace-match "'\\1'," nil nil))
-    (delete-backward-char 1)
-    (insert ")")
-    (beginning-of-buffer)
-    (insert "IN\n(")
-    (end-of-buffer)
-    (copy-region-as-kill (point-min) (point-max)))
+    (defun js/build-in-clause ()
+      "Creates a SQL IN clause from each line in a buffer and adds it to kill ring."
+      (beginning-of-buffer)
+      (while (re-search-forward "^\\(.+\\)$" nil t)
+        (replace-match "'\\1'," nil nil))
+      (delete-backward-char 1)
+      (insert ")")
+      (beginning-of-buffer)
+      (insert "IN\n(")
+      (end-of-buffer)
+      (copy-region-as-kill (point-min) (point-max)))
+
+    (defun js/in-clause-builder (beg end)
+      "Creates a SQL IN clause from the active region one item per line and adds the IN clause
+  to the kill ring.  If there is no active region, the entire buffer is used."
+      (interactive "r")
+      (if (use-region-p)
+          (progn
+            (copy-region-as-kill beg end)
+            (with-temp-buffer
+              (yank)
+              (js/build-in-clause)))
+        (js/build-in-clause)))
 #+END_SRC
 
 * winner mode
