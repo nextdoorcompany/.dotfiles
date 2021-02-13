@@ -822,7 +822,7 @@ Add a directory local to assign a value to commands.
                    black-command
                  (concat default-directory "env/bin/black"))
       :args '("-"))
-    (defcustom sqlformat-command nil
+    (defcustom sqlformat-command "sqlformat"
       "Path to sqlformat executable")
     (reformatter-define sqlformat
       :program (if sqlformat-command
@@ -974,12 +974,36 @@ I've generally tried to avoid completions flashing on the screen but Tony Adlon'
       :diminish company-mode
       :config
       (setq company-show-numbers t)
+      (setq company-dabbrev-char-regexp "\\sw\\|_")
       (define-key company-active-map (kbd "C-n") #'company-select-next)
       (define-key company-active-map (kbd "C-p") #'company-select-previous)
       (add-hook 'emacs-lisp-mode-hook
                 (lambda ()
                   (set (make-local-variable 'company-backends) '(company-capf company-dabbrev-code company-files))
                   (company-mode))))
+#+END_SRC
+
+* sql
+
+Using the [[https://github.com/sebasmonia/sqlcmdline][sqlcmdline]] package to connect to SQL.  The regexp add to the sql-product-alist is not required in Emacs 27.
+Updated default rows variable inside sqlcmdline to 0 and added :t :c less verbose tables and cols functions there also.
+
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'sql
+  (plist-put (alist-get 'ms sql-product-alist) :prompt-cont-regexp "^[0-9]*>")
+  (setq sql-ms-options nil)
+  (setq sql-ms-program "sqlc")
+  (add-hook 'sql-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends) '(company-dabbrev company-capf company-files))
+              (setq company-dabbrev-ignore-buffers (lambda (buf) nil))
+              (company-mode)))
+
+  (add-hook 'sql-interactive-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends) '(company-dabbrev company-capf company-files))
+              (company-mode)
+              (setq truncate-lines t))))
 #+END_SRC
 
 * slime
