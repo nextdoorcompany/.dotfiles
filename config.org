@@ -384,6 +384,7 @@ I don't want to confirm every time babel evaluates.
   (setq org-confirm-babel-evaluate nil)
   (setq org-agenda-span 'day)
   (setq org-cycle-emulate-tab 'white)
+  (setq org-agenda-window-setup 'current-window)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
@@ -407,6 +408,7 @@ I don't want to confirm every time babel evaluates.
        )))
 
   (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c a") 'org-agenda-list)
 
   (org-babel-do-load-languages
    'org-babel-load-languages
