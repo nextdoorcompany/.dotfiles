@@ -405,7 +405,9 @@ I don't want to confirm every time babel evaluates.
        ("f" "blood pressure" table-line
         (file "~/org/bp.org")
         "| %^{date}U | %^{sys} | %^{dia} | %^{pulse}")
-       )))
+       ("t" "TODO kanban/tasks" entry
+        (file+headline "~/org/kanban.org" "tasks")
+        "* TODO %?\nSCHEDULED: %t"))))
 
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda-list)
