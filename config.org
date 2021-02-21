@@ -529,42 +529,44 @@ I don't want to confirm every time babel evaluates.
 Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][init]] [[https://cestlaz-nikola.github.io/posts/using-emacs-34-ibuffer-emmet/#.W6evkrQpA5k][video]]
 
 #+BEGIN_SRC emacs-lisp
-    (global-set-key (kbd "C-x C-b") 'ibuffer)
-    (setq ibuffer-saved-filter-groups
-          (quote (("default"
-                   ("dired" (mode . dired-mode))
-                   ("org" (mode . org-mode))
-                   ("python" (mode . python-mode))
-                   ("elisp" (or (mode . emacs-lisp-mode)
-                                (mode . lisp-interaction-mode)))
-                   ("html" (mode . mhtml-mode))
-                   ("css" (mode . css-mode))
-                   ("javascript" (mode . js-mode))
-                   ("exwm" (mode . exwm-mode))
-                   ("eshell" (mode . eshell-mode))
-                   ("magit" (or (mode . magit-status-mode)
-                                (mode . magit-process-mode)
-                                (mode . magit-diff-mode)))
-                   ("help" (or (mode . helpful-mode)
-                               (mode . Info-mode)
-                               (mode . help-mode)))
-                   ("message" (mode . message-mode))))))
-    (add-hook 'ibuffer-mode-hook
-              (lambda ()
-                (ibuffer-auto-mode 1)
-                (ibuffer-switch-to-saved-filter-groups "default")
-                (define-key ibuffer-mode-map (kbd "(")
-                  'ibuffer-switch-format)))
-    (setq ibuffer-show-empty-filter-groups nil)
-    (setq ibuffer-formats '((mark modified read-only locked " "
-                                  (name 16 -1))
-                            (mark modified read-only locked " "
-                                  (name 18 18 :left :elide)
-                                  " "
-                                  (size 9 -1 :right)
-                                  " "
-                                  (mode 16 16 :left :elide)
-                                  " " filename-and-process)))
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+  (setq ibuffer-saved-filter-groups
+        (quote (("default"
+                 ("dired" (mode . dired-mode))
+                 ("org" (mode . org-mode))
+                 ("python" (mode . python-mode))
+                 ("elisp" (or (mode . emacs-lisp-mode)
+                              (mode . lisp-interaction-mode)))
+                 ("html" (mode . mhtml-mode))
+                 ("css" (mode . css-mode))
+                 ("javascript" (mode . js-mode))
+                 ("exwm" (mode . exwm-mode))
+                 ("eshell" (mode . eshell-mode))
+                 ("magit" (or (mode . magit-status-mode)
+                              (mode . magit-process-mode)
+                              (mode . magit-diff-mode)))
+                 ("help" (or (mode . helpful-mode)
+                             (mode . Info-mode)
+                             (mode . help-mode)))
+                 ("message" (mode . message-mode))
+                 ("sql" (or (mode . sql-mode)
+                            (mode . sql-interactive-mode)))))))
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (ibuffer-auto-mode 1)
+              (ibuffer-switch-to-saved-filter-groups "default")
+              (define-key ibuffer-mode-map (kbd "(")
+                'ibuffer-switch-format)))
+  (setq ibuffer-show-empty-filter-groups nil)
+  (setq ibuffer-formats '((mark modified read-only locked " "
+                                (name 16 -1))
+                          (mark modified read-only locked " "
+                                (name 18 18 :left :elide)
+                                " "
+                                (size 9 -1 :right)
+                                " "
+                                (mode 16 16 :left :elide)
+                                " " filename-and-process)))
 
 #+END_SRC
 
