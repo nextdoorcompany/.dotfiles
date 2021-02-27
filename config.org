@@ -1108,6 +1108,14 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
     (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 #+END_SRC
 
+* deadgrep
+[[https://github.com/Wilfred/deadgrep][web]] [[https://melpa.org/#/deadgrep][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package deadgrep
+    :ensure t)
+#+END_SRC
+
 * git interface
 
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
