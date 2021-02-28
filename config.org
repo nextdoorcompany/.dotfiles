@@ -96,6 +96,7 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
 + If text is selected, typing deletes it.
 + Add newline to bottom of every file.
 + Prevent tab insertion.
++ Let presses to C-<SPC> after C-u C-<SPC> continue to pop mark ring
 + Remove the warnings around capitalization functions.
 + Remove warning for using "a" in dired to find file and close dired buffer.
 + Remove warning for narrow to region.
@@ -105,6 +106,7 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
   (delete-selection-mode t)
   (setq require-final-newline t)
   (setq-default indent-tabs-mode nil)
+  (setq set-mark-command-repeat-pop t)
   (put 'upcase-region 'disabled nil)
   (put 'downcase-region 'disabled nil)
   (put 'dired-find-alternate-file 'disabled nil)
@@ -385,6 +387,7 @@ I don't want to confirm every time babel evaluates.
   (setq org-agenda-span 'day)
   (setq org-cycle-emulate-tab 'white)
   (setq org-agenda-window-setup 'current-window)
+  (setq org-return-follows-link t)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
