@@ -874,6 +874,19 @@ m m and Z P will clobber this with calc.el (like custom.el).
                                                  (put 'calcFunc-sec 'calc-user-defn '(/ (calcFunc-round (* 64 (var x
                                                                                                                    var-x))) 64))
                                                  (define-key calc-mode-map "ze" 'calc-myround)))))
+
+  (defun js/calc-copy-and-remove-plus (arg)
+    "Copy the top of the calc stack to the kill ring.  Removes
+  fraction plus signs.  If the prefix argument is given, copies ARG
+  entries one per line."
+    (interactive "P")
+    (with-temp-buffer
+      (calc-copy-to-buffer arg)
+      (while (re-search-backward "+" nil t)
+        (replace-match " "))
+      (kill-region (point-min) (point-max))))
+
+  (define-key calc-mode-map "zw" 'js/calc-copy-and-remove-plus)
 #+END_SRC
 
 * theme
