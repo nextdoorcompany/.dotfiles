@@ -862,7 +862,6 @@ m m and Z P will clobber this with calc.el (like custom.el).
   (setq calc-display-trail nil)
   (setq calc-frac-format '("+/" nil))
   (setq calc-algebraic-mode t)
-  (global-set-key (kbd "C-c k") 'quick-calc)
 
   (add-hook 'calc-mode-hook
             (lambda ()
@@ -882,11 +881,30 @@ m m and Z P will clobber this with calc.el (like custom.el).
     (interactive "P")
     (with-temp-buffer
       (calc-copy-to-buffer arg)
-      (while (re-search-backward "+" nil t)
-        (replace-match " "))
-      (kill-region (point-min) (point-max))))
+      (js/format-calc-fraction)))
 
   (define-key calc-mode-map "zw" 'js/calc-copy-and-remove-plus)
+
+  (defun js/quick-calc-remove-plus ()
+    "Launch quick calc and copy result to kill ring without fraction
+    plus signs."
+    (interactive)
+    (with-temp-buffer
+      (quick-calc 4)
+      (js/format-calc-fraction)))
+
+
+  (defun js/format-calc-fraction ()
+    "Removes fraction plus signs and leading zeros."
+    (while (re-search-backward "+" nil t)
+      (replace-match " "))
+    (goto-char (point-min))
+    (if (looking-at-p "0 ")
+        (forward-char 2))
+    (kill-region (point) (point-max)))
+
+
+  (global-set-key (kbd "C-c k") 'js/quick-calc-remove-plus)
 #+END_SRC
 
 * theme
