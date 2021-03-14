@@ -887,7 +887,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
 
   (defun js/quick-calc-remove-plus ()
     "Launch quick calc and copy result to kill ring without fraction
-    plus signs."
+  plus signs."
     (interactive)
     (with-temp-buffer
       (quick-calc 4)
