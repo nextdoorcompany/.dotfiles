@@ -863,17 +863,6 @@ m m and Z P will clobber this with calc.el (like custom.el).
   (setq calc-frac-format '("+/" nil))
   (setq calc-algebraic-mode t)
 
-  (add-hook 'calc-mode-hook
-            (lambda ()
-              (put 'calc-define 'calc-myround '(progn
-                                                 (defun calc-myround nil (interactive) (calc-wrapper (calc-enter-result 1 "sec" (cons (quote calcFunc-sec) (calc-top-list-n 1)))))
-                                                 (put 'calc-myround 'calc-user-defn 't)
-                                                 (defun calcFunc-sec (x) (math-check-const x t) (math-normalize (list
-                                                                                                                 (quote /) (list (quote calcFunc-round) (list (quote *) 64 x)) 64)))
-                                                 (put 'calcFunc-sec 'calc-user-defn '(/ (calcFunc-round (* 64 (var x
-                                                                                                                   var-x))) 64))
-                                                 (define-key calc-mode-map "ze" 'calc-myround)))))
-
   (defun js/calc-copy-and-remove-plus (arg)
     "Copy the top of the calc stack to the kill ring.  Removes
   fraction plus signs.  If the prefix argument is given, copies ARG
@@ -883,8 +872,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
       (calc-copy-to-buffer arg)
       (js/format-calc-fraction)))
 
-  (define-key calc-mode-map "zw" 'js/calc-copy-and-remove-plus)
-
+ 
   (defun js/quick-calc-remove-plus ()
     "Launch quick calc and copy result to kill ring without fraction
   plus signs."
@@ -905,6 +893,19 @@ m m and Z P will clobber this with calc.el (like custom.el).
 
 
   (global-set-key (kbd "C-c k") 'js/quick-calc-remove-plus)
+
+
+  (add-hook 'calc-mode-hook
+            (lambda ()
+              (put 'calc-define 'calc-myround '(progn
+                                                 (defun calc-myround nil (interactive) (calc-wrapper (calc-enter-result 1 "sec" (cons (quote calcFunc-sec) (calc-top-list-n 1)))))
+                                                 (put 'calc-myround 'calc-user-defn 't)
+                                                 (defun calcFunc-sec (x) (math-check-const x t) (math-normalize (list
+                                                                                                                 (quote /) (list (quote calcFunc-round) (list (quote *) 64 x)) 64)))
+                                                 (put 'calcFunc-sec 'calc-user-defn '(/ (calcFunc-round (* 64 (var x
+                                                                                                                   var-x))) 64))
+                                                 (define-key calc-mode-map "ze" 'calc-myround)
+                                                 (define-key calc-mode-map "zw" 'js/calc-copy-and-remove-plus)))))
 #+END_SRC
 
 * theme
