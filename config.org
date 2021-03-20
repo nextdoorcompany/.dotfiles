@@ -1,12 +1,13 @@
 * version
+
 #+BEGIN_SRC emacs-lisp
   (defun js/version ()
     "Provides the version number of the init file."
     (interactive)
-    (message "init version 34"))
+    (message "init version 35"))
 #+END_SRC
 
-* credits
+* thank you
 
 + [[https://www.gnu.org/software/emacs/manual/][The Manual]]
 + [[https://github.com/howardabrams/dot-files/blob/master/emacs.org][Howard Abrams]]
@@ -14,11 +15,31 @@
 + [[https://github.com/hrs/dotfiles/blob/master/emacs/.emacs.d/configuration.org][Harry Schwartz]]
 + [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][Mike Zamansky]]
 + [[https://www.masteringemacs.org/][Mickey Petersen]]
++ [[https://github.com/purcell][Steve Purcell]]
++ [[https://sachachua.com/blog/][Sacha Chua]]
 
 * external dependencies
-+ aspell, aspell-en
-+ ripgrep
-+ ghostscript
+
+The system must have the programs below.  Also see the paths section for required files.
+
++ [[http://aspell.net/][aspell]]
++ [[https://ftp.gnu.org/gnu/aspell/dict/en/][aspell-en]]
++ [[https://github.com/BurntSushi/ripgrep][ripgrep]]
++ [[https://www.ghostscript.com/][ghostscript]]
++ [[https://git-scm.com/][git]]
++ [[http://tug.org/texlive/][texlive]] or [[https://miktex.org/][miktex]]
+
++ [[https://www.python.org/][python]]
++ [[https://github.com/andialbrecht/sqlparse][sqlformat]]
++ [[https://github.com/psf/black][black]]
++ [[http://www.sbcl.org/][sbcl]]
+
+#+BEGIN_SRC emacs-lisp
+  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext")))
+    (dolist (prog programs)
+      (when (not (executable-find prog))
+        (message "Program %s not found" prog))))
+#+END_SRC
 
 * package repositories
 
@@ -73,11 +94,18 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
 
 #+BEGIN_SRC emacs-lisp
   (let* ((subdirs '("local_elisp" "local_snippets"))
-	 (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
+         (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
     (dolist (dir fulldirs)
       (when (not (file-exists-p dir))
-	(message "Make directory: %s" dir)
-	(make-directory dir))))
+        (message "Make directory: %s" dir)
+        (make-directory dir))))
+
+  (let* ((filenames '("ephemera.org" "kanban.org" "notes.org" "elfeed.org"))
+         (fullnames (mapcar (lambda (d) (expand-file-name d "~/org") ) filenames)))
+    (dolist (file fullnames)
+      (when (not (file-exists-p file))
+        (message "File %s not found" file))))
+
   (add-to-list 'load-path "~/.emacs.d/local_elisp")
 #+END_SRC
 
@@ -872,7 +900,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
       (calc-copy-to-buffer arg)
       (js/format-calc-fraction)))
 
- 
+
   (defun js/quick-calc-remove-plus ()
     "Launch quick calc and copy result to kill ring without fraction
   plus signs."
