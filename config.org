@@ -29,6 +29,9 @@ The system must have the programs below.  Also see the paths section for require
 + [[https://git-scm.com/][git]]
 + [[http://tug.org/texlive/][texlive]] or [[https://miktex.org/][miktex]]
 
+These are optional programs.  Sqlformat and black are assumed to be in the project's
+virtualenv.
+
 + [[https://www.python.org/][python]]
 + [[https://github.com/andialbrecht/sqlparse][sqlformat]]
 + [[https://github.com/psf/black][black]]
@@ -328,75 +331,6 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   (recentf-mode t)
   (setq recentf-max-saved-items 150)
   (global-set-key (kbd "C-x C-r") 'recentf-open-files)
-#+END_SRC
-
-* duplicate a line
-
-[[https://stackoverflow.com/a/998472][Stack Overflow]]
-Using the [[https://github.com/bbatsov/crux][crux]] implementation.  See section below.
-
-#+BEGIN_SRC emacs-lisp
-  (defun js/duplicate-line (arg)
-    "Duplicate current line, leaving point in lower line."
-    (interactive "*p")
-
-    ;; save the point for undo
-    (setq buffer-undo-list (cons (point) buffer-undo-list))
-
-    ;; local variables for start and end of line
-    (let ((bol (save-excursion (beginning-of-line) (point)))
-          eol)
-      (save-excursion
-
-        ;; don't use forward-line for this, because you would have
-        ;; to check whether you are at the end of the buffer
-        (end-of-line)
-        (setq eol (point))
-
-        ;; store the line and disable the recording of undo information
-        (let ((line (buffer-substring bol eol))
-              (buffer-undo-list t)
-              (count arg))
-          ;; insert the line arg times
-          (while (> count 0)
-            (newline)         ;; because there is no newline in 'line'
-            (insert line)
-            (setq count (1- count)))
-          )
-
-        ;; create the undo information
-        (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list)))
-      ) ; end-of-let
-
-    ;; put the point in the lowest line and return
-    (next-line arg))
-#+END_SRC
-
-* delete a line without killing it
-
-[[https://stackoverflow.com/a/35711240][Stack Overflow]]
-
-#+BEGIN_SRC emacs-lisp
-  (defun js/delete-current-line ()
-    "Delete (not kill) the current line."
-    (interactive)
-    (save-excursion
-      (delete-region
-       (progn (forward-visible-line 0) (point))
-       (progn (forward-visible-line 1) (point)))))
-
-  (global-set-key (kbd "C-c <deletechar>") 'js/delete-current-line)
-#+END_SRC
-
-* copy active region to Windows clipboard
-
-[[https://www.reddit.com/r/emacs/comments/6xryqh/emacs_in_wsl_and_the_windows_clipboard/][Reddit]]
-
-#+BEGIN_SRC emacs-lisp
-  (defun js/wsl-copy ()
-    (interactive)
-    (let ((default-directory "/mnt/c/"))
-      (shell-command-on-region (point-min) (point-max) "clip.exe")))
 #+END_SRC
 
 * org mode housekeeping
