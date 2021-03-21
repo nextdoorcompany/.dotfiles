@@ -28,6 +28,7 @@ The system must have the programs below.  Also see the paths section for require
 + [[https://www.ghostscript.com/][ghostscript]]
 + [[https://git-scm.com/][git]]
 + [[http://tug.org/texlive/][texlive]] or [[https://miktex.org/][miktex]]
++ [[https://www.gnu.org/software/diffutils/][diff]]
 
 These are optional programs.  Sqlformat and black are assumed to be in the project's
 virtualenv.
@@ -35,13 +36,13 @@ virtualenv.
 + [[https://www.python.org/][python]]
 + [[https://github.com/andialbrecht/sqlparse][sqlformat]]
 + [[https://github.com/psf/black][black]]
-+ [[http://www.sbcl.org/][sbcl]]
 
 #+BEGIN_SRC emacs-lisp
-  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext")))
+  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff")))
     (dolist (prog programs)
       (when (not (executable-find prog))
-        (message "Program %s not found" prog))))
+        (let ((inhibit-message t))
+          (message "Program %s not found" prog)))))
 #+END_SRC
 
 * package repositories
@@ -107,7 +108,8 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
          (fullnames (mapcar (lambda (d) (expand-file-name d "~/org") ) filenames)))
     (dolist (file fullnames)
       (when (not (file-exists-p file))
-        (message "File %s not found" file))))
+        (let ((inhibit-message t))
+          (message "File %s not found" file)))))
 
   (add-to-list 'load-path "~/.emacs.d/local_elisp")
 #+END_SRC
@@ -1048,7 +1050,8 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
     (condition-case err
         (require feature)
       (error
-       (message "Couldn't install optional feature `%s': %S" feature err)
+       (let ((inhibit-message t))
+         (message "Couldn't install optional feature `%s': %S" feature err))
        nil)))
 
   (maybe-require 'minicad)
