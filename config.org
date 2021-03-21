@@ -1012,33 +1012,6 @@ Updated default rows variable inside sqlcmdline to 0 and added :t :c less verbos
               (setq truncate-lines t))))
 #+END_SRC
 
-* slime
-
-[[https://github.com/slime/slime][web]] [[https://melpa.org/#/slime][MELPA]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package slime
-    :ensure t
-    :config
-    (setq inferior-lisp-program "sbcl"))
-#+END_SRC
-
-[[https://github.com/anwyn/slime-company][web]] [[https://melpa.org/#/slime-company][MELPA]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package slime-company
-    :ensure t
-    :after (slime company)
-    :config
-    (setq slime-company-completion 'fuzzy
-          slime-company-after-completion 'slime-company-just-one-space)
-    (add-hook 'lisp-mode-hook
-              (lambda ()
-                (set (make-local-variable 'company-backends) '(company-slime company-capf company-dabbrev-code company-files))
-                (company-mode))))
-
-#+END_SRC
-
 * optional local packages
 
 Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el][Steve Purcell]] for maybe-require function.
