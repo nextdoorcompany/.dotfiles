@@ -1089,6 +1089,40 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
     :ensure t)
 #+END_SRC
 
+* training helpers
+#+BEGIN_SRC emacs-lisp
+  (defvar *js/bar-weight* 20
+    "Weight in kilograms of barbell.")
+  (defvar *js/plate-inventory* '(25 20 15 10 5 2.5 1)
+    "Inventory of plates in kilograms.  Assumes plates as pairs.")
+
+  (defun js/barbell-load (load)
+    "Generate a list of plates from the given LOAD."
+    (let ((load (- load *js/bar-weight*))
+          (available (sort *js/plate-inventory* '>))
+          (result))
+      (when (= 0
+               (dolist (current available load)
+                 (when (>= load (* 2 current))
+                   (setq load (- load (* 2 current)))
+                   (setq result (cons current result)))))
+        (reverse result))))
+
+
+  (defun js/barbell (load-string)
+    "Convert LOAD-STRING to the representation of the plates on the bar."
+    (interactive (let ((number-at-point (thing-at-point 'number)))
+                   (list (read-string "Load: "
+                                      (when number-at-point
+                                        (number-to-string number-at-point))))))
+    (let* ((load (string-to-number load-string))
+           (result (js/barbell-load load)))
+      (message (format "%s kg (%d lbs) %s" load (* 2.2 load)
+                       (seq-reduce (lambda (x y)
+                                     (format "%s--%s" x y))
+                                   result "")))))
+#+END_SRC
+
 * git interface
 
 [[https://github.com/magit/magit][magit]] [[https://melpa.org/#/magit][MELPA]]
