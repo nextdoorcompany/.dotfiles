@@ -877,23 +877,12 @@ m m and Z P will clobber this with calc.el (like custom.el).
 Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilaos/modus-themes][themes]] on MELPA.  They are on display in his Emacs [[https://www.youtube.com/channel/UC0uTPqBCFIpZxlz_Lv1tk_g][videos]].
 
 #+BEGIN_SRC emacs-lisp
-  (use-package modus-operandi-theme
-    :ensure t)
-
-  (use-package modus-vivendi-theme
-    :ensure t)
-
-  (load-theme 'modus-vivendi)
-
-  (defun prot/modus-themes-toggle ()
-      "Simplistic toggle for my Modus Themes.  All it does is check
-  if `modus-operandi' (light version) is active and if so switch to
-  `modus-vivendi' (dark version).  Else it switches to the light
-  theme."
-      (interactive)
-      (if (eq (car custom-enabled-themes) 'modus-operandi)
-          (load-theme 'modus-vivendi t)
-        (load-theme 'modus-operandi t)))
+  (use-package modus-themes
+    :ensure t
+    :init
+    (modus-themes-load-themes)
+    :config
+    (modus-themes-load-vivendi))
 #+END_SRC
 
 * elfeed
