@@ -29,6 +29,7 @@ The system must have the programs below.  Also see the paths section for require
 + [[https://git-scm.com/][git]]
 + [[http://tug.org/texlive/][texlive]] or [[https://miktex.org/][miktex]]
 + [[https://www.gnu.org/software/diffutils/][diff]]
++ [[https://www.ledger-cli.org/][ledger]]
 
 These are optional programs.  Sqlformat and black are assumed to be in the project's
 virtualenv.
@@ -38,7 +39,7 @@ virtualenv.
 + [[https://github.com/psf/black][black]]
 
 #+BEGIN_SRC emacs-lisp
-  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff")))
+  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger")))
     (dolist (prog programs)
       (when (not (executable-find prog))
         (let ((inhibit-message t))
@@ -1122,6 +1123,8 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 #+END_SRC
 
 * ledger
+
+[[https://github.com/ledger/ledger-mode][ledger-mode]] [[https://melpa.org/#/ledger-mode][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
   (use-package ledger-mode
