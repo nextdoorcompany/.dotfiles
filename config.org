@@ -1137,3 +1137,9 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
                 (setq-local ledger-complete-in-steps t)))
     (setq ledger-default-date-format ledger-iso-date-format))
 #+END_SRC
+
+* hippie expand
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<XF86Launch8>") 'hippie-expand)
+#+END_SRC
