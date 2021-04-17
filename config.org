@@ -1147,5 +1147,5 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 * hippie expand
 
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "<XF86Launch8>") 'hippie-expand)
+  (global-set-key (kbd "<f17>") 'hippie-expand)
 #+END_SRC
