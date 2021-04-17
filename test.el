@@ -25,4 +25,11 @@
   (should (equal nil (js/barbell-load 1000)))
   (should (equal nil (js/barbell-load 5))))
 
+(ert-deftest test-jsround ()
+  (should (= (/ 1.0 64) (string-to-number (calc-eval "jsround(0.016)"))))
+  (should (= (/ 1.0 64) (string-to-number (calc-eval "jsround(0.008)"))))
+  (should (= (/ 0.0 64) (string-to-number (calc-eval "jsround(0.007)"))))
+  (should (= (/ 65.0 64) (string-to-number (calc-eval "jsround(1.016)"))))
+  (should (= (+ 2 (/ 1.0 4)) (string-to-number (calc-eval "jsround(2.245)")))))
+
 (ert "test-*")

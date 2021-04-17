@@ -865,17 +865,18 @@ m m and Z P will clobber this with calc.el (like custom.el).
   (global-set-key (kbd "C-c k") 'js/quick-calc-remove-plus)
 
 
-  (add-hook 'calc-mode-hook
-            (lambda ()
-              (put 'calc-define 'calc-myround '(progn
-                                                 (defun calc-myround nil (interactive) (calc-wrapper (calc-enter-result 1 "sec" (cons (quote calcFunc-sec) (calc-top-list-n 1)))))
-                                                 (put 'calc-myround 'calc-user-defn 't)
-                                                 (defun calcFunc-sec (x) (math-check-const x t) (math-normalize (list
-                                                                                                                 (quote /) (list (quote calcFunc-round) (list (quote *) 64 x)) 64)))
-                                                 (put 'calcFunc-sec 'calc-user-defn '(/ (calcFunc-round (* 64 (var x
-                                                                                                                   var-x))) 64))
-                                                 (define-key calc-mode-map "ze" 'calc-myround)
-                                                 (define-key calc-mode-map "zw" 'js/calc-copy-and-remove-plus)))))
+  (put 'calc-define 'jsfns
+       '(progn
+          (defmath jsround (n)
+            "Round N to the nearest 64th."                              
+            (interactive 1 "jsr")
+            (/ (round (* n 64)) 64))
+          (define-key calc-mode-map "Ye" 'calc-jsround)
+          (define-key calc-mode-map "Yw" 'js/calc-copy-and-remove-plus)
+          (setq calc-Y-help-msgs
+                (cons "E round to 64th, W copy clean" calc-Y-help-msgs))))
+
+  (run-hooks 'calc-check-defines)
 #+END_SRC
 
 * theme
