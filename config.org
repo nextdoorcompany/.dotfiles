@@ -96,6 +96,7 @@ virtualenv.
 * paths
 
 Ensure certain directories are always available.  Taken directly from Howard Abrams.
+Explicitly set storage files.
 
 #+BEGIN_SRC emacs-lisp
   (let* ((subdirs '("local_elisp" "local_snippets"))
@@ -113,6 +114,10 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
           (message "File %s not found" file)))))
 
   (add-to-list 'load-path "~/.emacs.d/local_elisp")
+
+  (setq abbrev-file-name "~/.emacs.d/abbrev_defs")
+  (setq bookmark-default-file "~/.emacs.d/bookmarks")
+  (setq diary-file "~/.emacs.d/diary")
 #+END_SRC
 
 * display
