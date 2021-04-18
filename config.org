@@ -1146,6 +1146,8 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
 * hippie expand
 
+Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]] on using the higher function keys in Linux.  More information can be found on the [[https://wiki.archlinux.org/index.php/Xmodmap][Arch Wiki]].
+
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "<f17>") 'hippie-expand)
 #+END_SRC
