@@ -868,7 +868,7 @@ m m and Z P will clobber this with calc.el (like custom.el).
   (put 'calc-define 'jsfns
        '(progn
           (defmath jsround (n)
-            "Round N to the nearest 64th."                              
+            "Round N to the nearest 64th."
             (interactive 1 "jsr")
             (/ (round (* n 64)) 64))
           (define-key calc-mode-map "Ye" 'calc-jsround)
@@ -1150,4 +1150,13 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
 
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "<f17>") 'hippie-expand)
+#+END_SRC
+
+* package lint
+
+[[https://github.com/purcell/package-lint][package-lint]] [[https://melpa.org/#/package-lint][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package package-lint
+    :ensure t)
 #+END_SRC
