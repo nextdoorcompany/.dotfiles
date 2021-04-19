@@ -139,6 +139,7 @@ Explicitly set storage files.
 + Remove the warnings around capitalization functions.
 + Remove warning for using "a" in dired to find file and close dired buffer.
 + Remove warning for narrow to region.
++ If there are two dired buffers open, copy and move default to the other one.
 
 #+BEGIN_SRC emacs-lisp
   (setq column-number-mode t)
@@ -150,6 +151,7 @@ Explicitly set storage files.
   (put 'downcase-region 'disabled nil)
   (put 'dired-find-alternate-file 'disabled nil)
   (put 'narrow-to-region 'disabled nil)
+  (setq dired-dwim-target t)
 #+END_SRC
 
 * font
