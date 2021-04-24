@@ -1162,3 +1162,16 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
   (use-package package-lint
     :ensure t)
 #+END_SRC
+
+* launch work setup
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/go-to-work ()
+    (interactive)
+    (desktop-read)
+    (modus-themes-toggle)
+    (ispell)
+    (eshell)
+    (calc)
+    (org-agenda-list))
+#+END_SRC
