@@ -17,13 +17,14 @@
   (should (string= "10 1/16" (format-test-helper "10+1/16"))))
 
 (ert-deftest test-barbell-load ()
-  (should (equal nil (js/barbell-load 20)))
-  (should (equal nil (js/barbell-load 21)))
-  (should (equal '(2.5) (js/barbell-load 25)))
-  (should (equal '(25 10 2.5 1) (js/barbell-load 97)))
-  (should (equal '(25 20) (js/barbell-load 110)))
-  (should (equal nil (js/barbell-load 1000)))
-  (should (equal nil (js/barbell-load 5))))
+  (should (equal nil (barbell--load 20)))
+  (should (equal '(2.5) (barbell--load 25)))
+  (should (equal '(25 10 2.5 1) (barbell--load 97)))
+  (should (equal '(25 20) (barbell--load 110)))
+  (should-error (barbell--load 21))
+  (should-error (barbell--load 1000))
+  (should-error (barbell--load 5)))
+
 
 (ert-deftest test-jsround ()
   (should (= (/ 1.0 64) (string-to-number (calc-eval "jsround(0.016)"))))
