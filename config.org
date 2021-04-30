@@ -1209,8 +1209,7 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
     (interactive)
     (desktop-read)
     (modus-themes-toggle)
-    (ispell)
     (eshell)
     (calc)
-    (org-agenda-list))
+    (ispell))
 #+END_SRC
