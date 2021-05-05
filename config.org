@@ -1211,5 +1211,7 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
     (modus-themes-toggle)
     (eshell)
     (calc)
+    (sql-connect "engineering")
+    (sql-connect "customer_service")
     (ispell))
 #+END_SRC
