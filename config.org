@@ -1089,6 +1089,9 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 #+END_SRC
 
 * training helpers
+
+[[https://en.wikipedia.org/wiki/One-repetition_maximum][Wikipedia: One-repetition maximum]]
+  
 #+BEGIN_SRC emacs-lisp
   (defvar barbell-bar-weight 20
     "Weight in kilograms of barbell.")
