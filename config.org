@@ -360,6 +360,7 @@ I don't want to confirm every time babel evaluates.
   (setq org-cycle-emulate-tab 'white)
   (setq org-agenda-window-setup 'current-window)
   (setq org-return-follows-link t)
+  (setq org-startup-folded t)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
