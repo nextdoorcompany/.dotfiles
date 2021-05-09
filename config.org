@@ -1124,39 +1124,8 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
                                        result "")
                          "--")))))
 
-  ;; this is probably the wrong structure
-
-  (defvar barbell-weeks)
-  (defvar barbell-warmup)
-  (defvar barbell-accessory)
-  (defvar barbell-exercise-accessory-map)
-
-  (defun barbell-insert-training-log (base-weight exercise current-week)
-    (interactive "nBase weight: \nsExercise: \nnCurrent week: ")
-    (insert (format-time-string "\n* [%Y-%m-%d %a]\n"))
-    (barbell--process-group "warmup" exercise barbell-warmup base-weight)
-    (barbell--process-group
-     (format "%s base = %s kg 1RM ~= %s kg" exercise base-weight (barbell--ceiling (/ base-weight 0.9) 5))
-     exercise (plist-get barbell-weeks current-week) base-weight)
-    (barbell--process-group "accessory" exercise barbell-accessory base-weight)
-    (insert (format "+ %s %sx%s\n" (alist-get exercise barbell-exercise-accessory-map nil nil 'string=) 3 10))
-    (insert "** computed 1RM ="))
-
-
-  (defun barbell--process-group (group exercise program weight)
-    (insert (format "** %s\n" group))
-    (dolist (s program)
-      (insert (format "+ %s " exercise))
-      (seq-let [percent sets reps] s
-        (let* ((load (barbell--ceiling (* weight percent) 5))
-               (load-string (barbell-load (number-to-string load))))
-          (insert (format "%sx%s %s\n" sets reps load-string))))))
-
-
-  (defun barbell--ceiling (n to)
-    (* (ceiling (/ n to)) to))
-
   (defun barbell-compute-1RM (weight reps)
+    "Compute the one rep maximum for WEIGHT and REPS using the Epley formula."
     (interactive "nWeight: \nnReps: ")
     (message "%s" (+ (* weight reps 0.0333) weight)))
 #+END_SRC
