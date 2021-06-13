@@ -1186,5 +1186,8 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
     (calc)
     (sql-connect "engineering")
     (sql-connect "customer_service")
-    (ispell))
+    (ispell)
+    (add-to-list 'org-capture-templates
+               '("j" "log HMF listing" plain (file "~/org/js_list.org")
+                 "%t --- %(insert-register ?j)%?")))
 #+END_SRC
