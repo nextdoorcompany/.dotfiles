@@ -140,6 +140,7 @@ Explicitly set storage files.
 + Remove warning for using "a" in dired to find file and close dired buffer.
 + Remove warning for narrow to region.
 + If there are two dired buffers open, copy and move default to the other one.
++ Use the same backslashes for regex isearch and re-builder.
 
 #+BEGIN_SRC emacs-lisp
   (setq column-number-mode t)
@@ -152,6 +153,7 @@ Explicitly set storage files.
   (put 'dired-find-alternate-file 'disabled nil)
   (put 'narrow-to-region 'disabled nil)
   (setq dired-dwim-target t)
+  (setq reb-re-syntax 'string)
 #+END_SRC
 
 * font
