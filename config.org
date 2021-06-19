@@ -1194,4 +1194,13 @@ Run ispell last
                '("j" "log HMF listing" plain (file "~/org/js_list.org")
                  "%t --- %(insert-register ?j)%?"))
     (ispell))
+
+  (defun js/toggle-coding ()
+    (interactive)
+    (if ivy-use-virtual-buffers
+        (progn
+          (setq ivy-use-virtual-buffers nil)
+          (js/change-face-height 180))
+      (setq ivy-use-virtual-buffers t)
+      (js/change-face-height js/default-font-height)))
 #+END_SRC
