@@ -106,7 +106,7 @@ Explicitly set storage files.
         (message "Make directory: %s" dir)
         (make-directory dir))))
 
-  (let* ((filenames '("ephemera.org" "kanban.org" "notes.org" "elfeed.org"))
+  (let* ((filenames '("ephemera.org" "kanban.org" "notes.org" "elfeed.org" "books.org"))
          (fullnames (mapcar (lambda (d) (expand-file-name d "~/org") ) filenames)))
     (dolist (file fullnames)
       (when (not (file-exists-p file))
@@ -385,7 +385,10 @@ I don't want to confirm every time babel evaluates.
         "| %^{date}U | %^{sys} | %^{dia} | %^{pulse}")
        ("t" "TODO kanban/tasks" entry
         (file+headline "~/org/kanban.org" "tasks")
-        "* TODO %?\nSCHEDULED: %t"))))
+        "* TODO %?\nSCHEDULED: %t")
+       ("o" "TODO book" entry
+          (file "~/org/books.org")
+          (function js/build-book-template) :empty-lines 1))))
 
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda-list)
@@ -401,6 +404,13 @@ I don't want to confirm every time babel evaluates.
     "Exports current org buffer as ascii to kill ring."
     (interactive)
     (kill-new (org-export-as 'ascii)))
+
+  (defun js/build-book-template ()
+    (let ((title (capitalize (read-string "Title: ")))
+          (author (capitalize (read-string "Author l,f: ")))
+          (date-read (read-string "Date read: " (format-time-string "%F")))
+          (rating (read-string "Rating 1-5: " "4")))
+      (format "* %s\n  :PROPERTIES:\n  :AUTHOR: %s\n  :DATE_READ: %s\n  :RATING:   %s\n  :TITLE:    %s\n  :END:" title author date-read rating title)))
 #+END_SRC
 
 * navigation within a file
@@ -1093,7 +1103,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 * training helpers
 
 [[https://en.wikipedia.org/wiki/One-repetition_maximum][Wikipedia: One-repetition maximum]]
-  
+
 #+BEGIN_SRC emacs-lisp
   (defvar barbell-bar-weight 20
     "Weight in kilograms of barbell.")
@@ -1179,7 +1189,7 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
 
 * launch work setup
 
-Run ispell last  
+Run ispell last
 
 #+BEGIN_SRC emacs-lisp
   (defun js/go-to-work ()
