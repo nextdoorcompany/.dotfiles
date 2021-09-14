@@ -654,6 +654,7 @@ I had been using a combination of C-r for isearch and C-s for swiper.  Watching 
       (message-kill-buffer))
     (add-hook 'message-mode-hook
               (lambda ()
+                (setq buffer-auto-save-file-name nil)
                 (define-key message-mode-map (kbd "C-c s")
                   'js/mail-send-and-kill)))
     :hook
