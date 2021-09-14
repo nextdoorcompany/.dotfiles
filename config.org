@@ -658,10 +658,8 @@ I had been using a combination of C-r for isearch and C-s for swiper.  Watching 
                   'js/mail-send-and-kill)))
     :hook
     ((message-mode . turn-on-orgtbl)
-     (message-mode . turn-on-orgstruct++)
      (message-mode . turn-off-auto-fill)
-     (message-mode . turn-on-flyspell))
-  )
+     (message-mode . turn-on-flyspell)))
 #+END_SRC
 
 * recentf-ext
