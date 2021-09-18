@@ -61,7 +61,8 @@ virtualenv.
 [[https://github.com/jwiegley/use-package][use-package]] [[https://melpa.org/#/use-package][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-  (package-initialize)
+  (unless package--initialized
+    (package-initialize))
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
