@@ -904,6 +904,8 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
   (use-package modus-themes
     :ensure t
     :init
+    (setq modus-themes-region '(accented))
+    (setq modus-themes-mode-line '(accented))
     (modus-themes-load-themes)
     :config
     (modus-themes-load-vivendi))
@@ -1231,4 +1233,4 @@ Run ispell last
   (add-hook 'dired-mode-hook
             (lambda ()(define-key dired-mode-map (kbd "C-d")
                         'js-dired-do-destroy)))
-#+END_SRC  
+#+END_SRC
