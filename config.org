@@ -424,7 +424,7 @@ I don't want to confirm every time babel evaluates.
 #+BEGIN_SRC emacs-lisp
   (use-package avy
     :ensure t
-    :bind ("C-c j" . avy-goto-char-timer))
+    :bind ("C-c i" . avy-goto-char-timer))
 #+END_SRC
 
 
@@ -1235,3 +1235,16 @@ Run ispell last
             (lambda ()(define-key dired-mode-map (kbd "C-d")
                         'js-dired-do-destroy)))
 #+END_SRC
+
+* outline navigation
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/outline (arg)
+    "Dispatch `counsel-outline' or if ARG `counsel-imenu'."
+    (interactive "P")
+    (if arg
+        (counsel-imenu)
+      (counsel-outline)))
+  (global-set-key (kbd "C-c j") 'js/outline)
+#+END_SRC
+
