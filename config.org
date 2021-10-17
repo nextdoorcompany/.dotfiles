@@ -37,9 +37,10 @@ virtualenv.
 + [[https://www.python.org/][python]]
 + [[https://github.com/andialbrecht/sqlparse][sqlformat]]
 + [[https://github.com/psf/black][black]]
++ [[https://graphviz.org/][dot]]
 
 #+BEGIN_SRC emacs-lisp
-  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger")))
+  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger" "dot")))
     (dolist (prog programs)
       (when (not (executable-find prog))
         (let ((inhibit-message t))
@@ -376,23 +377,23 @@ I don't want to confirm every time babel evaluates.
            :publishing-directory "~/org/html")))
 
   (setq org-capture-templates
-     (quote
-      (("e" "TODO ephemera" entry
-        (file "~/org/ephemera.org")
-        "* TODO %?\nSCHEDULED: %t")
-       ("b" "bookmark clipped link" entry
-        (file "~/org/notes.org")
-        "* [[%?]] \n:PROPERTIES:\n:CREATED: %U\n:END:\n"
-        :empty-lines 1)
-       ("f" "blood pressure" table-line
-        (file "~/org/bp.org")
-        "| %^{date}U | %^{sys} | %^{dia} | %^{pulse}")
-       ("t" "TODO kanban/tasks" entry
-        (file+headline "~/org/kanban.org" "tasks")
-        "* TODO %?\nSCHEDULED: %t")
-       ("o" "TODO book" entry
-          (file "~/org/books.org")
-          (function js/build-book-template) :empty-lines 1))))
+        (quote
+         (("e" "TODO ephemera" entry
+           (file "~/org/ephemera.org")
+           "* TODO %?\nSCHEDULED: %t")
+          ("b" "bookmark clipped link" entry
+           (file "~/org/notes.org")
+           "* [[%?]] \n:PROPERTIES:\n:CREATED: %U\n:END:\n"
+           :empty-lines 1)
+          ("f" "blood pressure" table-line
+           (file "~/org/bp.org")
+           "| %^{date}U | %^{sys} | %^{dia} | %^{pulse}")
+          ("t" "TODO kanban/tasks" entry
+           (file+headline "~/org/kanban.org" "tasks")
+           "* TODO %?\nSCHEDULED: %t")
+          ("o" "TODO book" entry
+           (file "~/org/books.org")
+           (function js/build-book-template) :empty-lines 1))))
 
   (global-set-key (kbd "C-c c") 'org-capture)
   (global-set-key (kbd "C-c a") 'org-agenda-list)
@@ -400,7 +401,8 @@ I don't want to confirm every time babel evaluates.
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-     (python . t)))
+     (python . t)
+     (dot . t)))
 
   (put 'org-archive-subtree 'disabled t)
 
@@ -1247,4 +1249,3 @@ Run ispell last
       (counsel-outline)))
   (global-set-key (kbd "C-c j") 'js/outline)
 #+END_SRC
-
