@@ -405,7 +405,7 @@ I don't want to confirm every time babel evaluates.
      (python . t)
      (dot . t)))
 
-  (put 'org-archive-subtree 'disabled t)
+  (define-key org-mode-map (kbd "C-c C-x C-s") nil)
 
   (defun js/org-export-ascii-to-kill ()
     "Exports current org buffer as ascii to kill ring."
