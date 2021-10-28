@@ -144,6 +144,7 @@ Explicitly set storage files.
 + If there are two dired buffers open, copy and move default to the other one.
 + Use the same backslashes for regex isearch and re-builder.
 + Use the trash ~/.local/share/Trash/files.  C-d will delete.
++ Pretty print result of eval thank you to Karthinks [[https://karthinks.com/software/an-elisp-editing-tip/][blog]].
 
 #+BEGIN_SRC emacs-lisp
   (setq column-number-mode t)
@@ -158,6 +159,7 @@ Explicitly set storage files.
   (setq dired-dwim-target t)
   (setq reb-re-syntax 'string)
   (setq delete-by-moving-to-trash t)
+  (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
 #+END_SRC
 
 * font
