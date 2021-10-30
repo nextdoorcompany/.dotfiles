@@ -804,6 +804,7 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
           ("\\*Apropos" (display-buffer-same-window))
           ("\\*helpful" (display-buffer-same-window))
           ("\\*ivy-occur" (display-buffer-same-window))
+          ("\\*Ledger Report" (display-buffer-same-window))
           ("\\*info" (display-buffer-same-window display-buffer-use-some-window))
           ("\\*Python" (display-buffer-use-some-window))))
 #+END_SRC
