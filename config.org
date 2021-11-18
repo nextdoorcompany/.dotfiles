@@ -1254,3 +1254,22 @@ Run ispell last
       (counsel-outline)))
   (global-set-key (kbd "C-c j") 'js/outline)
 #+END_SRC
+
+* graphviz
+
+[[https://graphviz.org/][Graphviz]]
+
+[[https://github.com/ppareit/graphviz-dot-mode][web]] [[https://melpa.org/#/graphviz-dot-mode][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package graphviz-dot-mode
+    :ensure t
+    :config
+    (setq graphviz-dot-indent-width 4)
+    (add-hook 'graphviz-dot-mode-hook
+              (lambda ()
+                (set (make-local-variable 'company-backends) '(company-graphviz-dot-backend company-capf company-dabbrev-code company-files))
+                (company-mode))))
+
+  (use-package company-graphviz-dot)
+#+END_SRC
