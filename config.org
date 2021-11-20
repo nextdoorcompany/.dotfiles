@@ -810,7 +810,8 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
           ("\\*Ledger Report" (display-buffer-same-window))
           ("\\*deadgrep" (display-buffer-use-some-window))
           ("\\*info" (display-buffer-same-window display-buffer-use-some-window))
-          ("\\*Python" (display-buffer-use-some-window))))
+          ("\\*Python" (display-buffer-use-some-window))
+          ("\\*Pp Eval Output" (display-buffer-reuse-window display-buffer-use-some-window))))
 #+END_SRC
 
 * reformatter
