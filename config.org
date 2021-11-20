@@ -394,6 +394,9 @@ I don't want to confirm every time babel evaluates.
           ("t" "TODO kanban/tasks" entry
            (file+headline "~/org/kanban.org" "tasks")
            "* TODO %?\nSCHEDULED: %t")
+          ("u" "TODO ephemera/unfiled" entry
+           (file+headline "~/org/ephemera.org" "unfiled")
+           "* TODO %?")
           ("o" "TODO book" entry
            (file "~/org/books.org")
            (function js/build-book-template) :empty-lines 1))))
