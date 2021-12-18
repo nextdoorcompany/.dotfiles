@@ -1219,6 +1219,20 @@ Run ispell last
     (add-to-list 'org-capture-templates
                '("j" "log HMF listing" plain (file "~/org/js_list.org")
                  "%t --- %(insert-register ?j)%?"))
+    (add-to-list 'org-agenda-custom-commands
+                 '("x" "Agenda grouped by priority"
+                   ((agenda ""
+                            ((org-agenda-skip-function
+                              '(org-agenda-skip-entry-if 'notregexp "\\[#A]"))
+                             (org-agenda-overriding-header "Daily")))
+                    (agenda ""
+                            ((org-agenda-skip-function
+                              '(org-agenda-skip-entry-if 'notregexp "\\[#B]"))
+                             (org-agenda-overriding-header "Weekly")))
+                    (agenda ""
+                            ((org-agenda-skip-function
+                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]")))))))
+    (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
     (ispell))
 
   (defun js/toggle-coding ()
