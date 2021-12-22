@@ -1219,6 +1219,7 @@ Run ispell last
     (add-to-list 'org-capture-templates
                '("j" "log HMF listing" plain (file "~/org/js_list.org")
                  "%t --- %(insert-register ?j)%?"))
+    (require 'org-agenda)
     (add-to-list 'org-agenda-custom-commands
                  '("x" "Agenda grouped by priority"
                    ((agenda ""
@@ -1232,7 +1233,6 @@ Run ispell last
                     (agenda ""
                             ((org-agenda-skip-function
                               '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]")))))))
-    (require 'org-agenda)
     (add-to-list 'org-agenda-custom-commands
                  '("y" "notes TODO" todo "TODO"
                     ((org-agenda-files '("~/org/notes.org"))
