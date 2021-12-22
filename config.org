@@ -1232,10 +1232,11 @@ Run ispell last
                     (agenda ""
                             ((org-agenda-skip-function
                               '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]")))))))
+    (require 'org-agenda)
     (add-to-list 'org-agenda-custom-commands
-                 '(("y" "notes TODO" todo "TODO"
+                 '("y" "notes TODO" todo "TODO"
                     ((org-agenda-files '("~/org/notes.org"))
-                     (org-agenda-overriding-header "Notes TODO"))))))
+                     (org-agenda-overriding-header "Notes TODO"))))
     (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
     (ispell))
 
