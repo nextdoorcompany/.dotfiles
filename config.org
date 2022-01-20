@@ -423,6 +423,15 @@ I don't want to confirm every time babel evaluates.
           (date-read (read-string "Date read: " (format-time-string "%F")))
           (rating (read-string "Rating 1-5: " "4")))
       (format "* %s\n  :PROPERTIES:\n  :AUTHOR: %s\n  :DATE_READ: %s\n  :RATING:   %s\n  :TITLE:    %s\n  :END:" title author date-read rating title)))
+
+  (defun js/org-return (arg)
+    "If ARG or not in a list behave normally, otherwise add a list item."
+    (interactive "P")
+    (if (and (org-in-item-p) (null arg))
+        (org-insert-item)
+      (org-return)))
+
+  (define-key org-mode-map [remap org-return] #'js/org-return)
 #+END_SRC
 
 * navigation within a file
