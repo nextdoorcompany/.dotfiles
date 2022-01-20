@@ -432,6 +432,14 @@ I don't want to confirm every time babel evaluates.
       (org-return)))
 
   (define-key org-mode-map [remap org-return] #'js/org-return)
+
+  (defun js/flush-all-blank-lines ()
+    "Remove all lines containing only whitespace in a buffer."
+    (interactive)
+    (save-excursion
+      (beginning-of-buffer)
+      (flush-lines "^ *$")))
+
 #+END_SRC
 
 * navigation within a file
