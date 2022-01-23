@@ -372,6 +372,7 @@ I don't want to confirm every time babel evaluates.
   (setq org-startup-folded t)
   (setq org-adapt-indentation nil)
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
+  (setq org-use-speed-commands t)
   (setq org-publish-project-alist
         '(("keyboard"
            :base-directory "~/notes/"
