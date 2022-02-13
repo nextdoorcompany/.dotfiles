@@ -1,7 +1,7 @@
-sudo apt update
-sudo apt full-upgrade
-sudo apt autoremove
-flatpak update
-flatpak uninstall --unused
+sudo apt -qq update
+sudo apt -qq full-upgrade
+sudo apt -qq autoremove
+flatpak update --noninteractive
+flatpak uninstall --unused --noninteractive
 cd ~/.dotfiles
 git pull --ff-only
