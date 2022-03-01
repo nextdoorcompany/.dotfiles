@@ -1229,6 +1229,12 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
 Run ispell last
 
 #+BEGIN_SRC emacs-lisp
+  (defun js/scroll-to-bottom (&optional e)
+    (let ((this-scroll-margin
+           (min (max 0 scroll-margin)
+                (truncate (/ (window-body-height) 4.0)))))
+      (recenter (- -1 this-scroll-margin) t)))
+
   (defun js/go-to-work ()
     (interactive)
     (desktop-read)
@@ -1259,6 +1265,7 @@ Run ispell last
                     ((org-agenda-files '("~/org/notes.org"))
                      (org-agenda-overriding-header "Notes TODO"))))
     (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
+    (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
     (ispell))
 
   (defun js/toggle-coding ()
