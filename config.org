@@ -939,6 +939,7 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     :init
     (setq modus-themes-region '(accented))
     (setq modus-themes-mode-line '(accented))
+    (setq modus-themes-completions '((selection . (accented intense text-also))))
     (modus-themes-load-themes)
     :config
     (modus-themes-load-vivendi))
