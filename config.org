@@ -1277,6 +1277,19 @@ Run ispell last
           (js/change-face-height 180))
       (setq ivy-use-virtual-buffers t)
       (js/change-face-height js/default-font-height)))
+
+  (defun js/desktop-to-job ()
+    (interactive)
+    (let ((full-job (get-register ?j)))
+      (unless (null full-job)
+        (let* ((job-number (car (split-string full-job "[.]")))
+               (job-folder (expand-file-name job-number "c:/Users/justin/Dropbox/Documents/job files")))
+          (when (file-exists-p job-folder)
+            (delete-other-windows)
+            (split-window-below)
+            (find-file "c:/Users/justin/Desktop")
+            (find-file-other-window job-folder)
+            (other-window 1))))))
 #+END_SRC
 
 * permanently delete from dired
@@ -1324,4 +1337,14 @@ Run ispell last
                 (company-mode))))
 
   (use-package company-graphviz-dot)
+#+END_SRC
+* dired auto-revert
+Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95ad249583\]\]][here.]]  Relevant Emacs [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Non_002dFile-Buffers.html][manual]] and Stack Overflow [[https://emacs.stackexchange.com/questions/29228/how-to-stop-dired-printing-reverting-buffer][post.]] 
+#+BEGIN_SRC emacs-lisp
+(defun quiet-auto-revert ()
+  "A hook to run for buffers you want to revert automatically and silently"
+  (auto-revert-mode 1)
+  (setq-local auto-revert-verbose nil))
+
+(add-hook 'dired-mode-hook #'quiet-auto-revert t nil)
 #+END_SRC
