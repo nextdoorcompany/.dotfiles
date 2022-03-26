@@ -1277,7 +1277,9 @@ Run ispell last
           (setq ivy-use-virtual-buffers nil)
           (js/change-face-height 180))
       (setq ivy-use-virtual-buffers t)
-      (js/change-face-height js/default-font-height)))
+      (js/change-face-height js/default-font-height))
+    (calc)
+    (ispell))
 
   (defun js/desktop-to-job ()
     (interactive)
