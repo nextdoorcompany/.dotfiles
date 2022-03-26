@@ -321,7 +321,8 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
   (add-hook 'python-mode-hook
        (lambda ()
-         (display-line-numbers-mode 1)))
+         (display-line-numbers-mode 1)
+         (superword-mode 1)))
 
   (add-hook 'python-mode-hook
             (lambda ()
@@ -1339,7 +1340,7 @@ Run ispell last
   (use-package company-graphviz-dot)
 #+END_SRC
 * dired auto-revert
-Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95ad249583\]\]][here.]]  Relevant Emacs [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Non_002dFile-Buffers.html][manual]] and Stack Overflow [[https://emacs.stackexchange.com/questions/29228/how-to-stop-dired-printing-reverting-buffer][post.]] 
+Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95ad249583\]\]][here.]]  Relevant Emacs [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Non_002dFile-Buffers.html][manual]] and Stack Overflow [[https://emacs.stackexchange.com/questions/29228/how-to-stop-dired-printing-reverting-buffer][post.]]
 #+BEGIN_SRC emacs-lisp
 (defun quiet-auto-revert ()
   "A hook to run for buffers you want to revert automatically and silently"
@@ -1347,4 +1348,9 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (setq-local auto-revert-verbose nil))
 
 (add-hook 'dired-mode-hook #'quiet-auto-revert t nil)
+#+END_SRC
+* superword-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package subword
+    :diminish superword-mode)
 #+END_SRC
