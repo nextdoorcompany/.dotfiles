@@ -1263,7 +1263,11 @@ Run ispell last
                              (org-agenda-overriding-header "Weekly")))
                     (agenda ""
                             ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]")))))))
+                              '(org-agenda-skip-entry-if 'notregexp "\\[#C]"))
+                             (org-agenda-overriding-header "Quarterly")))
+                    (agenda ""
+                            ((org-agenda-skip-function
+                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]\\|\\[#C]")))))))
     (add-to-list 'org-agenda-custom-commands
                  '("y" "notes TODO" todo "TODO"
                     ((org-agenda-files '("~/org/notes.org"))
