@@ -1362,3 +1362,24 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (use-package subword
     :diminish superword-mode)
 #+END_SRC
+* skeletons
+#+BEGIN_SRC emacs-lisp
+  (defvar js/insert-book-week-date nil
+    "Last used date for insert book_week.")
+
+  (define-skeleton js/insert-book-week 
+    "Insert book_week row."
+    nil
+    "Insert into book_weeks (job, release, book, week_friday) values ('"
+    '(setq v1 (split-string (skeleton-read "JOB> ") "[.]"))
+    (upcase (car v1))
+    "', '"
+    (upcase (cadr v1))
+    "', '"
+    (upcase (caddr v1))
+    "', '"
+    '(setq v2 (skeleton-read "Friday> " js/insert-book-week-date))
+    '(setq js/insert-book-week-date v2)
+    v2
+    "');;")
+#+END_SRC
