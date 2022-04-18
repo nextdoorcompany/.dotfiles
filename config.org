@@ -517,6 +517,7 @@ I don't want to confirm every time babel evaluates.
   (global-set-key (kbd "M-z") 'zap-up-to-char)
   (global-set-key (kbd "C-c <DEL>") 'kill-whole-line)
   (defalias 'eb 'eval-buffer)
+  (defalias 'cal 'calendar)
 #+END_SRC
 
 * testing packages
