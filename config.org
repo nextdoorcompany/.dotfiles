@@ -360,7 +360,7 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org")))
+  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 0)
@@ -416,6 +416,9 @@ I don't want to confirm every time babel evaluates.
      (dot . t)))
 
   (define-key org-mode-map (kbd "C-c C-x C-s") nil)
+
+  (add-to-list 'org-modules 'org-habit)
+  (require 'org-habit)
 
   (defun js/org-export-ascii-to-kill ()
     "Exports current org buffer as ascii to kill ring."
