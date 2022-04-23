@@ -1371,7 +1371,7 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (defvar js/insert-book-week-date nil
     "Last used date for insert book_week.")
 
-  (define-skeleton js/insert-book-week 
+  (define-skeleton js/insert-book-week
     "Insert book_week row."
     nil
     "Insert into book_weeks (job, release, book, week_friday) values ('"
