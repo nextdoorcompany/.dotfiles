@@ -799,7 +799,7 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
 #+BEGIN_SRC emacs-lisp
   (define-minor-mode pinned-buffer-mode
     "Pin the current buffer to the selected window."
-    nil " P" nil
+    :lighter nil " P" nil
     (set-window-dedicated-p (selected-window) pinned-buffer-mode))
 
   (global-set-key (kbd "C-c p") 'pinned-buffer-mode)
