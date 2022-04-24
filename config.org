@@ -421,8 +421,11 @@ I don't want to confirm every time babel evaluates.
   (add-to-list 'org-modules 'org-habit)
   (require 'org-habit)
 
-  (add-to-list 'org-speed-commands
-               '("S" . (org-insert-subheading '(4))))
+  (if (string= org-version "9.5.2")
+      (add-to-list 'org-speed-commands
+                   '("S" . (org-insert-subheading '(4))))
+    (add-to-list 'org-speed-commands-user
+                 '("S" . (org-insert-subheading '(4)))))
 
   (defun js/org-export-ascii-to-kill ()
     "Exports current org buffer as ascii to kill ring."
