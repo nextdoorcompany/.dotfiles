@@ -360,7 +360,8 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
+  
+(setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 0)
@@ -1278,7 +1279,8 @@ Run ispell last
                              (org-agenda-overriding-header "Quarterly")))
                     (agenda ""
                             ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]\\|\\[#C]")))))))
+                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]\\|\\[#C]"))))
+                    (todo "BLOCKED" ((org-agenda-overriding-header "Blocked"))))))
     (add-to-list 'org-agenda-custom-commands
                  '("y" "notes TODO" todo "TODO"
                     ((org-agenda-files '("~/org/notes.org"))
