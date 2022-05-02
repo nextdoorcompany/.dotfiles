@@ -1,5 +1,5 @@
 sudo apt -qq update
-sudo apt -qq full-upgrade
+sudo apt -qy full-upgrade
 sudo apt -qq autoremove
 flatpak update --noninteractive
 flatpak uninstall --unused --noninteractive
