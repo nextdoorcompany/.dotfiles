@@ -1409,6 +1409,7 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
 #+BEGIN_SRC emacs-lisp
   (defun js/scan ()
     "Run shell script to mount drive, move images, and open dired."
+    (interactive)
     (shell-command-to-string "scanner.sh")
     (message "convert * filename.pdf")
     (dired "~/scans"))
