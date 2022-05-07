@@ -1,6 +1,6 @@
 sudo apt -qq update
 sudo apt -qy full-upgrade
-sudo apt -qq autoremove
+sudo apt -qy autoremove
 flatpak update --noninteractive
 flatpak uninstall --unused --noninteractive
 cd ~/.dotfiles
