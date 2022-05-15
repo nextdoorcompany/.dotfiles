@@ -216,6 +216,10 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
           ispell-list-command "--list"))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (setq dictionary-server "dict.org")
+#+END_SRC
+
 * ElDoc
 
 [[https://www.emacswiki.org/emacs/ElDoc][ElDoc]]
