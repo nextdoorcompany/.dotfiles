@@ -540,16 +540,6 @@ I don't want to confirm every time babel evaluates.
     :ensure t)
 #+END_SRC
 
-* nicer help
-
-[[https://github.com/Wilfred/helpful][helpful]] [[https://melpa.org/#/helpful][MELPA]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package helpful
-    :ensure t
-    :bind ("C-c h" . helpful-at-point))
-#+END_SRC
-
 * disable mouse
 
 [[https://github.com/purcell/disable-mouse/tree/541363bd6353b8b05375552bab884a6315ea545c][disable-mouse]] [[https://melpa.org/#/disable-mouse][MELPA]]
