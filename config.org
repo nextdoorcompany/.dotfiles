@@ -462,17 +462,6 @@ I don't want to confirm every time babel evaluates.
 
 #+END_SRC
 
-* navigation within a file
-
-[[https://github.com/abo-abo/avy][avy]] [[https://melpa.org/#/avy][MELPA]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package avy
-    :ensure t
-    :bind ("C-c i" . avy-goto-char-timer))
-#+END_SRC
-
-
 * expand region based on context
 
 [[https://github.com/magnars/expand-region.el][expand-region]] [[https://melpa.org/#/expand-region][MELPA]]
@@ -746,25 +735,12 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
           (replace-match ", "))
         )))
 #+END_SRC
-
-* ace-window
-
-[[https://github.com/abo-abo/ace-window][ace-window]] [[https://melpa.org/#/ace-window][MELPA]]
-
-[[https://youtu.be/D6OUMVbPKSA][Mike Zamansky video]]
-[[https://youtu.be/nKCKuRuvAOw][Sacha Chua video]]
-
+* window movement
 #+BEGIN_SRC emacs-lisp
-  (use-package ace-window
-    :ensure t
-    :config
-    (setq aw-keys '(?a ?s ?d ?f ?k ?l ?\;))
-    (setq aw-char-position (quote left))
-    (custom-set-faces
-     '(aw-leading-char-face ((t (:foreground "red" :height 3.0)))))
-    :bind ("<f16>" . ace-window))
+  (windmove-default-keybindings)
+  (setq windmove-wrap-around t)
+  (global-set-key (kbd "<f16>") 'other-window)
 #+END_SRC
-
 * stripe region or table
 
 #+BEGIN_SRC emacs-lisp
