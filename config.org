@@ -1385,3 +1385,8 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
     (message "convert * filename.pdf")
     (dired "~/scans"))
 #+END_SRC
+* display time in mode line
+#+BEGIN_SRC emacs-lisp
+  (setq display-time-day-and-date t)
+  (display-time-mode 1)
+#+END_SRC
