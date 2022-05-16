@@ -218,6 +218,7 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
 
 #+BEGIN_SRC emacs-lisp
   (setq dictionary-server "dict.org")
+  (defalias 'ds #'dictionary-search)
 #+END_SRC
 
 * ElDoc
