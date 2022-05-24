@@ -1167,6 +1167,10 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
     "Compute the one rep maximum for WEIGHT and REPS using the Epley formula."
     (interactive "nWeight: \nnReps: ")
     (message "%s" (+ (* weight reps 0.0333) weight)))
+
+  (defun barbell-reps-to-1RM (target weight)
+    (interactive "nTarget: \nnWeight: ")
+    (message "%s" (ceiling (/ (- target weight) (* 0.0333 weight)))))
 #+END_SRC
 
 * git interface
