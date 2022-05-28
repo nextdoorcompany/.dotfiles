@@ -365,7 +365,7 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
-  
+
 (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
@@ -1140,10 +1140,10 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
           (available (sort barbell-plate-inventory '>))
           (result))
       (if (= 0
-               (dolist (current available load)
-                 (when (>= load (* 2 current))
-                   (setq load (- load (* 2 current)))
-                   (setq result (cons current result)))))
+             (dolist (current available load)
+               (when (>= load (* 2 current))
+                 (setq load (- load (* 2 current)))
+                 (setq result (cons current result)))))
           (reverse result)
         (user-error "%s" "Impossible load"))))
 
@@ -1159,7 +1159,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
       (message (format "%s kg (%d lbs) %s" load (* 2.2 load)
                        (if result
                            (seq-reduce (lambda (x y)
-                                     (format "%s--%s" x y))
+                                         (format "%s--%s" x y))
                                        result "")
                          "--")))))
 
@@ -1170,7 +1170,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
   (defun barbell-reps-to-1RM (target weight)
     (interactive "nTarget: \nnWeight: ")
-    (message "%s" (ceiling (/ (- target weight) (* 0.0333 weight)))))
+    (message "%s" (ceiling (/ (- (1+ target) weight) (* 0.0333 weight)))))
 #+END_SRC
 
 * git interface
