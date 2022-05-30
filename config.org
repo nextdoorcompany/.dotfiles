@@ -1395,3 +1395,9 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (setq display-time-default-load-average nil)
   (display-time-mode 1)
 #+END_SRC
+* auto commit of org mode files
+See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-locals.el][this]] .dir-locals.el file in the target directory.
+#+BEGIN_SRC emacs-lisp
+  (defun js/commit-on-save ()
+    (shell-command-to-string "git commit -am \"auto commit\""))
+#+END_SRC
