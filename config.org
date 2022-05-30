@@ -366,7 +366,7 @@ I don't want to confirm every time babel evaluates.
 
 #+BEGIN_SRC emacs-lisp
 
-(setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
+  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 0)
@@ -461,6 +461,7 @@ I don't want to confirm every time babel evaluates.
       (beginning-of-buffer)
       (flush-lines "^ *$")))
 
+  (advice-add #'org-agenda-todo :after #'org-agenda-redo-all)
 #+END_SRC
 
 * expand region based on context
