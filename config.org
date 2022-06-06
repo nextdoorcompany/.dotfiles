@@ -93,6 +93,7 @@ virtualenv.
   (setq scroll-conservatively 10000)
   (setq scroll-preserve-screen-position t)
   (setq next-screen-context-lines 10)
+  (setq bookmark-set-fringe-mark nil)
 #+END_SRC
 
 * paths
