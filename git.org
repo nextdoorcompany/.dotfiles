@@ -1,0 +1,35 @@
+~/.gitconfig
+#+BEGIN_SRC shell 
+[user]
+	email = xxx
+	name = xxx
+[credential]
+	heper = cache
+	helper = cache --timeout 30000
+[core]
+	attributesfile = /home/justin/.gitattributes
+[diff "lisp"]
+        xfuncname = "^(\\(.*)$"
+[diff "org"]
+        xfuncname = "^(\\*+ +.*)$"
+
+[diff]
+        tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft --syntax-highlight off "$LOCAL" "$REMOTE"
+
+[alias]
+        dft = difftool
+#+END_SRC
+
+~./gitattributes
+#+BEGIN_SRC shell
+*.py   diff=python
+*.el   diff=lisp
+*.lisp diff=lisp
+*.org  diff=org
+#+END_SRC
