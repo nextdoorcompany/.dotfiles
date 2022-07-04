@@ -573,7 +573,8 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                              (mode . help-mode)))
                  ("message" (mode . message-mode))
                  ("sql" (or (mode . sql-mode)
-                            (mode . sql-interactive-mode)))))))
+                            (mode . sql-interactive-mode)))
+                 ("rst" (mode . rst-mode))))))
   (add-hook 'ibuffer-mode-hook
             (lambda ()
               (ibuffer-auto-mode 1)
