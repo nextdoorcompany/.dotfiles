@@ -1410,3 +1410,16 @@ See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-loca
     (setq-default abbrev-mode 1)
     :diminish abbrev-mode)
 #+END_SRC
+* denote
+
+[[https://protesilaos.com/emacs/denote][Denote]] [[https://elpa.gnu.org/packages/denote.html][ELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package denote
+    :ensure t
+    :config
+    (setq denote-directory (expand-file-name "~/org/denotes/"))
+    (setq denote-allow-multi-word-keywords nil)
+    (setq denote-dired-directories (list denote-directory))
+    (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
+#+END_SRC
