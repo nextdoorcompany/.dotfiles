@@ -1432,5 +1432,5 @@ See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-loca
 
   (defun js/umount-ledger ()
     (interactive)
-    (shell-command-to-string umount_ledger.sh))
+    (shell-command-to-string "umount_ledger.sh"))
 #+END_SRC
