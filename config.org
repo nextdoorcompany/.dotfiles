@@ -1423,3 +1423,14 @@ See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-loca
     (setq denote-dired-directories (list denote-directory))
     (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories))
 #+END_SRC
+* mount disk
+#+BEGIN_SRC emacs-lisp
+  (defun js/mount-ledger ()
+    (interactive)
+    (let ((pass (read-passwd "Decrypt> ")))
+      (shell-command-to-string (format "echo %s | mount_ledger.sh" pass))))
+
+  (defun js/umount-ledger ()
+    (interactive)
+    (shell-command-to-string umount_ledger.sh))
+#+END_SRC
