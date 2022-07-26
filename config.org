@@ -1416,6 +1416,7 @@ See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-loca
 
 #+BEGIN_SRC emacs-lisp
   (use-package denote
+    :if (>= emacs-major-version 28)
     :ensure t
     :config
     (setq denote-directory (expand-file-name "~/org/denotes/"))
