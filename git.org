@@ -1,5 +1,9 @@
-~/.gitconfig
-#+BEGIN_SRC shell
+Tangle file
+C-c C-v t
+
+With prefix only tangle current block
+
+#+BEGIN_SRC conf :tangle ~/.gitconfig
 [user]
 	email = xxx
 	name = xxx
@@ -28,16 +32,15 @@
         template = ~/.gitmessage
 #+END_SRC
 
-~./gitattributes
-#+BEGIN_SRC shell
+
+#+BEGIN_SRC conf :tangle ~/.gitattributes
 *.py   diff=python
 *.el   diff=lisp
 *.lisp diff=lisp
 *.org  diff=org
 #+END_SRC
 
-~./gitmessage
-#+BEGIN_SRC shell
+#+BEGIN_SRC text :tangle ~/.gitmessage
 
 # Pretend you are giving orders to the codebase to change its behavior.
 # If applied, this commit will {commit_message}.
