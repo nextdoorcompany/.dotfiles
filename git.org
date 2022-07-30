@@ -1,10 +1,9 @@
 ~/.gitconfig
-#+BEGIN_SRC shell 
+#+BEGIN_SRC shell
 [user]
 	email = xxx
 	name = xxx
 [credential]
-	heper = cache
 	helper = cache --timeout 30000
 [core]
 	attributesfile = /home/justin/.gitattributes
@@ -24,6 +23,9 @@
 
 [alias]
         dft = difftool
+
+[commit]
+        template = ~/.gitmessage
 #+END_SRC
 
 ~./gitattributes
@@ -32,4 +34,17 @@
 *.el   diff=lisp
 *.lisp diff=lisp
 *.org  diff=org
+#+END_SRC
+
+~./gitmessage
+#+BEGIN_SRC shell
+
+# Pretend you are giving orders to the codebase to change its behavior.
+# If applied, this commit will {commit_message}.
+#
+# First letter capital, no ending punctuation.
+#
+# Summary <= 50 chars.
+# Body wrap at 72 chars.
+#
 #+END_SRC
