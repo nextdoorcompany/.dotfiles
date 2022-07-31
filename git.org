@@ -3,6 +3,8 @@ C-c C-v t
 
 With prefix only tangle current block
 
+Inject email and name.
+
 #+BEGIN_SRC conf :tangle ~/.gitconfig
 [user]
 	email = xxx
@@ -10,7 +12,7 @@ With prefix only tangle current block
 [credential]
 	helper = cache --timeout 30000
 [core]
-	attributesfile = /home/justin/.gitattributes
+	attributesfile = ~/.gitattributes
 [diff "lisp"]
         xfuncname = "^(\\(.*)$"
 [diff "org"]
@@ -40,8 +42,11 @@ With prefix only tangle current block
 *.org  diff=org
 #+END_SRC
 
-#+BEGIN_SRC text :tangle ~/.gitmessage
+Could not figure out another way to get blank line at top of tangled file
+#+BEGIN_SRC text :tangle ~/.gitmessage :padline no
+#+END_SRC
 
+#+BEGIN_SRC text :tangle ~/.gitmessage :padline no
 # Pretend you are giving orders to the codebase to change its behavior.
 # If applied, this commit will {commit_message}.
 #
