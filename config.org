@@ -463,7 +463,23 @@ I don't want to confirm every time babel evaluates.
 
   (advice-add #'org-agenda-todo :after #'org-agenda-redo-all)
 #+END_SRC
-
+* org color link type
+#+BEGIN_SRC emacs-lisp
+  (org-add-link-type
+   "color"
+   (lambda (path)
+     (message (concat "color "
+                      (progn (add-text-properties
+                              0 (length path)
+                              (list 'face `((t (:foreground ,path))))
+                              path) path))))
+   (lambda (path desc format)
+     (cond
+      ((eq format 'html)
+       (format "<span style=\"color:%s;\">%s</span>" path desc))
+      ((eq format 'latex)
+       (format "{\\color{%s}%s}" path desc)))))
+#+END_SRC
 * expand region based on context
 
 [[https://github.com/magnars/expand-region.el][expand-region]] [[https://melpa.org/#/expand-region][MELPA]]
