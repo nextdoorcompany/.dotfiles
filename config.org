@@ -1373,6 +1373,12 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
     v2
     "');;")
 #+END_SRC
+* tempo
+#+BEGIN_SRC emacs-lisp
+  (require 'tempo)
+  (setq tempo-interactive t)
+  (global-set-key (kbd "<f6>") #'tempo-complete-tag)
+#+END_SRC
 * ediff
 #+BEGIN_SRC emacs-lisp
   (setq ediff-split-window-function 'split-window-horizontally)
