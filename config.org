@@ -464,6 +464,7 @@ I don't want to confirm every time babel evaluates.
   (advice-add #'org-agenda-todo :after #'org-agenda-redo-all)
 #+END_SRC
 * org color link type
+[[https://orgmode.org/worg/org-faq.html#org64ae339][Worg]]
 #+BEGIN_SRC emacs-lisp
   (org-add-link-type
    "color"
@@ -1280,6 +1281,10 @@ Run ispell last
                      (org-agenda-overriding-header "Notes TODO"))))
     (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
     (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
+    (setq org-latex-packages-alist '("\\usepackage{kpfonts}"
+                                     "\\usepackage{parskip}"
+                                     "\\usepackage[left=1in]{geometry}"
+                                     "\\hypersetup{colorlinks}"))
     (ispell))
 
   (defun js/toggle-coding ()
