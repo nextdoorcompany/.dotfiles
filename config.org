@@ -271,6 +271,32 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
               (cd "~/org")))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (defun js/new-snippet ()
+    "Create and switch bom scratch buffer"
+    (interactive)
+    (switch-to-buffer (make-temp-name "snippet-"))
+    (lisp-interaction-mode)
+    (insert
+     ";; Add strings in double quotes.  Add prompts like (p \"Prompt: \" NAME).  Hit <f6> after tag to run.
+
+  (tempo-define-template \"jjt\"
+                         '()
+                         \"jjt\"
+                         \"docstring\")))
+
+  jjt
+
+
+  ;; Repeating skeleton.  STR is the value of the first prompt.
+
+  (define-skeleton jj/s
+    \"docstring\"
+    \"\"
+    (\"Prompt: \" str (skeleton-read \"Prompt: \") \\n))
+
+  (jj/s)"))
+#+END_SRC
 * copy a date from the calendar into the kill ring
 
 [[https://emacs.stackexchange.com/questions/41978/how-to-retrieve-the-date-under-the-cursor-in-emacs-calendar-as-the-format-day-mo][Stack Overflow]]
