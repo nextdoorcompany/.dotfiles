@@ -535,18 +535,6 @@ I don't want to confirm every time babel evaluates.
       :bind ("C-<" . yas-insert-snippet))
 #+END_SRC
 
-* quick snippets
-
-[[https://github.com/abo-abo/auto-yasnippet][auto-yasnippet]] [[https://melpa.org/#/auto-yasnippet][MELPA]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package auto-yasnippet
-    :ensure t
-    :bind (("C-c w" . aya-create)
-           ("C-c y" . aya-expand)))
-#+END_SRC
-
-
 * editing helpers
 
 [[https://github.com/bbatsov/crux][crux]] [[https://melpa.org/#/crux][MELPA]]
