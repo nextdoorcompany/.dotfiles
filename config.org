@@ -1414,6 +1414,7 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (setq tempo-interactive t)
   (global-set-key (kbd "<f6>") #'tempo-complete-tag)
 #+END_SRC
+** new source block
 #+BEGIN_SRC emacs-lisp
   (tempo-define-template "jjE"
                          '("#+BEGIN_SRC "
@@ -1426,6 +1427,63 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
 
   (define-abbrev org-mode-abbrev-table "jjE" "" 'tempo-template-jjE :system t)
 #+END_SRC
+** html boilerplate
+Inspiration and ideas from [[https://protesilaos.com/emacs/modus-themes-colors][modus-themes]], [[http://bettermotherfuckingwebsite.com/][this]] website, and [[https://brutalist-web.design/][this]] website.
+
+#+NAME: chunk-1
+#+BEGIN_EXAMPLE
+  <!DOCTYPE html>
+  <html lang="en-US">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>
+#+END_EXAMPLE
+
+#+NAME: chunk-2
+#+BEGIN_EXAMPLE
+  </title>
+      <style>
+        ,* {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+      </style>
+      <style>
+        body {
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.6;
+            font-size: 18px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 0 10px
+        }
+        h1, h2, h3 {
+            line-height: 1.2
+        }
+      </style>
+    </head>
+    <body>
+#+END_EXAMPLE
+
+#+NAME: chunk-3
+#+BEGIN_EXAMPLE
+      <script>
+
+      </script>
+    </body>
+  </html>
+#+END_EXAMPLE
+
+#+BEGIN_SRC emacs-lisp :var chunk-1=chunk-1 chunk-2=chunk-2 chunk-3=chunk-3
+  (tempo-define-template "jjhtml"
+                         `(,chunk-1 (p "Title: ") ,chunk-2 p ,chunk-3)
+                         "jjhtml"
+                         "Starts a new html file.")
+#+END_SRC
+
 * ediff
 #+BEGIN_SRC emacs-lisp
   (setq ediff-split-window-function 'split-window-horizontally)
