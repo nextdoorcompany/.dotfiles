@@ -283,7 +283,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   (tempo-define-template \"jjt\"
                          '()
                          \"jjt\"
-                         \"docstring\")))
+                         \"docstring\")
 
   jjt
 
