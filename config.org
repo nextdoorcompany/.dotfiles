@@ -390,9 +390,11 @@ discusses capture templates extensively.  His gentle introduction is  [[http://h
 
 I don't want to confirm every time babel evaluates.
 
+Lesson learned the hard way.  Again Karl Voit to the [[https://karl-voit.at/2014/08/20/org-losses-determining-post-commit/][rescue]].
+
 #+BEGIN_SRC emacs-lisp
 
-  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org")))
+  (setq org-agenda-files (quote ("~/org/ephemera.org" "~/org/kanban.org" "~/org/notes.org" "~/org/habits.org" "~/org/warnings.org")))
   (setq org-export-with-toc nil)
   (setq org-html-postamble nil)
   (setq org-cycle-separator-lines 0)
@@ -406,6 +408,8 @@ I don't want to confirm every time babel evaluates.
   (setq org-adapt-indentation nil)
   (setq org-blank-before-new-entry '((heading . nil) (plain-list-item . nil)))
   (setq org-use-speed-commands t)
+  (setq org-catch-invisible-edits 'show-and-error)
+  (setq org-ctrl-k-protect-subtree t)
   (setq org-todo-keywords
         '((sequence "TODO" "|" "DONE")
           (sequence "BLOCKED")))

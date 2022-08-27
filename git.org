@@ -56,3 +56,40 @@ Could not figure out another way to get blank line at top of tangled file
 # Body wrap at 72 chars.
 #
 #+END_SRC
+
+Tangle this file to any git repo to warn about deleting multiple lines.
+#+BEGIN_SRC shell 
+  #!/bin/sh
+  #
+  # An example hook script that is called after a successful
+  # commit is made.
+  #
+  # To enable this hook, rename this file to "post-commit" and set executable.
+
+  ## current/last commit:
+  CURRENT_HASH=`git rev-parse HEAD`
+
+  ## the commit before:
+  PREVIOUS_HASH=`git rev-parse HEAD^1`
+
+  ## the file where the message(s) are being written to:
+  OUTFILE="${HOME}/org/warnings.org"
+
+  ## number of lines that are OK to be deleted in one single file:
+  THRESHOLD=20
+
+  MESSAGE="** commit ${CURRENT_HASH} deleted more than ${THRESHOLD} lines in a file!"
+
+  ## manual test with:
+  ##  git diff --stat `git rev-parse HEAD^1` `git rev-parse HEAD`
+
+  git diff --numstat "${PREVIOUS_HASH}" "${CURRENT_HASH}" | \
+          cut -f 2 | \
+          while read line
+          do test "$line" -gt "${THRESHOLD}" && \
+             echo -e "${MESSAGE}\n<`date '+%Y-%m-%d %H:%M'` +1d>\n\n" >> \
+                     "${OUTFILE}"; \
+          done
+
+  #end	  
+#+END_SRC
