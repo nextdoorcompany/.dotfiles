@@ -102,7 +102,7 @@ Ensure certain directories are always available.  Taken directly from Howard Abr
 Explicitly set storage files.
 
 #+BEGIN_SRC emacs-lisp
-  (let* ((subdirs '("local_elisp" "local_snippets"))
+  (let* ((subdirs '("local_elisp"))
          (fulldirs (mapcar (lambda (d) (expand-file-name d "~/.emacs.d") ) subdirs)))
     (dolist (dir fulldirs)
       (when (not (file-exists-p dir))
