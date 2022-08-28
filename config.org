@@ -1491,7 +1491,53 @@ Inspiration and ideas from [[https://protesilaos.com/emacs/modus-themes-colors][
                          "jjhtml"
                          "Starts a new html file.")
 #+END_SRC
+** jinja
+#+BEGIN_SRC emacs-lisp 
+  (tempo-define-template "jjjfor"
+                         '("{% for "
+                           (p "Variable: ")
+                           " in "
+                           (p "Container: ")
+                           " %}"
+                           n
+                           p
+                           n
+                           "{% endfor %}")
+                         "jjjfor"
+                         "Jinja for loop")
 
+  (tempo-define-template "jjjife"
+                         '("{% if "
+                           (p "Test: ")
+                           " %}"
+                           n
+                           p
+                           n
+                           "{% else %}"
+                           n
+                           "{% endif %}")
+                         "jjjife"
+                         "Jinja if else")
+
+  (tempo-define-template "jjjif"
+                         '("{% if "
+                           (p "Test: ")
+                           " %}"
+                           n
+                           p
+                           n
+                           "{% endif %}")
+                         "jjjif"
+                         "Jinja if")
+
+  (tempo-define-template "jjjv"
+                         '("{{ "
+                           (p "Variable: ")
+                           " }}")
+                         "jjjv"
+                         "Jinja variable")
+
+#+END_SRC
 * ediff
 #+BEGIN_SRC emacs-lisp
   (setq ediff-split-window-function 'split-window-horizontally)
