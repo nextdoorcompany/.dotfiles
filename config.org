@@ -1582,3 +1582,18 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
   (if (>= emacs-major-version 28)
       (repeat-mode 1))
 #+END_SRC
+* eshell prompt
+#+BEGIN_SRC emacs-lisp
+  (defun js/eshell-prompt ()
+    (let* ((first (car (eshell-get-path)))
+           (venv (if (string= first "./env/bin/")
+                     (propertize "(env)" 'face '(:foreground "violet"))
+                   "")))
+      (concat venv
+              " "
+              (abbreviate-file-name (eshell/pwd))
+              (if (= (user-uid) 0) " # " " $ "))))
+
+  (setq eshell-prompt-function 'js/eshell-prompt)
+
+#+END_SRC
