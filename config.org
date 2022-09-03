@@ -1581,8 +1581,7 @@ See this [[https://superuser.com/a/132409][SO]] answer.  Use [[file:org-dir-loca
 * repeat mode
 Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]].
 #+BEGIN_SRC emacs-lisp
-  (if (>= emacs-major-version 28)
-      (repeat-mode 1))
+  (repeat-mode 1)
 #+END_SRC
 * eshell prompt
 #+BEGIN_SRC emacs-lisp
