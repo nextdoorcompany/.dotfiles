@@ -804,7 +804,8 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
 
 * window management
 This reddit [[https://www.reddit.com/r/emacs/comments/24zu2a/how_do_i_stop_emacs_from_taking_over_my_split/][thread]] was helpful.  Elisp [[https://www.gnu.org/software/emacs/manual/html_node/elisp/The-Zen-of-Buffer-Display.html#The-Zen-of-Buffer-Display][manual]] has details.
-Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_additional_docstutorials_on_displaybuffer_and/][thread]].
+Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_additional_docstutorials_on_displaybuffer_and/][thread]].  Mickey has provided another
+great [[https://www.masteringemacs.org/article/demystifying-emacs-window-manager][how-to]].
 
 #+BEGIN_SRC emacs-lisp
   (defun js/split-right-34 ()
@@ -826,17 +827,17 @@ Another helpful reddit [[https://www.reddit.com/r/emacs/comments/cpdr6m/any_addi
       (other-window 1)
       (split-window nil (* -1 width) "right" nil)))
 
+  (setq switch-to-buffer-obey-display-actions t)
+
   (setq display-buffer-alist
-        '(("\\*Help" (display-buffer-same-window))
-          ("\\*Apropos" (display-buffer-same-window))
-          ("\\*helpful" (display-buffer-same-window))
-          ("\\*ivy-occur" (display-buffer-same-window))
-          ("\\*Ledger Report" (display-buffer-same-window))
-          ("\\*deadgrep" (display-buffer-use-some-window))
-          ("\\*info" (display-buffer-same-window display-buffer-use-some-window))
-          ("\\*Python" (display-buffer-use-some-window))
-          ("\\*Pp Eval Output" (display-buffer-reuse-window display-buffer-use-some-window))
-          ("\\*Occur" (display-buffer-below-selected))))
+        `((,(rx (| "*Ledger Report*" "*ivy-occur*"))
+           (display-buffer-same-window))
+          (,(rx (| "*Occur*" "*Pp Eval Output*" "*Python*"))
+           (display-buffer-below-selected))
+          (,(rx (| "*compilation*" "*deadgrep" "*info*" "*Help*" "*Apropos*"))
+           (display-buffer-in-side-window)
+           (side . right)
+           (window-width . 80))))
 #+END_SRC
 
 * reformatter
@@ -1472,7 +1473,7 @@ Inspiration and ideas from [[https://protesilaos.com/emacs/modus-themes-colors][
                          "Starts a new html file.")
 #+END_SRC
 ** jinja
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (tempo-define-template "jjjfor"
                          '("{% for "
                            (p "Variable: ")
