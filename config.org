@@ -364,6 +364,10 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
   (add-hook 'org-mode-hook
             (lambda ()
               (visual-line-mode 1)))
+
+  (add-hook 'occur-hook
+            (lambda ()
+              (select-window (get-buffer-window "*Occur*"))))
 #+END_SRC
 
 * enable recent file tracking
