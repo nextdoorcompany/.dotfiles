@@ -454,11 +454,8 @@ Lesson learned the hard way.  Again Karl Voit to the [[https://karl-voit.at/2014
   (add-to-list 'org-modules 'org-habit)
   (require 'org-habit)
 
-  (if (string= org-version "9.5.2")
-      (add-to-list 'org-speed-commands
-                   '("S" . (org-insert-subheading '(4))))
-    (add-to-list 'org-speed-commands-user
-                 '("S" . (org-insert-subheading '(4)))))
+  (add-to-list 'org-speed-commands
+               '("S" . (org-insert-subheading '(4))))
 
   (defun js/org-export-ascii-to-kill ()
     "Exports current org buffer as ascii to kill ring."
