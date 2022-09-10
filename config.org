@@ -792,7 +792,7 @@ great [[https://www.masteringemacs.org/article/demystifying-emacs-window-manager
   (setq switch-to-buffer-obey-display-actions t)
 
   (setq display-buffer-alist
-        `((,(rx (| "*Ledger Report*" "*ivy-occur*"))
+        `((,(rx (| "*Ledger Report*"))
            (display-buffer-same-window))
           (,(rx (| "*Occur*" "*Pp Eval Output*" "*Python*"))
            (display-buffer-below-selected))
@@ -1204,77 +1204,77 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
 Run ispell last
 
 #+BEGIN_SRC emacs-lisp
-  (defun js/scroll-to-bottom (&optional e)
-    (let ((this-scroll-margin
-           (min (max 0 scroll-margin)
-                (truncate (/ (window-body-height) 4.0)))))
-      (recenter (- -1 this-scroll-margin) t)))
+    (defun js/scroll-to-bottom (&optional e)
+      (let ((this-scroll-margin
+             (min (max 0 scroll-margin)
+                  (truncate (/ (window-body-height) 4.0)))))
+        (recenter (- -1 this-scroll-margin) t)))
 
-  (defun js/go-to-work ()
-    (interactive)
-    (desktop-read)
-    (modus-themes-toggle)
-    (eshell)
-    (calc)
-    (sql-connect "engineering")
-    (sql-connect "customer_service")
-    (add-to-list 'org-capture-templates
-               '("j" "log HMF listing" plain (file "~/org/js_list.org")
-                 "%t --- %(insert-register ?j)%?"))
-    (require 'org-agenda)
-    (add-to-list 'org-agenda-custom-commands
-                 '("x" "Agenda grouped by priority"
-                   ((agenda ""
-                            ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'notregexp "\\[#A]"))
-                             (org-agenda-overriding-header "Daily")))
-                    (agenda ""
-                            ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'notregexp "\\[#B]"))
-                             (org-agenda-overriding-header "Weekly")))
-                    (agenda ""
-                            ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'notregexp "\\[#C]"))
-                             (org-agenda-overriding-header "Quarterly")))
-                    (agenda ""
-                            ((org-agenda-skip-function
-                              '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]\\|\\[#C]"))))
-                    (todo "BLOCKED" ((org-agenda-overriding-header "Blocked"))))))
-    (add-to-list 'org-agenda-custom-commands
-                 '("y" "notes TODO" todo "TODO"
-                    ((org-agenda-files '("~/org/notes.org"))
-                     (org-agenda-overriding-header "Notes TODO"))))
-    (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
-    (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
-    (setq org-latex-packages-alist '("\\usepackage{kpfonts}"
-                                     "\\usepackage{parskip}"
-                                     "\\usepackage[left=1in]{geometry}"
-                                     "\\hypersetup{colorlinks}"))
-    (ispell))
+    (defun js/go-to-work ()
+      (interactive)
+      (desktop-read)
+      (modus-themes-toggle)
+      (eshell)
+      (calc)
+      (sql-connect "engineering")
+      (sql-connect "customer_service")
+      (add-to-list 'org-capture-templates
+                 '("j" "log HMF listing" plain (file "~/org/js_list.org")
+                   "%t --- %(insert-register ?j)%?"))
+      (require 'org-agenda)
+      (add-to-list 'org-agenda-custom-commands
+                   '("x" "Agenda grouped by priority"
+                     ((agenda ""
+                              ((org-agenda-skip-function
+                                '(org-agenda-skip-entry-if 'notregexp "\\[#A]"))
+                               (org-agenda-overriding-header "Daily")))
+                      (agenda ""
+                              ((org-agenda-skip-function
+                                '(org-agenda-skip-entry-if 'notregexp "\\[#B]"))
+                               (org-agenda-overriding-header "Weekly")))
+                      (agenda ""
+                              ((org-agenda-skip-function
+                                '(org-agenda-skip-entry-if 'notregexp "\\[#C]"))
+                               (org-agenda-overriding-header "Quarterly")))
+                      (agenda ""
+                              ((org-agenda-skip-function
+                                '(org-agenda-skip-entry-if 'regexp "\\[#A]\\|\\[#B]\\|\\[#C]"))))
+                      (todo "BLOCKED" ((org-agenda-overriding-header "Blocked"))))))
+      (add-to-list 'org-agenda-custom-commands
+                   '("y" "notes TODO" todo "TODO"
+                      ((org-agenda-files '("~/org/notes.org"))
+                       (org-agenda-overriding-header "Notes TODO"))))
+      (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
+      (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
+      (setq org-latex-packages-alist '("\\usepackage{kpfonts}"
+                                       "\\usepackage{parskip}"
+                                       "\\usepackage[left=1in]{geometry}"
+                                       "\\hypersetup{colorlinks}"))
+      (ispell))
 
+  (defvar js/coding-p nil)  
   (defun js/toggle-coding ()
     (interactive)
-    (if ivy-use-virtual-buffers
+    (if (not js/coding-p)
         (progn
-          (setq ivy-use-virtual-buffers nil)
+          (setq js/coding-p t)
           (js/change-face-height 180))
-      (setq ivy-use-virtual-buffers t)
       (js/change-face-height js/default-font-height))
     (calc)
     (ispell))
 
-  (defun js/desktop-to-job ()
-    (interactive)
-    (let ((full-job (get-register ?j)))
-      (unless (null full-job)
-        (let* ((job-number (car (split-string full-job "[.]")))
-               (job-folder (expand-file-name job-number "c:/Users/justin/Dropbox/Documents/job files")))
-          (when (file-exists-p job-folder)
-            (delete-other-windows)
-            (split-window-below)
-            (find-file "c:/Users/justin/Desktop")
-            (find-file-other-window job-folder)
-            (other-window 1))))))
+    (defun js/desktop-to-job ()
+      (interactive)
+      (let ((full-job (get-register ?j)))
+        (unless (null full-job)
+          (let* ((job-number (car (split-string full-job "[.]")))
+                 (job-folder (expand-file-name job-number "c:/Users/justin/Dropbox/Documents/job files")))
+            (when (file-exists-p job-folder)
+              (delete-other-windows)
+              (split-window-below)
+              (find-file "c:/Users/justin/Desktop")
+              (find-file-other-window job-folder)
+              (other-window 1))))))
 #+END_SRC
 
 * permanently delete from dired
