@@ -158,7 +158,7 @@ Explicitly set storage files.
 
 * font
 
-Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  Also see online text [[https://practicaltypography.com/][Practical Typography]].
+Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  Also see online text [[https://practicaltypography.com/][Practical Typography]].  Font can also be changed using the menu system.
 
 #+BEGIN_SRC emacs-lisp
   (setq js/default-font-height 240)
@@ -189,10 +189,7 @@ Matthew Butterick's [[https://mbtype.com/fonts/triplicate/][Triplicate]] font.  
   (defun js/counsel-fonts-no-insert ()
     (let ((current-font
            (symbol-name (font-get (face-attribute 'default :font) :family))))
-      (ivy-read "Font: " (delete-dups (font-family-list))
-                :preselect current-font
-                :require-match t
-                :caller 'counsel-fonts)))
+      (completing-read "Font: " (delete-dups (font-family-list)) nil t current-font)))
 #+END_SRC
 
 * spelling
