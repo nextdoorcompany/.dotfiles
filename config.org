@@ -483,6 +483,9 @@ Lesson learned the hard way.  Again Karl Voit to the [[https://karl-voit.at/2014
       (flush-lines "^ *$")))
 
   (advice-add #'org-agenda-todo :after #'org-agenda-redo-all)
+
+  (setq org-goto-interface 'outline-path-completion)
+  (setq org-outline-path-complete-in-steps nil)
 #+END_SRC
 * org color link type
 [[https://orgmode.org/worg/org-faq.html#org64ae339][Worg]]
@@ -1252,7 +1255,7 @@ Run ispell last
                                        "\\hypersetup{colorlinks}"))
       (ispell))
 
-  (defvar js/coding-p nil)  
+  (defvar js/coding-p nil)
   (defun js/toggle-coding ()
     (interactive)
     (if (not js/coding-p)
@@ -1296,12 +1299,12 @@ Run ispell last
 * outline navigation
 
 #+BEGIN_SRC emacs-lisp
-  (defun js/outline (arg)
-    "Dispatch `counsel-outline' or if ARG `counsel-imenu'."
-    (interactive "P")
-    (if arg
-        (counsel-imenu)
-      (counsel-outline)))
+  (defun js/outline ()
+    "Dispatch `org-goto' or `imenu'."
+    (interactive)
+    (if (equal major-mode 'org-mode)
+        (org-goto)
+      (imenu)))
   (global-set-key (kbd "C-c j") 'js/outline)
 #+END_SRC
 
@@ -1565,7 +1568,7 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 #+END_SRC
 * minibuffer completion
 Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.  Somewhere IDO is being turned on.
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (ido-mode -1)
   (setq completion-cycle-threshold 3)
   (setq completions-detailed t)
