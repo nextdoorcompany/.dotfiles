@@ -628,38 +628,6 @@ Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/
   (global-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
 #+END_SRC
 
-* ivy
-
-[[https://github.com/abo-abo/swiper][Ivy]] [[https://melpa.org/#/counsel][MELPA]]
-
-I had been using a combination of C-r for isearch and C-s for swiper.  Watching [[https://youtu.be/y6_bmcd3nis][this]] video by Protesilaos Stavrou motivated me to fix this.  His videos are helpful along with his [[https://protesilaos.com/dotemacs/][dotfiles]].
-
-#+BEGIN_SRC emacs-lisp
-  (use-package counsel
-    :ensure t
-    :diminish counsel-mode
-    :bind
-    ("M-y" . counsel-yank-pop)
-    ("M-x" . counsel-M-x)
-    ("C-x C-f" . counsel-find-file))
-
-  (use-package ivy
-    :ensure t
-    :diminish ivy-mode
-    :bind
-    ("C-x b" . ivy-switch-buffer)
-    :config
-    (ivy-mode 1)
-    (counsel-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy))
-
-  (use-package swiper
-    :ensure t
-    :bind
-    ("C-z" . swiper))
-#+END_SRC
-
 * upcase table
 
 #+BEGIN_SRC emacs-lisp
