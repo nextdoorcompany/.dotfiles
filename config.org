@@ -1567,11 +1567,10 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 
 #+END_SRC
 * minibuffer completion
-Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.  Somewhere IDO is being turned on.
+Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.  
 #+BEGIN_SRC emacs-lisp
-  (ido-mode -1)
-  (setq completion-cycle-threshold 3)
-  (setq completions-detailed t)
-  (setq read-buffer-completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+    (setq completion-cycle-threshold 3)
+    (setq completions-detailed t)
+    (setq read-buffer-completion-ignore-case t)
+    (setq read-file-name-completion-ignore-case t)
 #+END_SRC
