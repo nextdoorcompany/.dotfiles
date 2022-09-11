@@ -1577,8 +1577,9 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 * minibuffer completion
 Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.  
 #+BEGIN_SRC emacs-lisp
-    (setq completion-cycle-threshold 3)
-    (setq completions-detailed t)
-    (setq read-buffer-completion-ignore-case t)
-    (setq read-file-name-completion-ignore-case t)
+  (setq completion-styles '(basic partial-completion emacs22 substring))
+  (setq completion-cycle-threshold 3)
+  (setq completions-detailed t)
+  (setq read-buffer-completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
 #+END_SRC
