@@ -378,7 +378,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 #+BEGIN_SRC emacs-lisp
   (defun js/find-recent-file (selection)
-      (interactive 
+      (interactive
        (list (completing-read "Find recent file: " recentf-list)))
       (find-file selection))
   (global-set-key (kbd "C-x C-r") #'js/find-recent-file)
@@ -1312,7 +1312,7 @@ Run ispell last
     (interactive)
     (if (equal major-mode 'org-mode)
         (org-goto)
-      (imenu)))
+      (imenu (imenu-choose-buffer-index))))
   (global-set-key (kbd "C-c j") 'js/outline)
 #+END_SRC
 
@@ -1575,7 +1575,7 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 
 #+END_SRC
 * minibuffer completion
-Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.  
+Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.
 #+BEGIN_SRC emacs-lisp
   (setq completion-styles '(basic partial-completion emacs22 substring))
   (setq completion-cycle-threshold 3)
