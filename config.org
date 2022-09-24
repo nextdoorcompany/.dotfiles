@@ -614,28 +614,6 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
 
 #+END_SRC
 
-* smartparens
-
-[[https://github.com/Fuco1/smartparens][smartparens]] [[http://melpa.org/#/smartparens][MELPA]]
-
-Helpful blog post [[https://ebzzry.io/en/emacs-pairs/][here]].
-
-Instructions on disabling inch marks in org mode are [[https://github.com/Fuco1/smartparens/wiki/Permissions][here]].
-
-#+BEGIN_SRC emacs-lisp
-  (use-package smartparens-config
-    :ensure smartparens
-    :diminish smartparens-mode
-    :config
-    (smartparens-global-mode t)
-    (show-smartparens-global-mode t)
-    (sp-local-pair 'org-mode "\"" "\"" :actions nil)
-    (sp-local-pair 'message-mode "\"" "\"" :actions nil))
-
-  (global-set-key (kbd "C-<left>") 'sp-backward-slurp-sexp)
-  (global-set-key (kbd "C-<right>") 'sp-forward-slurp-sexp)
-#+END_SRC
-
 * upcase table
 
 #+BEGIN_SRC emacs-lisp
