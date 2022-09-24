@@ -1561,3 +1561,17 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
   (setq read-buffer-completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
 #+END_SRC
+* paren managment
+#+BEGIN_SRC emacs-lisp 
+  (electric-pair-mode 1)
+  (show-paren-mode 1)
+  (setq show-paren-style 'expression)
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     (setq-local electric-pair-inhibit-predicate
+                 `(lambda (c)
+                    (if (char-equal c ?\")
+                        t
+                      (,electric-pair-inhibit-predicate c))))))
+#+END_SRC
