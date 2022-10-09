@@ -1560,6 +1560,7 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
   (setq completions-detailed t)
   (setq read-buffer-completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
+  (setq confirm-nonexistent-file-or-buffer t)
 #+END_SRC
 * paren managment
 #+BEGIN_SRC emacs-lisp 
