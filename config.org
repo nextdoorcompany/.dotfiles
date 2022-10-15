@@ -837,55 +837,58 @@ m m and Z P will clobber this with calc.el (like custom.el).
 Thank you [[https://twitter.com/mickeynp/status/1559844040492851200?s=20&t=W4pFrIbRALcaO5IzFsEBhg][Mickey]] for the tip about dedicating the calc window.
 
 #+BEGIN_SRC emacs-lisp
-    (setq calc-display-trail nil)
-    (setq calc-frac-format '("+/" nil))
-    (setq calc-algebraic-mode t)
-    (setq calc-make-windows-dedicated t)
+  (setq calc-display-trail nil)
+  (setq calc-frac-format '("+/" nil))
+  (setq calc-algebraic-mode t)
+  (setq calc-make-windows-dedicated t)
 
-    (defun js/calc-copy-and-remove-plus (arg)
-      "Copy the top of the calc stack to the kill ring.  Removes
-    fraction plus signs.  If the prefix argument is given, copies ARG
-    entries one per line."
-      (interactive "P")
-      (with-temp-buffer
-        (calc-copy-to-buffer arg)
-        (js/format-calc-fraction)))
-
-
-    (defun js/quick-calc-remove-plus ()
-      "Launch quick calc and copy result to kill ring without fraction
-    plus signs."
-      (interactive)
-      (with-temp-buffer
-        (quick-calc 4)
-        (js/format-calc-fraction)))
+  (defun js/calc-copy-and-remove-plus (arg)
+    "Copy the top of the calc stack to the kill ring.  Removes
+  fraction plus signs.  If the prefix argument is given, copies ARG
+  entries one per line."
+    (interactive "P")
+    (with-temp-buffer
+      (calc-copy-to-buffer arg)
+      (js/format-calc-fraction)))
 
 
-    (defun js/format-calc-fraction ()
-      "Removes fraction plus signs and leading zeros."
-      (while (re-search-backward "+" nil t)
-        (replace-match " "))
-      (goto-char (point-min))
-      (if (looking-at-p "0 ")
-          (forward-char 2))
-      (kill-region (point) (point-max)))
+  (defun js/quick-calc-remove-plus ()
+    "Launch quick calc and copy result to kill ring without fraction
+  plus signs."
+    (interactive)
+    (with-temp-buffer
+      (quick-calc 4)
+      (js/format-calc-fraction)))
 
 
-    (global-set-key (kbd "C-c k") 'js/quick-calc-remove-plus)
+  (defun js/format-calc-fraction ()
+    "Removes fraction plus signs and leading zeros."
+    (while (re-search-backward "+" nil t)
+      (replace-match " "))
+    (goto-char (point-min))
+    (if (looking-at-p "0 ")
+        (forward-char 2))
+    (kill-region (point) (point-max)))
+
+  (defun js/calc-eval (exp)
+    "Takes an algebraic expression and returns it with the evaluation."
+    (format "%s = %s" exp (calc-eval exp)))
+
+  (global-set-key (kbd "C-c k") 'js/quick-calc-remove-plus)
 
 
-    (put 'calc-define 'jsfns
-         '(progn
-            (defmath jsround (n)
-              "Round N to the nearest 64th."
-              (interactive 1 "jsr")
-              (/ (round (* n 64)) 64))
-            (define-key calc-mode-map "Ye" 'calc-jsround)
-            (define-key calc-mode-map "Yw" 'js/calc-copy-and-remove-plus)
-            (setq calc-Y-help-msgs
-                  (cons "E round to 64th, W copy clean" calc-Y-help-msgs))))
+  (put 'calc-define 'jsfns
+       '(progn
+          (defmath jsround (n)
+            "Round N to the nearest 64th."
+            (interactive 1 "jsr")
+            (/ (round (* n 64)) 64))
+          (define-key calc-mode-map "Ye" 'calc-jsround)
+          (define-key calc-mode-map "Yw" 'js/calc-copy-and-remove-plus)
+          (setq calc-Y-help-msgs
+                (cons "E round to 64th, W copy clean" calc-Y-help-msgs))))
 
-    (run-hooks 'calc-check-defines)
+  (run-hooks 'calc-check-defines)
 #+END_SRC
 
 * theme
