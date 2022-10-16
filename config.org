@@ -1579,3 +1579,13 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
                         t
                       (,electric-pair-inhibit-predicate c))))))
 #+END_SRC
+* benchmark
+See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
+#+BEGIN_SRC emacs-lisp
+  (defun js/benchmark ()
+    "Run a sorting benchmark for basic comparisons."
+    (interactive)
+    (let ((result (car (benchmark-run 512
+                         (sort (number-sequence 1 2048) #'<)))))
+      (message (format "Elapsed time: %fs" result))))
+#+END_SRC
