@@ -1278,13 +1278,7 @@ Run ispell last
   (use-package graphviz-dot-mode
     :ensure t
     :config
-    (setq graphviz-dot-indent-width 4)
-    (add-hook 'graphviz-dot-mode-hook
-              (lambda ()
-                (set (make-local-variable 'company-backends) '(company-graphviz-dot-backend company-capf company-dabbrev-code company-files))
-                (company-mode))))
-
-  (use-package company-graphviz-dot)
+    (setq graphviz-dot-indent-width 4))
 #+END_SRC
 * dired auto-revert
 Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95ad249583\]\]][here.]]  Relevant Emacs [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Non_002dFile-Buffers.html][manual]] and Stack Overflow [[https://emacs.stackexchange.com/questions/29228/how-to-stop-dired-printing-reverting-buffer][post.]]
