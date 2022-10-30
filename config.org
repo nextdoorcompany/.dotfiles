@@ -978,49 +978,20 @@ for passphrase back to EPG.  EPG prompts at the minibuffer.
 (setq epg-pinentry-mode 'loopback)
 #+END_SRC
 
-* company
-
-[[http://company-mode.github.io/][web]] [[https://melpa.org/#/company][MELPA]]
-
-I've generally tried to avoid completions flashing on the screen but Tony Adlon's
-[[https://youtu.be/96jn5A73-oQ][video]] convinced me to try company.
-
-#+BEGIN_SRC emacs-lisp
-    (use-package company
-      :ensure t
-      :diminish company-mode
-      :config
-      (setq company-show-numbers t)
-      (setq company-dabbrev-char-regexp "\\sw\\|_")
-      (define-key company-active-map (kbd "C-n") #'company-select-next)
-      (define-key company-active-map (kbd "C-p") #'company-select-previous)
-      (add-hook 'emacs-lisp-mode-hook
-                (lambda ()
-                  (set (make-local-variable 'company-backends) '(company-capf company-dabbrev-code company-files))
-                  (company-mode))))
-#+END_SRC
-
 * sql
 
 Using the [[https://github.com/sebasmonia/sqlcmdline][sqlcmdline]] package to connect to SQL.  The regexp add to the sql-product-alist is not required in Emacs 27.
 Updated default rows variable inside sqlcmdline to 0 and added :t :c less verbose tables and cols functions there also.
 
 #+BEGIN_SRC emacs-lisp
-(with-eval-after-load 'sql
-  (plist-put (alist-get 'ms sql-product-alist) :prompt-cont-regexp "^[0-9]*>")
-  (setq sql-ms-options nil)
-  (setq sql-ms-program "sqlc")
-  (add-hook 'sql-mode-hook
-            (lambda ()
-              (set (make-local-variable 'company-backends) '(company-dabbrev company-capf company-files))
-              (setq company-dabbrev-ignore-buffers (lambda (buf) nil))
-              (company-mode)))
+  (with-eval-after-load 'sql
+    (plist-put (alist-get 'ms sql-product-alist) :prompt-cont-regexp "^[0-9]*>")
+    (setq sql-ms-options nil)
+    (setq sql-ms-program "sqlc")
 
-  (add-hook 'sql-interactive-mode-hook
-            (lambda ()
-              (set (make-local-variable 'company-backends) '(company-dabbrev company-capf company-files))
-              (company-mode)
-              (setq truncate-lines t))))
+    (add-hook 'sql-interactive-mode-hook
+              (lambda ()
+                (setq truncate-lines t))))
 #+END_SRC
 
 * optional local packages
