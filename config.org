@@ -1300,10 +1300,13 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (defvar js/insert-book-week-date nil
     "Last used date for insert book_week.")
 
+  (defvar js/insert-book-week-month nil
+    "Last used month for insert book_week.")
+
   (define-skeleton js/insert-book-week
     "Insert book_week row."
     nil
-    "Insert into book_weeks (job, release, book, week_friday) values ('"
+    "Insert into book_weeks (job, release, book, week_friday, expected_ship_month) values ('"
     '(setq v1 (split-string (skeleton-read "JOB> ") "[.]"))
     (upcase (car v1))
     "', '"
@@ -1314,7 +1317,12 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
     '(setq v2 (skeleton-read "Friday> " js/insert-book-week-date))
     '(setq js/insert-book-week-date v2)
     v2
+    "', '"
+    '(setq v2 (skeleton-read "Month> " js/insert-book-week-month))
+    '(setq js/insert-book-week-month v2)
+    v2
     "');;")
+
 #+END_SRC
 * tempo
 #+BEGIN_SRC emacs-lisp
