@@ -139,21 +139,23 @@ Explicitly set storage files.
 + Use the same backslashes for regex isearch and re-builder.
 + Use the trash ~/.local/share/Trash/files.  C-d will delete.
 + Pretty print result of eval thank you to Karthinks [[https://karthinks.com/software/an-elisp-editing-tip/][blog]].
++ Switch to help window see [[https://www.reddit.com/r/emacs/comments/ynr33i/comment/ivag10u/?utm_source=share&utm_medium=web2x&context=3][Reddit.]]
 
 #+BEGIN_SRC emacs-lisp
-  (setq column-number-mode t)
-  (delete-selection-mode t)
-  (setq require-final-newline t)
-  (setq-default indent-tabs-mode nil)
-  (setq set-mark-command-repeat-pop t)
-  (put 'upcase-region 'disabled nil)
-  (put 'downcase-region 'disabled nil)
-  (put 'dired-find-alternate-file 'disabled nil)
-  (put 'narrow-to-region 'disabled nil)
-  (setq dired-dwim-target t)
-  (setq reb-re-syntax 'string)
-  (setq delete-by-moving-to-trash t)
-  (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
+    (setq column-number-mode t)
+    (delete-selection-mode t)
+    (setq require-final-newline t)
+    (setq-default indent-tabs-mode nil)
+    (setq set-mark-command-repeat-pop t)
+    (put 'upcase-region 'disabled nil)
+    (put 'downcase-region 'disabled nil)
+    (put 'dired-find-alternate-file 'disabled nil)
+    (put 'narrow-to-region 'disabled nil)
+    (setq dired-dwim-target t)
+    (setq reb-re-syntax 'string)
+    (setq delete-by-moving-to-trash t)
+    (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
+    (setq help-window-select t)
 #+END_SRC
 
 * font
