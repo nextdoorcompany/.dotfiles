@@ -901,12 +901,12 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
   (use-package modus-themes
     :ensure t
     :init
-    (setq modus-themes-region '(accented))
-    (setq modus-themes-mode-line '(accented))
-    (setq modus-themes-completions '((selection . (accented intense text-also))))
-    (modus-themes-load-themes)
+    (setq modus-themes-common-palette-overrides
+          '((bg-mode-line-active bg-blue)
+            (fg-mode-line-active fg-main)
+            (border-mode-line-active blue-intense)))
     :config
-    (modus-themes-load-vivendi))
+    (load-theme 'modus-vivendi :no-confirm))
 #+END_SRC
 
 * elfeed
@@ -1538,7 +1538,7 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
   (setq confirm-nonexistent-file-or-buffer t)
 #+END_SRC
 * paren managment
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp
   (electric-pair-mode 1)
   (show-paren-mode 1)
   (setq show-paren-style 'expression)
