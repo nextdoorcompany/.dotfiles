@@ -904,7 +904,10 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     (setq modus-themes-common-palette-overrides
           '((bg-mode-line-active bg-blue)
             (fg-mode-line-active fg-main)
-            (border-mode-line-active blue-intense)))
+            (border-mode-line-active blue-intense)
+            (bg-region bg-magenta-intense)
+            (fg-region fg-main)
+            (bg-paren-expression bg-cyan-intense)))
     :config
     (load-theme 'modus-vivendi :no-confirm))
 #+END_SRC
