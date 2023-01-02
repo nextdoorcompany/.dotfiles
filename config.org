@@ -674,16 +674,6 @@ This [[https://twitter.com/xenodium/status/1082020496466690048][tweet]] from Alv
     :ensure t)
 #+END_SRC
 
-* store job numbers in registers
-
-#+BEGIN_SRC emacs-lisp
-  (defun js/set-job-register (job)
-    (interactive "sJob: ")
-    (let ((job (upcase job)))
-      (set-register ?j job)
-      (set-register ?J (concat job " SPECIAL PARTS.pdf"))))
-#+END_SRC
-
 * make comma separated lists of tags
 
 [[https://stackoverflow.com/questions/17922208/emacs-convert-items-on-separate-lines-to-a-comma-separated-list][Stack Overflow]]
