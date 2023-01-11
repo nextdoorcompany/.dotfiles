@@ -1176,6 +1176,7 @@ Run ispell last
       (calc)
       (sql-connect "engineering")
       (sql-connect "customer_service")
+      (maybe-require 'js-email)
       (require 'org-agenda)
       (add-to-list 'org-agenda-custom-commands
                    '("x" "Agenda grouped by priority"
