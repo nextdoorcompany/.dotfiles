@@ -907,8 +907,15 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
 [[https://github.com/skeeto/elfeed][elfeed]] [[https://melpa.org/#/elfeed][MELPA]]
 
 #+BEGIN_SRC emacs-lisp
-  (use-package elfeed
-    :ensure t)
+    (use-package elfeed
+      :ensure t
+      :config
+      (defface blog-elfeed-entry
+        '((t :foreground "#f77"))
+        "Indicates a blog entry.")
+
+      (push '(blog blog-elfeed-entry)
+            elfeed-search-face-alist))
 #+END_SRC
 
 [[https://github.com/remyhonig/elfeed-org][elfeed-org]] [[https://melpa.org/#/elfeed-org][MELPA]]
