@@ -1542,7 +1542,7 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
 #+BEGIN_SRC emacs-lisp
   (electric-pair-mode 1)
   (show-paren-mode 1)
-  (setq show-paren-style 'expression)
+  (setq show-paren-style 'mixed)
   (add-hook
    'org-mode-hook
    (lambda ()
