@@ -3,3 +3,5 @@ curl -s "https://archlinux.org/mirrorlist/?country=US&protocol=http&protocol=htt
 sudo mv ~/mirrorlist /etc/pacman.d/mirrorlist
 cat /etc/pacman.d/mirrorlist
 cat /etc/pacman.d/mirrorlist.old
+echo "----- running paccache -----"
+paccache -r
