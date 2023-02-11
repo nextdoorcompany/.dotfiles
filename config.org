@@ -910,14 +910,21 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     (setq ef-themes-to-toggle '(ef-day ef-cherie))
     (setq ef-themes-region '(intense))
 
-    (defun my-ef-themes ()
+    (defun js/ef-themes ()
     "Theme overrides."
     (ef-themes-with-colors
       (custom-set-faces
+       `(org-block ((,c :background ,bg-main)))
        `(org-block-begin-line ((,c :background ,bg-main)))
        `(org-block-end-line ((,c :background ,bg-main))))))
 
-    (add-hook 'ef-themes-post-load-hook #'my-ef-themes))
+    (add-hook 'ef-themes-post-load-hook #'js/ef-themes))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/disable-themes ()
+    (interactive)
+    (mapc #'disable-theme custom-enabled-themes))
 #+END_SRC
 
 * elfeed
