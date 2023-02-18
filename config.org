@@ -265,29 +265,63 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 
 #+BEGIN_SRC emacs-lisp
   (defun js/new-snippet ()
-    "Create and switch bom scratch buffer"
+    "Create a scratch buffer for writing an ephemeral snippet."
     (interactive)
     (switch-to-buffer (make-temp-name "snippet-"))
     (lisp-interaction-mode)
     (insert
-     ";; Add strings in double quotes.  Add prompts like (p \"Prompt: \" NAME).  Hit <f6> after tag to run.
+     ";; Hit <f6> after tag to run.
 
-  (tempo-define-template \"jjt\"
-                         '()
-                         \"jjt\"
-                         \"docstring\")
+;; elements
+;; any string in double quotes
+;; (p \"Prompt: \" NAME) prompts and stores value.  Optionally inserts, use 'noinsert as the final argument
+;; (s NAME) inserts value
 
-  jjt
+;; more info M-x find-library tempo 
+
+(tempo-define-template \"jjt\"
+                       '()        ; elements here
+                       \"jjt\"
+                       \"docstring\")
+
+jjt
 
 
-  ;; Repeating skeleton.  STR is the value of the first prompt.
+;; skeleton
 
-  (define-skeleton jj/s
-    \"docstring\"
-    \"\"
-    (\"Prompt: \" str (skeleton-read \"Prompt: \") \\n))
+(define-skeleton jj/s
+  \"Generates a greeting.\"
+  \"Name: \"
+  \"Hello \"
+  str)
 
-  (jj/s)"))
+(define-skeleton jj/s
+  \"Generates a loud greeting.\"
+  nil
+  \"Hello \"
+  '(setq v1 (skeleton-read \"Name: \"))
+  (upcase v1))
+
+(define-skeleton jj/s
+  \"Asks a lot of questions.\"
+  \"Q1: \"
+  str
+  \" --- \"
+  (skeleton-read \"Q2: \")
+  \" +++ \"
+  (upcase (skeleton-read \"Q3: \")))
+
+
+;; Repeating skeleton.  STR is the value of the first prompt.
+
+(define-skeleton jj/s
+  \"docstring\"
+  \"\"
+  (\"Prompt: \" str (skeleton-read \"Prompt: \") \\n))
+
+(jj/s)
+
+; use M-x global-set-key to set the key.  The tempo function will be tempo-template-<name>"))
 #+END_SRC
 * copy a date from the calendar into the kill ring
 
