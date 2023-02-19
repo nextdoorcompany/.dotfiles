@@ -277,7 +277,7 @@ Functions come from Harry Schwartz.  Most workflows start with one of these.
 ;; (p \"Prompt: \" NAME) prompts and stores value.  Optionally inserts, use 'noinsert as the final argument
 ;; (s NAME) inserts value
 
-;; more info M-x find-library tempo 
+;; more info M-x find-library tempo
 
 (tempo-define-template \"jjt\"
                        '()        ; elements here
@@ -1620,4 +1620,18 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (let ((result (car (benchmark-run 512
                          (sort (number-sequence 1 2048) #'<)))))
       (message (format "Elapsed time: %fs" result))))
+#+END_SRC
+* python-up-list
+#+BEGIN_SRC emacs-lisp
+  (defun js/python-backward-up-list (&optional arg)
+    "Move backward out of one level of parentheses, strings, or blocks.
+  With ARG, do this that many times.
+  A negative argument means move forward but still to a less deep spot."
+    (interactive "^p")
+    (let ((context (python-syntax-context-type)))
+      (if (memq context '(string comment))
+          (backward-up-list arg t nil)
+        (python-nav-backward-up-list arg))))
+
+  (define-key python-mode-map [remap backward-up-list] #'js/python-backward-up-list)
 #+END_SRC
