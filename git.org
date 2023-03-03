@@ -29,6 +29,7 @@ Inject email and name.
 
 [alias]
         dft = difftool
+        glog = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [commit]
         template = ~/.gitmessage
