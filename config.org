@@ -1272,6 +1272,7 @@ Run ispell last
                                        "\\usepackage{parskip}"
                                        "\\usepackage[left=1in]{geometry}"
                                        "\\hypersetup{colorlinks}"))
+      (global-set-key (kbd "<f7>") #'js/insert-book-week)
       (ispell))
 
   (defvar js/coding-p nil)
@@ -1280,7 +1281,9 @@ Run ispell last
     (if (not js/coding-p)
         (progn
           (setq js/coding-p t)
-          (js/change-face-height 180))
+          (js/change-face-height 180)
+          (if (member "Iosevka Fixed" (font-family-list))
+           (set-face-attribute 'default nil :font "Iosevka Fixed")))
       (js/change-face-height js/default-font-height))
     (calc)
     (ispell))
