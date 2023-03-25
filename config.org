@@ -1357,6 +1357,49 @@ Found a solution [[https://gist.github.com/samwhitlock/c4f0dd94a7c38c922c390c95a
   (use-package subword
     :diminish superword-mode)
 #+END_SRC
+* expansions
+#+BEGIN_SRC emacs-lisp
+  (defun js/list-expansions ()
+    "List all tempos, skeletons, and active abbrevs."
+    (interactive)
+    (pop-to-buffer "*Expansions*")
+    (setq buffer-read-only nil)
+    (erase-buffer)
+
+    (insert "(tempos)\n\n")
+    (dolist (tag tempo-tags)
+      (let ((trigger (car tag))
+            (doc (documentation (cdr tag))))
+        (insert (format "%s=    %s\n" trigger doc))))
+    (insert "\n\n")
+
+    (insert "(skeletons)\n\n")
+    (dolist (tag js/skeletons)
+      (let ((trigger (car tag))
+            (doc (cdr tag)))
+        (insert (format "%s=    %s\n" trigger doc))))
+    (insert "\n\n")
+
+    ;; lifted from prepare-abbrev-list-buffer in abbrev.el
+    (dolist (table abbrev-table-name-list)
+      (unless (abbrev-table-empty-p (symbol-value table))
+        (insert-abbrev-table-description table t)))
+
+    (goto-char (point-min))
+    (while (re-search-forward "[0123456789]* \"\"\\s-*" nil t)
+      (replace-match "=    " nil nil))
+    (align-regexp (point-min) (point-max) "\\(\\s-*\\)=")
+    (special-mode))
+
+  (defvar js/skeletons nil
+    "An association list of skeleton names and docstrings.")
+
+  (defun js/add-skeleton-to-table (command documentation &rest skeleton)
+    "Add skeleton to table when define-skeleton is called."
+    (add-to-list 'js/skeletons (cons (symbol-name command) documentation)))
+
+  (advice-add #'define-skeleton :before #'js/add-skeleton-to-table)
+#+END_SRC
 * skeletons
 #+BEGIN_SRC emacs-lisp
   (defvar js/insert-book-week-date nil
