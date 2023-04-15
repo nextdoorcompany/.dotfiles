@@ -1681,3 +1681,35 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 
   (define-key python-mode-map [remap backward-up-list] #'js/python-backward-up-list)
 #+END_SRC
+* movie database
+#+BEGIN_SRC emacs-lisp
+    (defun js/movie (url)
+      "Adds a Wikipedia URL to the database and displays the database.
+    An empty URL only displays the database."
+      (interactive "sURL: ")
+      (let* ((exe (concat "cd ~/Dropbox/progs/movie-db; " 
+                          "~/Dropbox/progs/movie-db/env/bin/python -m movie_db "))
+             (add-result (if (not (string= url ""))
+                             (shell-command-to-string
+                              (concat exe "add " (shell-quote-argument url)))
+                           "")))
+        (pop-to-buffer "*Movies*")
+        (setq buffer-read-only nil)
+        (erase-buffer)
+        (if (string= add-result "")
+            (insert
+             (shell-command-to-string
+              (concat exe "view")))
+          (insert add-result))
+        (special-mode)
+        (goto-address-mode 1)))
+#+END_SRC
+* goto address mode
+#+BEGIN_SRC emacs-lisp
+  (setq goto-address-highlight-keymap
+        (let ((m (make-sparse-keymap)))
+          (define-key m (kbd "C-c C-o") #'goto-address-at-point)
+          (define-key m (kbd "<mouse-2>") #'goto-address-at-point)
+          (define-key m (kbd "C-c RET") #'goto-address-at-point)
+          m))
+#+END_SRC
