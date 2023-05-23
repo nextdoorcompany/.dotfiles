@@ -1266,6 +1266,11 @@ Run ispell last
                    '("y" "notes TODO" todo "TODO"
                       ((org-agenda-files '("~/org/notes.org"))
                        (org-agenda-overriding-header "Notes TODO"))))
+      (add-to-list 'org-agenda-custom-commands
+               '("q" "lean" tags
+                 "TODO=\"DONE\"&CLOSED>\"<-14d>\"|TODO=\"TODO\"&SCHEDULED>\"<-10y>\""
+                 ((org-agenda-files '("~/org/notes.org"))
+                  (org-agenda-sorting-strategy '(scheduled-up)))))
       (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
       (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
       (setq org-latex-packages-alist '("\\usepackage{kpfonts}"
