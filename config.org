@@ -1270,7 +1270,7 @@ Run ispell last
                '("q" "lean" tags
                  "TODO=\"DONE\"&CLOSED>\"<-14d>\"-exclude|TODO=\"TODO\"&SCHEDULED>\"<-10y>\"-exclude"
                  ((org-agenda-files '("~/org/notes.org"))
-                  (org-agenda-sorting-strategy '(scheduled-up))
+                  (org-agenda-sorting-strategy '(todo-state-down scheduled-up))
                   (org-agenda-prefix-format "%i            "))))
       (global-set-key (kbd "C-c a") (lambda () (interactive) (org-agenda "" "x")))
       (advice-add 'org-agenda-redo-all :after #'js/scroll-to-bottom)
