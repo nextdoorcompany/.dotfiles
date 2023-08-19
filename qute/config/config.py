@@ -71,7 +71,7 @@ c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}',
 
 # Page(s) to open at the start.
 # Type: List of FuzzyUrl, or FuzzyUrl
-c.url.start_pages = 'https://start.duckduckgo.com'
+c.url.start_pages = 'qute://start/'
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
@@ -126,3 +126,5 @@ config.bind('<left>', 'tab-prev')
 config.bind('g', 'reload')
 config.bind('<Alt-,>', 'scroll-to-perc 0')
 config.bind('<Alt-.>', 'scroll-to-perc 100')
+
+c.content.tls.certificate_errors = 'block'
