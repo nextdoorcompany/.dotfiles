@@ -128,3 +128,6 @@ config.bind('<Alt-,>', 'scroll-to-perc 0')
 config.bind('<Alt-.>', 'scroll-to-perc 100')
 
 c.content.tls.certificate_errors = 'block'
+
+c.completion.delay = 350
+c.completion.min_chars = 3
