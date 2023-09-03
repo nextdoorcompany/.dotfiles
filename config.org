@@ -142,20 +142,21 @@ Explicitly set storage files.
 + Switch to help window see [[https://www.reddit.com/r/emacs/comments/ynr33i/comment/ivag10u/?utm_source=share&utm_medium=web2x&context=3][Reddit.]]
 
 #+BEGIN_SRC emacs-lisp
-    (setq column-number-mode t)
-    (delete-selection-mode t)
-    (setq require-final-newline t)
-    (setq-default indent-tabs-mode nil)
-    (setq set-mark-command-repeat-pop t)
-    (put 'upcase-region 'disabled nil)
-    (put 'downcase-region 'disabled nil)
-    (put 'dired-find-alternate-file 'disabled nil)
-    (put 'narrow-to-region 'disabled nil)
-    (setq dired-dwim-target t)
-    (setq reb-re-syntax 'string)
-    (setq delete-by-moving-to-trash t)
-    (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
-    (setq help-window-select t)
+      (setq column-number-mode t)
+      (delete-selection-mode t)
+      (setq require-final-newline t)
+      (setq-default indent-tabs-mode nil)
+      (setq set-mark-command-repeat-pop t)
+      (put 'upcase-region 'disabled nil)
+      (put 'downcase-region 'disabled nil)
+      (put 'dired-find-alternate-file 'disabled nil)
+      (put 'narrow-to-region 'disabled nil)
+      (setq dired-dwim-target t)
+      (setq reb-re-syntax 'string)
+      (setq delete-by-moving-to-trash t)
+      (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
+      (setq help-window-select t)
+      (global-set-key (kbd "C-c p") 'delete-pair)
 #+END_SRC
 
 * font
@@ -773,8 +774,6 @@ Wrapper for easily pinning a buffer to a window.  Found it [[https://github.com/
     "Pin the current buffer to the selected window."
     :lighter nil " P" nil
     (set-window-dedicated-p (selected-window) pinned-buffer-mode))
-
-  (global-set-key (kbd "C-c p") 'pinned-buffer-mode)
 
   (provide 'setup-pinned-buffer-mode)
 #+END_SRC
@@ -1697,7 +1696,7 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
       "Adds a Wikipedia URL to the database and displays the database.
     An empty URL only displays the database."
       (interactive "sURL: ")
-      (let* ((exe (concat "cd ~/Dropbox/progs/movie-db; " 
+      (let* ((exe (concat "cd ~/Dropbox/progs/movie-db; "
                           "~/Dropbox/progs/movie-db/env/bin/python -m movie_db "))
              (add-result (if (not (string= url ""))
                              (shell-command-to-string
