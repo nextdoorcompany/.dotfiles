@@ -868,6 +868,7 @@ Thank you [[https://twitter.com/mickeynp/status/1559844040492851200?s=20&t=W4pFr
   (setq calc-frac-format '("+/" nil))
   (setq calc-algebraic-mode t)
   (setq calc-make-windows-dedicated t)
+  (setq calc-kill-line-numbering nil)
 
   (defun js/calc-copy-and-remove-plus (arg)
     "Copy the top of the calc stack to the kill ring.  Removes
