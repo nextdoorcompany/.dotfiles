@@ -420,7 +420,7 @@ jjt
       (interactive
        (list (completing-read "Find recent file: " recentf-list)))
       (find-file selection))
-  (global-set-key (kbd "C-x C-r") #'js/find-recent-file)
+  (global-set-key (kbd "C-x C-r") #'recentf-open)
 #+END_SRC
 
 
