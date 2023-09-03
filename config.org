@@ -1685,7 +1685,7 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (interactive "^p")
     (let ((context (python-syntax-context-type)))
       (if (memq context '(string comment))
-          (backward-up-list arg t nil)
+          (backward-up-list arg t t)
         (python-nav-backward-up-list arg))))
 
   (define-key python-mode-map [remap backward-up-list] #'js/python-backward-up-list)
