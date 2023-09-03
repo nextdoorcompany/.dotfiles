@@ -572,7 +572,6 @@ Lesson learned the hard way.  Again Karl Voit to the [[https://karl-voit.at/2014
     :ensure t
     :bind (("C-a" . crux-move-beginning-of-line)
            ("S-<return>" . crux-smart-open-line)
-           ("C-c d" . crux-duplicate-current-line-or-region)
            ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
            ("C-x 4 t" . crux-transpose-windows)
            ("C-c t" . crux-visit-term-buffer)))
@@ -581,6 +580,7 @@ Lesson learned the hard way.  Again Karl Voit to the [[https://karl-voit.at/2014
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "M-z") 'zap-up-to-char)
   (global-set-key (kbd "C-c <DEL>") 'kill-whole-line)
+  (global-set-key (kbd "C-c d") #'duplicate-dwim)
   (defalias 'eb 'eval-buffer)
   (defalias 'cal 'calendar)
 #+END_SRC
