@@ -131,3 +131,5 @@ c.content.tls.certificate_errors = 'block'
 
 c.completion.delay = 350
 c.completion.min_chars = 3
+c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks", "history"]
+c.completion.web_history.max_items = 1000
