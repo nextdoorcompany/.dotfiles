@@ -1664,6 +1664,7 @@ Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-co
   (electric-pair-mode 1)
   (show-paren-mode 1)
   (setq show-paren-style 'mixed)
+  (setq show-paren-context-when-offscreen t)
   (add-hook 'org-mode-hook #'js/inhibit-quote)
   (add-hook 'message-mode-hook #'js/inhibit-quote-message-mode)
 #+END_SRC
