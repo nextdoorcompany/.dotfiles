@@ -1724,3 +1724,27 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
           (define-key m (kbd "C-c RET") #'goto-address-at-point)
           m))
 #+END_SRC
+* backward mark sexp
+#+BEGIN_SRC emacs-lisp
+  (defun js/negate-raw-prefix (arg)
+    "Negate raw prefix ARG."
+  
+    ;; (= (prefix-numeric-value 43) (- (prefix-numeric-value (js/negate-raw-prefix 43))))
+    ;; (= (prefix-numeric-value '-) (- (prefix-numeric-value (js/negate-raw-prefix '-))))
+    ;; (= (prefix-numeric-value '(4)) (- (prefix-numeric-value (js/negate-raw-prefix '(4)))))
+    ;; (= (prefix-numeric-value nil) (- (prefix-numeric-value (js/negate-raw-prefix nil))))
+
+    (cond ((integerp arg) (- arg))
+          ((eq arg '-) nil)
+          ((consp arg) (- (car arg)))
+          (t '-)))
+
+
+  (defun js/backward-mark-sexp (&optional arg allow-extend)
+    "Apply `mark-sexp' with negated ARG."
+    (interactive "P\np")
+    (mark-sexp (js/negate-raw-prefix arg)
+               allow-extend))
+
+  (global-set-key (kbd "C-M-;") #'js/backward-mark-sexp)
+#+END_SRC
