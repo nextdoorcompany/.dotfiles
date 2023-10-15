@@ -1783,3 +1783,30 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 
   (global-set-key (kbd "C-M-;") #'js/backward-mark-sexp)
 #+END_SRC
+* dired rename
+[[https://sachachua.com/blog/2023/10/emacsconf-backstage-file-prefixes/][Sacha Chua]]
+[[https://www.emacs.dyerdwelling.family/emacs/20231013153639-emacs--more-flexible-duplicate-thing-function/][James Dyer]]
+[[https://stackoverflow.com/questions/384284/how-do-i-rename-an-open-file-in-emacs][stack overflow]]
+#+BEGIN_SRC emacs-lisp
+  (defun js/dired-rename--rename (filename)
+    "Rename FILENAME using format iso_job_project.ext."
+    (let* ((file (file-name-base filename))
+           (dir (file-name-directory filename))
+           (ext (or (file-name-extension filename) ""))
+           (today (format-time-string "%Y-%m-%d"))
+           (job (or (get-register ?j) ""))
+           (job-or-project (read-string (format "Project (%s): " job) nil nil job))
+           (job-text (if (not (string-empty-p job-or-project)) (concat job-or-project "_") ""))
+           (date (read-string (format "Date (%s): " today) nil nil today))
+           (comment (read-string (format "Comment (%s): " file)))
+           (new-filename (concat dir date "_" job-text comment "." ext)))
+      (rename-file filename new-filename 1)
+      (message "File renamed to %s" new-filename)))
+
+
+  (defun js/dired-rename-job-file()
+    "Rename marked files in dired."
+    (interactive)
+    (mapcar #'js/dired-rename--rename (dired-get-marked-files))
+    (revert-buffer))
+#+END_SRC
