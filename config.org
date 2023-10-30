@@ -1218,6 +1218,18 @@ Run ispell last
                   (truncate (/ (window-body-height) 4.0)))))
         (recenter (- -1 this-scroll-margin) t)))
 
+  (defun js/capture-note-locate-point ()
+    (interactive)
+    (goto-char (point-min))
+    (goto-char (search-forward "* Notes")))
+
+  (defun js/capture-note-finding ()
+    (let* ((dir-job-files "c:/Users/justin/Dropbox/Documents/job files/")
+           (job-number (get-register ?J))
+           (file-name (expand-file-name (concat job-number "/" job-number ".org") dir-job-files)))
+      (set-buffer (org-capture-target-buffer file-name))
+      (js/capture-note-locate-point)))
+
     (defun js/go-to-work ()
       (interactive)
       (desktop-read)
@@ -1263,6 +1275,9 @@ Run ispell last
                                        "\\usepackage[left=1in]{geometry}"
                                        "\\hypersetup{colorlinks}"))
       (global-set-key (kbd "<f7>") #'js/insert-book-week)
+      (add-to-list 'org-capture-templates
+                   '("j" "note" plain (function js/capture-note-finding) "\n** %U\n+ %?" :jump-to-captured t :empty-lines-after 1)
+                   t)
       (ispell))
 
   (defvar js/coding-p nil)
