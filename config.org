@@ -829,6 +829,9 @@ Add a directory local to assign a value to commands.
     (reformatter-define ruff
       :program "ruff"
       :args `("format" "--stdin-filename" ,buffer-file-name "-")))
+
+  (if (executable-find "ruff")
+      (add-hook 'python-mode-hook #'ruff-on-save-mode))
 #+END_SRC
 
 * compilation
@@ -1387,6 +1390,8 @@ Run ispell last
 
   (define-key outline-minor-mode-map (kbd "<f7>") #'js/outline-toggle-children)
   (define-key outline-minor-mode-map (kbd "<f8>") #'js/outline-cycle-buffer)
+
+  (add-hook 'python-mode-hook #'outline-minor-mode)
 #+END_SRC
 
 * graphviz
