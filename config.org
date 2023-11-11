@@ -1688,6 +1688,11 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
   (setq eshell-prompt-function 'js/eshell-prompt)
 
   (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show" "glog" "dft"))
+
+  (defun js/dft ()
+    "Run git dft through eshell."
+    (interactive)
+    (eshell-command "git dft"))
 #+END_SRC
 * minibuffer completion
 Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.
