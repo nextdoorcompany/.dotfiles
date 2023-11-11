@@ -33,6 +33,9 @@ Inject email and name.
 
 [commit]
         template = ~/.gitmessage
+
+[init]
+	defaultBranch = trunk
 #+END_SRC
 
 
@@ -59,7 +62,7 @@ Could not figure out another way to get blank line at top of tangled file
 #+END_SRC
 
 Tangle this file to any git repo to warn about deleting multiple lines.
-#+BEGIN_SRC shell 
+#+BEGIN_SRC shell
   #!/bin/sh
   #
   # An example hook script that is called after a successful
@@ -92,5 +95,5 @@ Tangle this file to any git repo to warn about deleting multiple lines.
                      "${OUTFILE}"; \
           done
 
-  #end	  
+  #end
 #+END_SRC
