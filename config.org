@@ -1067,41 +1067,13 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
 * web searches from emacs
 #+BEGIN_SRC emacs-lisp
-  (defconst js/query-file "~/.emacs.d/web_q"
-    "File to store queries.")
-
-  (defvar js/query-history ()
-    "Current list of queries.")
-
-  (defun js/query-write()
-    "Write history list to disk.  Will create file if it doesn't exist."
-    (with-temp-buffer
-      (insert "\n(")
-      (dolist (i js/query-history) (pp i (current-buffer)))
-      (insert ")")
-      (write-region nil nil js/query-file)))
-
-  (add-hook 'kill-emacs-hook 'js/query-write)
-
-  (defun js/query-read ()
-    "Read history list from disk."
-    (with-temp-buffer
-      (insert-file-contents js/query-file)
-      (goto-char (point-min))
-      (setq js/query-history (read (current-buffer)))))
-
-  (when (file-exists-p js/query-file)
-    (js/query-read))
-
-  (defun js/web-search (arg)
-    "Start a web search.  If ARG use default browser.  Otherwise use eww."
-    (interactive "P")
-    (let* ((query (completing-read "Query> " js/query-history))
-           (url (url-encode-url (format "https://duckduckgo.com/?q=%s" query))))
-      (add-to-list 'js/query-history (downcase query))
-      (if arg
-          (browse-url url)
-        (eww-browse-url url))))
+  (global-set-key (kbd "C-c s") #'webjump)
+  (add-to-list
+   'webjump-sites
+   '("Kagi" . [simple-query
+               "https://kagi.com"
+               "https://kagi.com/search?q="
+               ""]))
 #+END_SRC
 
 * dumb-jump
