@@ -828,10 +828,16 @@ Add a directory local to assign a value to commands.
       :args '("-r" "-k" "upper" "--wrap_after" "80" "-"))
     (reformatter-define ruff
       :program "ruff"
-      :args `("format" "--stdin-filename" ,buffer-file-name "-")))
+      :args `("format" "--stdin-filename" ,buffer-file-name "-"))
+    (reformatter-define toml
+      :program "toml-sort"
+      :args '("--spaces-indent-inline-array" "4" "--trailing-comma-inline-array" "-")))
 
   (if (executable-find "ruff")
       (add-hook 'python-mode-hook #'ruff-on-save-mode))
+
+  (if (executable-find "toml-sort")
+      (add-hook 'conf-toml-mode-hook #'toml-on-save-mode))
 #+END_SRC
 
 * compilation
