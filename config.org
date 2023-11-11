@@ -1080,12 +1080,19 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
       (webjump)))
 
   (global-set-key (kbd "C-c s") #'js/webjump)
-  (add-to-list
-   'webjump-sites
-   '("Kagi" . [simple-query
-               "https://kagi.com"
-               "https://kagi.com/search?q="
-               ""]))
+  (setq webjump-sites
+        '(("Kagi" . [simple-query
+                     "https://kagi.com"
+                     "https://kagi.com/search?q="
+                     ""])
+          ("Pypi" . [simple-query
+                     "https://pypi.org"
+                     "https://pypi.org/search/?q="
+                     ""])
+          ("Wikipedia" . [simple-query
+                          "wikipedia.org"
+                          "wikipedia.org/wiki/"
+                          ""])))
 #+END_SRC
 
 * dumb-jump
