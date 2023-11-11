@@ -1673,7 +1673,7 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 #+BEGIN_SRC emacs-lisp
   (repeat-mode 1)
 #+END_SRC
-* eshell prompt
+* eshell
 #+BEGIN_SRC emacs-lisp
   (defun js/eshell-prompt ()
     (let* ((first (car (eshell-get-path)))
@@ -1687,6 +1687,7 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 
   (setq eshell-prompt-function 'js/eshell-prompt)
 
+  (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show" "glog" "dft"))
 #+END_SRC
 * minibuffer completion
 Prompted by [[https://www.masteringemacs.org/article/understanding-minibuffer-completion][Mickey]], now enjoying the default completion system.
