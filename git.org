@@ -37,6 +37,9 @@ Inject email and name.
 
 [init]
 	defaultBranch = trunk
+
+[pager]
+	diff =
 #+END_SRC
 
 
