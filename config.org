@@ -1067,7 +1067,13 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
 * web searches from emacs
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "C-c s") #'webjump)
+  (defun js/webjump (arg)
+    "Wrap webjump to use eww if ARG."
+    (interactive "P")
+    (let ((webjump-use-internal-browser arg))
+      (webjump)))
+
+  (global-set-key (kbd "C-c s") #'js/webjump)
   (add-to-list
    'webjump-sites
    '("Kagi" . [simple-query
