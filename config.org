@@ -1675,12 +1675,12 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 #+END_SRC
 * eshell
 #+BEGIN_SRC emacs-lisp
-  (defvar js/venv ""
+  (defvar eshell-venv-prompt ""
     "Prefix for eshell prompt, typically Python venv.")
 
   (defun js/eshell-prompt ()
     "Generate eshell prompt."
-    (concat js/venv
+    (concat (propertize eshell-venv-prompt 'face '(:foreground "violet"))
             (abbreviate-file-name (eshell/pwd))
             (if (= (user-uid) 0) " # " " $ ")))
 
