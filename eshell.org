@@ -1,0 +1,9 @@
+Tangle file
+C-c C-v t
+
+With prefix only tangle current block
+
+#+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/eshell/login
+  (if (file-exists-p "eshell-activate")
+      (eshell/. "eshell-activate"))
+#+END_SRC
