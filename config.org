@@ -1686,7 +1686,7 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 
   (setq eshell-prompt-function 'js/eshell-prompt)
 
-  (setq eshell-visual-subcommands '(("git" "log" "diff" "show" "glog" "dft")))
+  (setq eshell-visual-subcommands '(("git" "log" "diff" "show" "glog" "dft" "dlog")))
 
   (defun js/dft ()
     "Run git dft through eshell."

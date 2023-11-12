@@ -29,7 +29,8 @@ Inject email and name.
 
 [alias]
         dft = difftool
-        glog = log --graph --decorate --pretty=oneline --abbrev-commit
+        dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff; }; f"
+        glog = log --stat --abbrev-commit
         list-changed = diff --name-only --diff-filter d
 
 [commit]
