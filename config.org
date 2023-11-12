@@ -1675,19 +1675,18 @@ Thanks to Karthinks [[https://karthinks.com/software/it-bears-repeating/][blog]]
 #+END_SRC
 * eshell
 #+BEGIN_SRC emacs-lisp
+  (defvar js/venv ""
+    "Prefix for eshell prompt, typically Python venv.")
+
   (defun js/eshell-prompt ()
-    (let* ((first (car (eshell-get-path)))
-           (venv (if (string= first "./env/bin/")
-                     (propertize "(env)" 'face '(:foreground "violet"))
-                   "")))
-      (concat venv
-              " "
-              (abbreviate-file-name (eshell/pwd))
-              (if (= (user-uid) 0) " # " " $ "))))
+    "Generate eshell prompt."
+    (concat js/venv
+            (abbreviate-file-name (eshell/pwd))
+            (if (= (user-uid) 0) " # " " $ ")))
 
   (setq eshell-prompt-function 'js/eshell-prompt)
 
-  (add-to-list 'eshell-visual-subcommands '("git" "log" "diff" "show" "glog" "dft"))
+  (setq eshell-visual-subcommands '(("git" "log" "diff" "show" "glog" "dft")))
 
   (defun js/dft ()
     "Run git dft through eshell."
