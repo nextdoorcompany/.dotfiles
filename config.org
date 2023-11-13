@@ -1275,6 +1275,12 @@ Run ispell last
       (add-to-list 'org-capture-templates
                    '("j" "note" plain (function js/capture-note-finding) "\n** %U\n+ %?" :jump-to-captured t :empty-lines-after 1)
                    t)
+      (add-to-list 'webjump-sites
+                   ;; http://nitrogen/job/13314.R0.F0
+                   '("Job" . [simple-query
+                              "http://nitrogen/job_hub"
+                              "http://nitrogen/job/"
+                              ""]))
       (ispell))
 
   (defvar js/coding-p nil)
