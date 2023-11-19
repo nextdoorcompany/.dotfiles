@@ -1835,3 +1835,13 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (mapcar #'js/dired-rename--rename (dired-get-marked-files))
     (revert-buffer))
 #+END_SRC
+* yaml
+
+[[https://yaml.org/][yaml]]
+
+[[https://github.com/yoshiki/yaml-mode][web]] [[https://melpa.org/#/yaml-mode][MELPA]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :ensure t)
+#+END_SRC
