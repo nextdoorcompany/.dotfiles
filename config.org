@@ -599,7 +599,8 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
   (setq ibuffer-saved-filter-groups
         (quote (("default"
                  ("dired" (mode . dired-mode))
-                 ("org" (mode . org-mode))
+                 ("org" (or (mode . org-mode)
+                            (mode . org-agenda-mode)))
                  ("python" (mode . python-mode))
                  ("elisp" (or (mode . emacs-lisp-mode)
                               (mode . lisp-interaction-mode)))
@@ -617,7 +618,11 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                  ("message" (mode . message-mode))
                  ("sql" (or (mode . sql-mode)
                             (mode . sql-interactive-mode)))
-                 ("rst" (mode . rst-mode))))))
+                 ("rst" (mode . rst-mode))
+                 ("data" (or (mode . yaml-mode)
+                             (mode . conf-toml-mode)
+                             (mode . conf-unix-mode)
+                             (mode . js-json-mode)))))))
   (add-hook 'ibuffer-mode-hook
             (lambda ()
               (ibuffer-auto-mode 1)
