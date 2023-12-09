@@ -1851,3 +1851,11 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
   (use-package yaml-mode
     :ensure t)
 #+END_SRC
+* debbugs
+
+[[https://elpa.gnu.org/packages/doc/debbugs-ug.html][web]]
+
+#+BEGIN_SRC emacs-lisp
+  (use-package debbugs
+    :ensure t)
+#+END_SRC
