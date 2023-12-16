@@ -1874,3 +1874,14 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (let ((command (concat "fd -g " pattern " -X ls " (cdr find-ls-option))))
       (find-dired-with-command dir command)))
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/fd-tree (dir pattern)
+    "Run `fd' with glob PATTERN in DIR and output using `tree'."
+    (interactive
+     (list (read-directory-name "Run find in directory: " nil "" t)
+           (read-string "Filename (wildcard):  ")))
+    (let ((command (concat "fd -g " pattern  " | tree --fromfile"))
+          (default-directory dir))
+      (shell-command command)))
+#+END_SRC
