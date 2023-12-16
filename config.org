@@ -23,6 +23,8 @@ The system must have the programs below.  Also see the paths section for require
 + [[http://tug.org/texlive/][texlive]] or [[https://miktex.org/][miktex]]
 + [[https://www.gnu.org/software/diffutils/][diff]]
 + [[https://www.ledger-cli.org/][ledger]]
++ [[https://github.com/sharkdp/fd][fd]]
++ [[https://en.wikipedia.org/wiki/Tree_%28command%29][tree]]
 
 These are optional programs.  Sqlformat and black are assumed to be in the project's
 virtualenv.
@@ -33,7 +35,7 @@ virtualenv.
 + [[https://graphviz.org/][dot]]
 
 #+BEGIN_SRC emacs-lisp
-  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger" "dot")))
+  (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger" "dot" "fd" "tree")))
     (dolist (prog programs)
       (when (not (executable-find prog))
         (let ((inhibit-message t))
