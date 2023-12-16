@@ -1859,3 +1859,18 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
   (use-package debbugs
     :ensure t)
 #+END_SRC
+* fd
+
+[[https://github.com/sharkdp/fd][fd]] is a fast finder.  [[https://www.masteringemacs.org/article/working-multiple-files-dired][Mickey]] provides an excellent overview of the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired-and-Find.html][find-dired]] package.
+
+#+BEGIN_SRC emacs-lisp
+  (defun js/fd-dired (dir pattern)
+    "Run `fd' with glob PATTERN in DIR and output in Dired buffer \"*Find*\".
+
+  Uses `find-dired-with-command'."
+    (interactive
+     (list (read-directory-name "Run find in directory: " nil "" t)
+           (read-string "Filename (wildcard):  ")))
+    (let ((command (concat "fd -g " pattern " -X ls " (cdr find-ls-option))))
+      (find-dired-with-command dir command)))
+#+END_SRC
