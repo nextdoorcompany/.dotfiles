@@ -1873,7 +1873,7 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (interactive
      (list (read-directory-name "Run find in directory: " nil "" t)
            (read-string "Filename (wildcard):  ")))
-    (let ((command (concat "fd -g " pattern " -X ls " (cdr find-ls-option))))
+    (let ((command (concat "fd -g '" pattern "' -X ls " (cdr find-ls-option))))
       (find-dired-with-command dir command)))
 #+END_SRC
 
@@ -1883,7 +1883,7 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
     (interactive
      (list (read-directory-name "Run find in directory: " nil "" t)
            (read-string "Filename (wildcard):  ")))
-    (let ((command (concat "fd -g " pattern  " | tree --fromfile"))
+    (let ((command (concat "fd -g '" pattern  "' | tree --fromfile"))
           (default-directory dir))
       (shell-command command)))
 #+END_SRC
