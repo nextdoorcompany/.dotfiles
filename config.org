@@ -1077,6 +1077,7 @@ Thank you to [[https://github.com/purcell/emacs.d/blob/master/lisp/init-elpa.el]
 
   (maybe-require 'minicad)
   (maybe-require 'internal-site)
+  (maybe-require 'job-dired)
 #+END_SRC
 
 * web searches from emacs
