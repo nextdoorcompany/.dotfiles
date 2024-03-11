@@ -1891,5 +1891,6 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 * grep
 use ripgrep with standard emacs compilation buffer
 #+BEGIN_SRC elisp
+  (require 'grep)
   (grep-apply-setting 'grep-command "rg --color always -nSH --no-heading -e ")
 #+END_SRC
