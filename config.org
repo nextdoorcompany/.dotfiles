@@ -1889,10 +1889,3 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
           (default-directory dir))
       (shell-command command)))
 #+END_SRC
-* grep
-use ripgrep with standard emacs compilation buffer
-#+BEGIN_SRC elisp
-  (require 'grep)
-  (grep-apply-setting 'grep-command
-                      '("rg --color always -nSH --no-heading -e   ./" . 40))
-#+END_SRC
