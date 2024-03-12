@@ -1867,6 +1867,7 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 [[https://github.com/sharkdp/fd][fd]] is a fast finder.  [[https://www.masteringemacs.org/article/working-multiple-files-dired][Mickey]] provides an excellent overview of the [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired-and-Find.html][find-dired]] package.
 
 #+BEGIN_SRC emacs-lisp
+  (require 'find-dired)
   (defun js/fd-dired (dir pattern)
     "Run `fd' with glob PATTERN in DIR and output in Dired buffer \"*Find*\".
 
