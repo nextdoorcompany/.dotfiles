@@ -838,13 +838,22 @@ Add a directory local to assign a value to commands.
       :args `("format" "--stdin-filename" ,buffer-file-name "-"))
     (reformatter-define toml
       :program "toml-sort"
-      :args '("--spaces-indent-inline-array" "4" "--trailing-comma-inline-array" "-")))
+      :args '("--spaces-indent-inline-array" "4" "--trailing-comma-inline-array" "-"))
+    (reformatter-define prettier
+      :program "prettier"
+      :args `(,buffer-file-name))
+  )
 
   (if (executable-find "ruff")
       (add-hook 'python-mode-hook #'ruff-on-save-mode))
 
   (if (executable-find "toml-sort")
       (add-hook 'conf-toml-mode-hook #'toml-on-save-mode))
+
+  (if (executable-find "prettier")
+      (progn
+        (add-hook 'css-mode-hook #'prettier-on-save-mode)
+        (add-hook 'mhtml-mode-hook #'prettier-on-save-mode)))
 #+END_SRC
 
 * compilation
