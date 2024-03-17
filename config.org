@@ -841,7 +841,7 @@ Add a directory local to assign a value to commands.
       :args '("--spaces-indent-inline-array" "4" "--trailing-comma-inline-array" "-"))
     (reformatter-define prettier
       :program "prettier"
-      :args `(,buffer-file-name))
+      :args `("--stdin-filepath" ,buffer-file-name))
   )
 
   (if (executable-find "ruff")
