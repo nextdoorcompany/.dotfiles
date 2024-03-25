@@ -33,6 +33,9 @@ virtualenv.
 + [[https://github.com/andialbrecht/sqlparse][sqlformat]]
 + [[https://github.com/psf/black][black]]
 + [[https://graphviz.org/][dot]]
++ [[https://openjdk.org/][java]]
++ [[https://clojure.org/][clojure]]
++ [[https://leiningen.org/][leiningen]]
 
 #+BEGIN_SRC emacs-lisp
   (let ((programs '("aspell" "rg" "gs" "git" "pdflatex" "pdftotext" "diff" "ledger" "dot" "fd" "tree")))
