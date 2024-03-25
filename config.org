@@ -604,6 +604,8 @@ Mike Zamansky [[https://github.com/zamansky/using-emacs/blob/master/myinit.org][
                  ("org" (or (mode . org-mode)
                             (mode . org-agenda-mode)))
                  ("python" (mode . python-mode))
+                 ("clojure" (or (mode . clojure-mode)
+                                (mode . cider-repl-mode)))
                  ("elisp" (or (mode . emacs-lisp-mode)
                               (mode . lisp-interaction-mode)))
                  ("html" (mode . mhtml-mode))
