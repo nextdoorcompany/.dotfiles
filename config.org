@@ -1250,6 +1250,16 @@ Run ispell last
       (set-buffer (org-capture-target-buffer file-name))
       (js/capture-note-locate-point)))
 
+  (defun js/break-jobs (beg end)
+    "Convert all job numbers from BEG to END into query form."
+    (interactive "r")
+    (save-excursion
+      (save-restriction
+        (narrow-to-region beg end)
+        (goto-char (point-min))
+        (while (re-search-forward "\\(.*\\)\\.\\(.*\\)\\.\\(.*\\)" nil t nil)
+          (replace-match "(b.job = '\\1' and b.release = '\\2' and b.book = '\\3') or" nil nil nil nil)))))
+
     (defun js/go-to-work ()
       (interactive)
       (desktop-read)
