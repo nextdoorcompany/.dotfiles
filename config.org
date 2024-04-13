@@ -1927,3 +1927,9 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
   (use-package cider
     :ensure t)
 #+END_SRC
+* scroll without moving point
+[[https://stackoverflow.com/questions/8993183/emacs-scroll-buffer-not-point][Stack Overflow]] [[https://www.emacswiki.org/emacs/Scrolling][EmacsWiki]]
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-n") (lambda () (interactive) (scroll-down-line)))
+(global-set-key (kbd "M-p") (lambda () (interactive) (scroll-up-line)))
+#+END_SRC
