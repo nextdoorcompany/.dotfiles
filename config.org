@@ -1314,6 +1314,8 @@ Run ispell last
                               "http://nitrogen/job_hub"
                               "http://nitrogen/job/"
                               ""]))
+      (setq org-tags-exclude-from-inheritance '("strategic"))
+      (setq org-deadline-warning-days 121)
       (ispell))
 
   (defvar js/coding-p nil)
