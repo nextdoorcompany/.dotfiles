@@ -1232,7 +1232,7 @@ Xah Lee has a [[http://xahlee.info/linux/linux_xmodmap_tutorial.html][tutorial]]
 Run ispell last
 
 #+BEGIN_SRC emacs-lisp
-    (defun js/scroll-to-bottom (&optional e)
+  (defun js/scroll-to-bottom (&optional e)
       (let ((this-scroll-margin
              (min (max 0 scroll-margin)
                   (truncate (/ (window-body-height) 4.0)))))
@@ -1259,6 +1259,10 @@ Run ispell last
         (goto-char (point-min))
         (while (re-search-forward "\\(.*\\)\\.\\(.*\\)\\.\\(.*\\)" nil t nil)
           (replace-match "(b.job = '\\1' and b.release = '\\2' and b.book = '\\3') or" nil nil nil nil)))))
+
+  (defun js/vale (beg end)
+    (interactive "r")
+    (shell-command-on-region beg end "my_vale.bat"))
 
     (defun js/go-to-work ()
       (interactive)
