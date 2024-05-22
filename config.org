@@ -1773,8 +1773,8 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
   (defun js/benchmark ()
     "Run a sorting benchmark for basic comparisons."
     (interactive)
-    (let ((result (car (benchmark-run 512
-                         (sort (number-sequence 1 2048) #'<)))))
+    (let ((result (car (benchmark-run 100
+                         (sort (number-sequence 1 1048576) #'<)))))
       (message (format "Elapsed time: %fs" result))))
 #+END_SRC
 * python-up-list
