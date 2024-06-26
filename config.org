@@ -1264,10 +1264,21 @@ Run ispell last
     (interactive "r")
     (shell-command-on-region beg end "my_vale.bat"))
 
+  (require 'dired-x)
+
+  (defun js/omit-desktop-ini ()
+    (interactive)
+    (with-current-buffer (find-file-noselect "c:/Users/justin/Desktop")
+      (setq-local dired-omit-files "desktop\\.ini")
+      (setq-local dired-omit-verbose nil)
+      (dired-omit-mode 1)))
+
     (defun js/go-to-work ()
       (interactive)
       (desktop-read)
       (modus-themes-toggle)
+      (js/omit-desktop-ini)
+      (find-file-noselect "~/org/checklist.org")
       (eshell)
       (calc)
       (sql-connect "engineering")
