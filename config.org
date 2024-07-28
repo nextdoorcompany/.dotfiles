@@ -1340,8 +1340,8 @@ Run ispell last
         (progn
           (setq js/coding-p t)
           (js/change-face-height 180)
-          (if (member "Iosevka Fixed" (font-family-list))
-           (set-face-attribute 'default nil :font "Iosevka Fixed")))
+          (if (member "Essential PragmataPro" (font-family-list))
+           (set-face-attribute 'default nil :font "Essential PragmataPro")))
       (js/change-face-height js/default-font-height))
     (calc)
     (ispell))
