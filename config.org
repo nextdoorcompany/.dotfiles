@@ -989,7 +989,7 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
       :ensure t
       :config
       (defface blog-elfeed-entry
-        '((t :foreground "#f77"))
+        '((t :foreground "#70b900"))
         "Indicates a blog entry.")
 
       (push '(blog blog-elfeed-entry)
