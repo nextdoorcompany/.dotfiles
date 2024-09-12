@@ -1,0 +1,9 @@
+
+# Unison preferences file
+
+root = /home/justin/training
+root = ssh://desktop//home/justin/Dropbox/training
+
+auto = true
+color = true
+dumbtty = true
