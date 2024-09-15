@@ -980,6 +980,13 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
     (mapc #'disable-theme custom-enabled-themes))
 #+END_SRC
 
+[[https://github.com/morhetz/gruvbox][gruvbox]] [[https://github.com/greduan/emacs-theme-gruvbox][theme]].
+
+#+BEGIN_SRC emacs-lisp
+  (use-package gruvbox-theme
+    :ensure t)
+#+END_SRC
+
 * elfeed
 
 [[https://github.com/skeeto/elfeed][elfeed]] [[https://melpa.org/#/elfeed][MELPA]]
