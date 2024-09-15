@@ -1,4 +1,4 @@
-from pathlib import Path
+import platform
 
 # Documentation:
 #   qute://help/configuring.html
@@ -139,9 +139,12 @@ c.completion.min_chars = 3
 c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks", "history"]
 c.completion.web_history.max_items = 1000
 
-if Path("base16-gruvbox-dark-hard.config.py").exists():
+if (config.configdir / "base16-gruvbox-dark-hard.config.py").exists():
     config.source("base16-gruvbox-dark-hard.config.py")
     c.colors.webpage.bg = "#ffffff"
 
 c.fonts.default_size = "16pt"
 c.fonts.web.size.default = 18
+
+if platform.node() in ("six",):
+    c.zoom.default = 150
