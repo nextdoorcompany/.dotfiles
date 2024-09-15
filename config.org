@@ -960,7 +960,7 @@ Protesilaos Stavrou has published his accessible [[https://gitlab.com/protesilao
   (use-package ef-themes
     :ensure t
     :init
-    (setq ef-themes-to-toggle '(ef-day ef-cherie))
+    (setq ef-themes-to-toggle '(ef-owl ef-eagle))
     (setq ef-themes-region '(intense))
 
     (defun js/ef-themes ()
