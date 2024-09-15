@@ -1,3 +1,5 @@
+from pathlib import Path
+
 # Documentation:
 #   qute://help/configuring.html
 #   qute://help/settings.html
@@ -136,3 +138,10 @@ c.completion.delay = 350
 c.completion.min_chars = 3
 c.completion.open_categories = ["searchengines", "quickmarks", "bookmarks", "history"]
 c.completion.web_history.max_items = 1000
+
+if Path("base16-gruvbox-dark-hard.config.py").exists():
+    config.source("base16-gruvbox-dark-hard.config.py")
+    c.colors.webpage.bg = "#ffffff"
+
+c.fonts.default_size = "16pt"
+c.fonts.web.size.default = 18
