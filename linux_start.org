@@ -4,6 +4,7 @@ ln -s ~/.dotfiles/.emacs ~/.emacs
 ln -s ~/.dotfiles/config.org ~/.config.org
 ln -s ~/.dotfiles/snippets ~/.emacs.d/snippets
 ln -s ~/.dotfiles/qute/config/config.py ~/.config/qutebrowser/config.py
+ln -s ~/.dotfiles/qute/config/base16-gruvbox-dark-hard.config.py ~/.config/qutebrowser/base16-gruvbox-dark-hard.config.py
 ln -s ~/.dotfiles/qtile/config.py ~/.config/qtile/config.py
 ln -s ~/.dotfiles/unison.prf ~/.unison/default.prf
 #+END_SRC
