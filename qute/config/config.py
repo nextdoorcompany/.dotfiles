@@ -147,4 +147,5 @@ c.fonts.default_size = "16pt"
 c.fonts.web.size.default = 18
 
 if platform.node() in ("six",):
+    c.fonts.default_size = "20pt"
     c.zoom.default = 150
