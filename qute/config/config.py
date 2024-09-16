@@ -101,12 +101,12 @@ c.colors.tabs.selected.even.bg = "blue"
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = "16pt monospace"
+# c.fonts.statusbar = "16pt monospace"
 
 # Font used in the tab bar.
 # Type: QtFont
-c.fonts.tabs.selected = "16pt monospace"
-c.fonts.tabs.unselected = "16pt monospace"
+# c.fonts.tabs.selected = "16pt monospace"
+# c.fonts.tabs.unselected = "16pt monospace"
 
 # Type: Dict
 c.bindings.key_mappings["<Escape>"] = "<Ctrl-g>"
@@ -143,6 +143,7 @@ if (config.configdir / "base16-gruvbox-dark-hard.config.py").exists():
     config.source("base16-gruvbox-dark-hard.config.py")
     c.colors.webpage.bg = "#ffffff"
 
+c.fonts.default_family = ["Fantasque Sans Mono", "sans", "serif"]
 c.fonts.default_size = "16pt"
 c.fonts.web.size.default = 18
 
