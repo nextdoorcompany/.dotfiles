@@ -143,9 +143,12 @@ if (config.configdir / "base16-gruvbox-dark-hard.config.py").exists():
     config.source("base16-gruvbox-dark-hard.config.py")
     c.colors.webpage.bg = "#ffffff"
 
-c.fonts.default_family = ["Fantasque Sans Mono", "sans", "serif"]
+c.fonts.default_family = ["IBM Plex Mono", "sans-serif", "serif"]
 c.fonts.default_size = "16pt"
 c.fonts.web.size.default = 18
+c.fonts.web.family.fixed = "FreeMono"
+c.fonts.web.family.sans_serif = "FreeSans"
+c.fonts.web.family.serif = "FreeSerif"
 
 if platform.node() in ("six",):
     c.fonts.default_size = "20pt"
