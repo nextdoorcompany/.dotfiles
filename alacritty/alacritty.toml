@@ -1,0 +1,58 @@
+[font]
+size = 13.0
+
+[font.normal]
+family = "JetBrains Mono NL"
+style = "Regular"
+
+[font.italic]
+family = "JetBrains Mono NL"
+style = "Italic"
+
+[font.bold]
+family = "JetBrains Mono NL"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono NL"
+style = "Regular Bold Italic"
+
+# Base16 Gruvbox dark, hard - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+# https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-gruvbox-dark-hard.toml
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+# Default colors
+[colors.primary]
+background = "#1d2021"
+foreground = "#d5c4a1"
+
+# Colors the cursor will use if `custom_cursor_colors` is true
+[colors.cursor]
+text = "#1d2021"
+cursor = "#d5c4a1"
+
+# Normal colors
+[colors.normal]
+black = "#1d2021"
+red = "#fb4934"
+green = "#b8bb26"
+yellow = "#fabd2f"
+blue = "#83a598"
+magenta = "#d3869b"
+cyan = "#8ec07c"
+white = "#d5c4a1"
+
+# Bright colors
+[colors.bright]
+black = "#665c54"
+red = "#fe8019"
+green = "#3c3836"
+yellow = "#504945"
+blue = "#bdae93"
+magenta = "#ebdbb2"
+cyan = "#d65d0e"
+white = "#fbf1c7"
+
