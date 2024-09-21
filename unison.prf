@@ -1,7 +1,7 @@
 
 # Unison preferences file
 
-root = /home/justin/training
+root = /home/justin/sync/training
 root = ssh://desktop//home/justin/Dropbox/training
 
 auto = true

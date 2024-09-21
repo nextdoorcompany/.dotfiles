@@ -1,0 +1,9 @@
+
+# Unison preferences file
+
+root = /home/justin/sync
+root = ssh://desktop//home/justin/Dropbox
+
+auto = true
+color = true
+dumbtty = true

@@ -8,6 +8,7 @@ ln -s ~/.dotfiles/qute/config/base16-gruvbox-dark-hard.config.py ~/.config/quteb
 ln -s ~/.dotfiles/qtile/config.py ~/.config/qtile/config.py
 ln -s ~/.dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -s ~/.dotfiles/unison.prf ~/.unison/default.prf
+ln -s ~/.dotfiles/unison-full.prf ~/.unison/full.prf
 #+END_SRC
 
 Untangle git config
