@@ -1373,7 +1373,9 @@ Run ispell last
     (interactive)
     (desktop-read)
     (load-theme 'gruvbox-dark-hard)
-    (set-face-attribute 'default nil :font "JetBrains Mono NL"))
+    (set-face-attribute 'default nil :font "JetBrains Mono NL")
+    (setq browse-url-browser-function 'browse-url-generic
+          browse-url-generic-program "qutebrowser"))
 #+END_SRC
 
 * permanently delete from dired
