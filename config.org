@@ -1367,6 +1367,15 @@ Run ispell last
               (other-window 1))))))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (defun js/go-six ()
+    "Launch laptop."
+    (interactive)
+    (desktop-read)
+    (load-theme 'gruvbox-dark-hard)
+    (set-face-attribute 'default nil :font "JetBrains Mono NL"))
+#+END_SRC
+
 * permanently delete from dired
 
 #+BEGIN_SRC emacs-lisp
