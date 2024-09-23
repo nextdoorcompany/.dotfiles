@@ -1378,15 +1378,6 @@ Run ispell last
           browse-url-generic-program "qutebrowser"))
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-  (cond ((string= (system-name) "six")
-         (js/go-six))
-        ((string= (system-name) "DESKTOP-KK4MEEB")
-         (js/go-to-work))
-        ((string= (system-name) "LAMBDA")
-         (js/toggle-coding)))
-#+END_SRC
-
 * permanently delete from dired
 
 #+BEGIN_SRC emacs-lisp
@@ -1977,3 +1968,13 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 (global-set-key (kbd "M-n") (lambda () (interactive) (scroll-down-line)))
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-up-line)))
 #+END_SRC
+* launch machine specific config
+#+BEGIN_SRC emacs-lisp
+  (cond ((string= (system-name) "six")
+         (js/go-six))
+        ((string= (system-name) "DESKTOP-KK4MEEB")
+         (js/go-to-work))
+        ((string= (system-name) "LAMBDA")
+         (js/toggle-coding)))
+#+END_SRC
+
