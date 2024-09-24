@@ -1972,8 +1972,6 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 #+BEGIN_SRC emacs-lisp
   (cond ((string= (system-name) "six")
          (js/go-six))
-        ((string= (system-name) "DESKTOP-KK4MEEB")
-         (js/go-to-work))
         ((string= (system-name) "LAMBDA")
          (js/toggle-coding)))
 #+END_SRC
