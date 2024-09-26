@@ -1971,8 +1971,5 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
 * launch machine specific config
 #+BEGIN_SRC emacs-lisp
   (cond ((string= (system-name) "six")
-         (js/go-six))
-        ((string= (system-name) "LAMBDA")
-         (js/toggle-coding)))
+         (js/go-six)))
 #+END_SRC
-
