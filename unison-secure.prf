@@ -1,0 +1,9 @@
+
+# Unison preferences file
+
+root = /secure/sync
+root = ssh://desktop//mnt/ledger/repo
+
+auto = true
+color = true
+dumbtty = true
