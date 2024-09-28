@@ -30,17 +30,18 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
-mod = "mod4"
+mod = "mod4"  # super
+alt = "mod1"
 terminal = guess_terminal()
 
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod, alt], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod, alt], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod, alt], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod, alt], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -106,6 +107,7 @@ keys = [
         desc="Spawn a command using a prompt widget",
     ),
     Key([mod], "j", lazy.hide_show_bar(), desc="Toggles bar visibility"),
+    Key([mod], "l", lazy.spawn("slock"), desc="Lock screen"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
