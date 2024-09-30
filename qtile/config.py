@@ -108,6 +108,19 @@ keys = [
     ),
     Key([mod], "j", lazy.hide_show_bar(), desc="Toggles bar visibility"),
     Key([mod], "l", lazy.spawn("slock"), desc="Lock screen"),
+    Key([], "XF86AudioMute", lazy.spawn("my_volume.py mute"), desc="Mute volume"),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("my_volume.py lower"),
+        desc="Lower volume",
+    ),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("my_volume.py raise"),
+        desc="Raise volume",
+    ),
 ]
 
 # Add key bindings to switch VTs in Wayland.
