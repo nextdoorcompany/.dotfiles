@@ -54,7 +54,7 @@ def get_volume_and_mute(vol, mute):
 def build_volume_text(vol, mute):
     if vol is None or mute is None:
         return "???"
-    return f"{vol}%{' MUTE' if mute else ''}"
+    return f"V {vol}%{' MUTE' if mute else ''}"
 
 
 MUTE_GET_CMD = "pactl get-sink-mute @DEFAULT_SINK@"
@@ -101,6 +101,50 @@ def my_volume_down(qtile):
     pactl_set_volume(-10)
     text = build_volume_text(*get_volume_and_mute(*pactl_get_volume_and_mute()))
     qtile.widgets_map["vol"].update(text)
+
+
+def get_brightness(brightness):
+    fields = brightness.split(",")
+    if len(fields) != 5:
+        return None
+    b = fields[3]
+    print(fields, b)
+    b = b.strip()
+    if not b.endswith("%"):
+        return None
+    b = b[0:-1]
+    return int(b)
+
+
+def build_brightness_text(brightness):
+    if brightness is None:
+        return "???"
+    return f"B {brightness}%"
+
+
+BRIGHTNESS_GET_CMD = "brightnessctl -m i"
+BRIGHTNESS_SET_CMD = "brightnessctl -m s {}"
+
+
+def brightness_get():
+    return my_run(BRIGHTNESS_GET_CMD)
+
+
+def brightness_set(step):
+    step_text = f"+{step}%" if step >= 0 else f"{step}%-"
+    return my_run(BRIGHTNESS_SET_CMD.format(step_text))
+
+
+def my_brightness_up(qtile):
+    brightness_set(10)
+    text = build_brightness_text(get_brightness(brightness_get()))
+    qtile.widgets_map["bright"].update(text)
+
+
+def my_brightness_down(qtile):
+    brightness_set(-10)
+    text = build_brightness_text(get_brightness(brightness_get()))
+    qtile.widgets_map["bright"].update(text)
 
 
 keys = [
@@ -190,6 +234,19 @@ keys = [
         lazy.function(my_volume_up),
         desc="Raise volume",
     ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.function(my_brightness_down),
+        desc="Lower brightness",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.function(my_brightness_up),
+        desc="Raise brightness",
+    ),
+
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -275,6 +332,10 @@ screens = [
                         *get_volume_and_mute(*pactl_get_volume_and_mute())
                     ),
                     name="vol",
+                ),
+                widget.TextBox(
+                    build_brightness_text(get_brightness(brightness_get()))
+                    name="bright",
                 ),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
