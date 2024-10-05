@@ -131,7 +131,7 @@ def brightness_get():
 
 
 def brightness_set(step):
-    step_text = f"+{step}%" if step >= 0 else f"{step}%-"
+    step_text = f"+{step}%" if step >= 0 else f"{abs(step)}%-"
     return my_run(BRIGHTNESS_SET_CMD.format(step_text))
 
 
@@ -246,7 +246,6 @@ keys = [
         lazy.function(my_brightness_up),
         desc="Raise brightness",
     ),
-
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -334,7 +333,7 @@ screens = [
                     name="vol",
                 ),
                 widget.TextBox(
-                    build_brightness_text(get_brightness(brightness_get()))
+                    build_brightness_text(get_brightness(brightness_get())),
                     name="bright",
                 ),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
