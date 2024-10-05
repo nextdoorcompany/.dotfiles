@@ -281,27 +281,12 @@ for i in groups:
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod + shift + group number = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
 
 layouts = [
     layout.Max(),
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
@@ -318,14 +303,7 @@ screens = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                # widget.WindowTabs(),
                 widget.TaskList(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
                 widget.TextBox(
                     build_volume_text(
                         *get_volume_and_mute(*pactl_get_volume_and_mute())
@@ -336,10 +314,6 @@ screens = [
                     build_brightness_text(get_brightness(brightness_get())),
                     name="bright",
                 ),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                # widget.Systray(),
                 widget.Battery(
                     background="00422a",
                     low_background="#620f2a",
@@ -350,13 +324,7 @@ screens = [
                 widget.QuickExit(default_text="[X]", countdown_format="[{}]"),
             ],
             48,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     ),
 ]
 
