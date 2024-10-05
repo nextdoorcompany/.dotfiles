@@ -46,7 +46,7 @@ def get_volume_and_mute(vol, mute):
     v = re.search(VOL_PATTERN, vol)
     vol = int(v[1]) if v else None
 
-    m = re.fullmatch(MUTE_PATTERN, mute)
+    m = re.search(MUTE_PATTERN, mute)
     mute = m[1] == "yes" if m else None
     return vol, mute
 
@@ -73,7 +73,7 @@ def pactl_toggle_mute():
 
 
 def pactl_set_volume(step):
-    current, _ = get_volume_and_mute(pactl_get_volume_and_mute())
+    current, _ = get_volume_and_mute(*pactl_get_volume_and_mute())
     desired = current + step
     desired = min(desired, 100)
     desired = max(desired, 0)
@@ -87,19 +87,19 @@ def my_run(cmd):
 
 def my_mute(qtile):
     pactl_toggle_mute()
-    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    text = build_volume_text(*get_volume_and_mute(*pactl_get_volume_and_mute()))
     qtile.widgets_map["vol"].update(text)
 
 
 def my_volume_up(qtile):
     pactl_set_volume(10)
-    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    text = build_volume_text(*get_volume_and_mute(*pactl_get_volume_and_mute()))
     qtile.widgets_map["vol"].update(text)
 
 
 def my_volume_down(qtile):
     pactl_set_volume(-10)
-    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    text = build_volume_text(*get_volume_and_mute(*pactl_get_volume_and_mute()))
     qtile.widgets_map["vol"].update(text)
 
 
@@ -271,7 +271,9 @@ screens = [
                 #     name_transform=lambda name: name.upper(),
                 # ),
                 widget.TextBox(
-                    build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute())),
+                    build_volume_text(
+                        *get_volume_and_mute(*pactl_get_volume_and_mute())
+                    ),
                     name="vol",
                 ),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
