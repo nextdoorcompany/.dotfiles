@@ -24,6 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import re
+import shlex
 import subprocess
 
 from libqtile import bar, layout, qtile, widget
@@ -36,9 +38,69 @@ alt = "mod1"
 terminal = guess_terminal()
 
 
+VOL_PATTERN = r"/\s*(\d+)%\s*/"
+MUTE_PATTERN = r"Mute: (yes|no)"
+
+
+def get_volume_and_mute(vol, mute):
+    v = re.search(VOL_PATTERN, vol)
+    vol = int(v[1]) if v else None
+
+    m = re.fullmatch(MUTE_PATTERN, mute)
+    mute = m[1] == "yes" if m else None
+    return vol, mute
+
+
+def build_volume_text(vol, mute):
+    if vol is None or mute is None:
+        return "???"
+    return f"{vol}%{' MUTE' if mute else ''}"
+
+
+MUTE_GET_CMD = "pactl get-sink-mute @DEFAULT_SINK@"
+MUTE_SET_CMD = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+VOL_GET_CMD = "pactl get-sink-volume @DEFAULT_SINK@"
+VOL_SET_CMD = "pactl set-sink-volume @DEFAULT_SINK@ {}%"
+
+
+def pactl_get_volume_and_mute():
+    return my_run(VOL_GET_CMD), my_run(MUTE_GET_CMD)
+
+
+def pactl_toggle_mute():
+    return my_run(MUTE_SET_CMD)
+
+
+def pactl_set_volume(step):
+    current, _ = get_volume_and_mute(pactl_get_volume_and_mute())
+    desired = current + step
+    desired = min(desired, 100)
+    desired = max(desired, 0)
+    return my_run(VOL_SET_CMD.format(desired))
+
+
+def my_run(cmd):
+    p = subprocess.run(shlex.split(cmd), check=True, text=True, capture_output=True)
+    return p.stdout
+
+
 def my_mute(qtile):
-    subprocess.run(["pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle"], check=True)
-    qtile.widgets_map["vol"].update("M")
+    pactl_toggle_mute()
+    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    qtile.widgets_map["vol"].update(text)
+
+
+def my_volume_up(qtile):
+    pactl_set_volume(10)
+    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    qtile.widgets_map["vol"].update(text)
+
+
+def my_volume_down(qtile):
+    pactl_set_volume(-10)
+    text = build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute()))
+    qtile.widgets_map["vol"].update(text)
 
 
 keys = [
@@ -115,18 +177,17 @@ keys = [
     ),
     Key([mod], "j", lazy.hide_show_bar(), desc="Toggles bar visibility"),
     Key([mod], "l", lazy.spawn("slock"), desc="Lock screen"),
-    # Key([], "XF86AudioMute", lazy.spawn("my_volume.py mute"), desc="Mute volume"),
     Key([], "XF86AudioMute", lazy.function(my_mute), desc="Mute volume"),
     Key(
         [],
         "XF86AudioLowerVolume",
-        lazy.spawn("my_volume.py lower"),
+        lazy.function(my_volume_down),
         desc="Lower volume",
     ),
     Key(
         [],
         "XF86AudioRaiseVolume",
-        lazy.spawn("my_volume.py raise"),
+        lazy.function(my_volume_up),
         desc="Raise volume",
     ),
 ]
@@ -209,7 +270,10 @@ screens = [
                 #     },
                 #     name_transform=lambda name: name.upper(),
                 # ),
-                widget.TextBox("default config", name="vol"),
+                widget.TextBox(
+                    build_volume_text(get_volume_and_mute(pactl_get_volume_and_mute())),
+                    name="vol",
+                ),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
