@@ -24,6 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import subprocess
 
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -33,6 +34,12 @@ from libqtile.utils import guess_terminal
 mod = "mod4"  # super
 alt = "mod1"
 terminal = guess_terminal()
+
+
+def my_mute(qtile):
+    subprocess.run(["pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle"], check=True)
+    qtile.widgets_map["vol"].update("M")
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -108,7 +115,8 @@ keys = [
     ),
     Key([mod], "j", lazy.hide_show_bar(), desc="Toggles bar visibility"),
     Key([mod], "l", lazy.spawn("slock"), desc="Lock screen"),
-    Key([], "XF86AudioMute", lazy.spawn("my_volume.py mute"), desc="Mute volume"),
+    # Key([], "XF86AudioMute", lazy.spawn("my_volume.py mute"), desc="Mute volume"),
+    Key([], "XF86AudioMute", lazy.function(my_mute), desc="Mute volume"),
     Key(
         [],
         "XF86AudioLowerVolume",
@@ -201,7 +209,7 @@ screens = [
                 #     },
                 #     name_transform=lambda name: name.upper(),
                 # ),
-                # widget.TextBox("default config", name="default"),
+                widget.TextBox("default config", name="vol"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
