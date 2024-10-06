@@ -1952,16 +1952,6 @@ See [[https://www.emacswiki.org/emacs/EmacsLispBenchmark][EmacsWiki]].
           (default-directory dir))
       (shell-command command)))
 #+END_SRC
-* clojure
-
-[[https://github.com/clojure-emacs/clojure-mode][clojure-mode]] [[https://melpa.org/#/clojure-mode][melpa]] [[https://github.com/clojure-emacs/cider][cider]] [[https://melpa.org/#/cider][melpa]]
-
-#+BEGIN_SRC emacs-lisp
-  (use-package clojure-mode
-    :ensure t)
-  (use-package cider
-    :ensure t)
-#+END_SRC
 * scroll without moving point
 [[https://stackoverflow.com/questions/8993183/emacs-scroll-buffer-not-point][Stack Overflow]] [[https://www.emacswiki.org/emacs/Scrolling][EmacsWiki]]
 #+BEGIN_SRC emacs-lisp
