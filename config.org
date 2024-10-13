@@ -874,6 +874,11 @@ Found [[https://stackoverflow.com/questions/11043004/emacs-compile-buffer-auto-c
   (global-set-key (kbd "C-c r") 'recompile)
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+  (use-package ansi-color
+    :hook (compilation-filter . ansi-color-compilation-filter))
+#+END_SRC
+
 * calc
 
 m m and Z P will clobber this with calc.el (like custom.el).
