@@ -837,7 +837,7 @@ Add a directory local to assign a value to commands.
       :program (if sqlformat-command
                    sqlformat-command
                  (concat default-directory "env/bin/sqlformat"))
-      :args '("-r" "-k" "upper" "--wrap_after" "80" "-"))
+      :args '("-a" "-k" "upper" "--wrap_after" "80" "-"))
     (reformatter-define ruff
       :program "ruff"
       :args `("format" "--stdin-filename" ,buffer-file-name "-"))
