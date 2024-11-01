@@ -53,8 +53,7 @@ Ambrevar's exwm [[https://github.com/Ambrevar/dotfiles/blob/master/.emacs.d/lisp
 
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package exwm
-    :ensure t)
-  (use-package exwm-config
+    :ensure t
     :config
     (js/exwm-config)
     (defun js/exwm-lock ()
