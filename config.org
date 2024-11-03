@@ -841,6 +841,9 @@ Add a directory local to assign a value to commands.
     (reformatter-define ruff
       :program "ruff"
       :args `("format" "--stdin-filename" ,buffer-file-name "-"))
+    (reformatter-define ruff-fix
+        :program "ruff"
+        :args `("check" "--fix-only" "--stdin-filename" ,buffer-file-name "-"))
     (reformatter-define toml
       :program "toml-sort"
       :args '("--spaces-indent-inline-array" "4" "--trailing-comma-inline-array" "-"))
