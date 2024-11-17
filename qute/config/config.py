@@ -131,6 +131,10 @@ config.bind("<left>", "tab-prev")
 config.bind("g", "reload")
 config.bind("<Alt-,>", "scroll-to-perc 0")
 config.bind("<Alt-.>", "scroll-to-perc 100")
+config.bind(",,", "fake-key f<Shift-.><Shift-.><Shift-.>")
+config.bind(",f", "fake-key f")
+config.bind(",.", "fake-key <Shift-.>")
+config.bind(",m", "fake-key <Shift-,>")
 
 c.content.tls.certificate_errors = "block"
 
