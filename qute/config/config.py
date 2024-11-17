@@ -133,6 +133,7 @@ config.bind("<Alt-,>", "scroll-to-perc 0")
 config.bind("<Alt-.>", "scroll-to-perc 100")
 config.bind(",,", "fake-key f<Shift-.><Shift-.><Shift-.>")
 config.bind(",f", "fake-key f")
+config.bind(",c", "fake-key c")
 config.bind(",.", "fake-key <Shift-.>")
 config.bind(",m", "fake-key <Shift-,>")
 
