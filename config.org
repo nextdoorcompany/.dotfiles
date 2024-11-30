@@ -1688,6 +1688,23 @@ Inspiration and ideas from [[https://protesilaos.com/emacs/modus-themes-colors][
                          "Jinja variable")
 
 #+END_SRC
+** pytest
+#+BEGIN_SRC emacs-lisp
+  (tempo-define-template "jjtest"
+                         '((p "Name: " name 'noinsert)
+                           (p "Vars: " vars 'noinsert)
+                           "@pytest.mark.parametrize(\""
+                           (replace-regexp-in-string " +" "" (tempo-lookup-named 'vars))
+                           "\", [(),])\n"
+                           "def test_"
+                           (s name)
+                           "("
+                           (s vars)
+                           "):"
+                           n>)        ; elements here
+                         "jjtest"
+                         "Generates a parameterized test.")
+#+END_SRC
 * ediff
 #+BEGIN_SRC emacs-lisp
   (setq ediff-split-window-function 'split-window-horizontally)
